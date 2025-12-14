@@ -1,0 +1,488 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #fafafa;
+  --text: #111;
+  --card: #fff;
+  --gold: #c9a24d;
+}
+
+.dark {
+  --bg: #0e0e0e;
+  --text: #f5f5f5;
+  --card: #161616;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, Inter, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  transition: background 0.4s, color 0.4s;
+  scroll-behavior: smooth;
+}
+
+/* ===============================
+   BACKGROUNDS
+================================ */
+
+/* Light mode → DOT GRID */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: radial-gradient(#cfcfcf 1px, transparent 1px);
+  background-size: 24px 24px;
+  opacity: 0.6;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Dark mode → STARS */
+.dark::before {
+  background-image:
+    radial-gradient(white 1px, transparent 1px),
+    radial-gradient(white 1px, transparent 1px),
+    radial-gradient(white 1px, transparent 1px);
+  background-size: 120px 120px, 200px 200px, 300px 300px;
+  background-position: 0 0, 50px 80px, 120px 160px;
+  opacity: 0.35;
+}
+
+/* ===============================
+   NAVBAR
+================================ */
+.navbar {
+  position: fixed;
+  width: 100%;
+  backdrop-filter: blur(12px);
+  background: rgba(250,250,250,0.7);
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  z-index: 10;
+}
+
+.dark .navbar {
+  background: rgba(14,14,14,0.7);
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 16px 24px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav-links {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+}
+
+.nav-links a {
+  color: var(--text);
+  text-decoration: none;
+}
+
+/* ===============================
+   HERO
+================================ */
+.hero {
+  min-height: 100vh;
+  padding: 140px 80px 80px;
+  position: relative;
+}
+
+.hero-image img {
+  width: 360px;
+  border-radius: 24px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+.floating {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+.hero-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-30%, -50%);
+}
+
+.hero-center h1 { font-size: 64px; }
+.tagline { color: gray; margin: 12px 0 24px; }
+
+/* ===============================
+   SECTIONS
+================================ */
+.projects, .about, .links {
+  padding: 120px 80px;
+}
+
+/* ===============================
+   PROJECTS – ROTATING CARDS
+================================ */
+.projects {
+  margin-top: 5rem;
+}
+
+.projects h2 {
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.projects-subtitle {
+  text-align: center;
+  opacity: 0.8;
+  margin-bottom: 2.5rem;
+  font-size: 0.95rem;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 28px;
+}
+
+.project-card {
+  position: relative;
+  background: var(--card);
+  border-radius: 20px;
+  padding: 20px;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+}
+
+.project-card img {
+  width: 100%;
+  border-radius: 14px;
+  margin-bottom: 14px;
+}
+
+.project-card h3 {
+  margin-bottom: 6px;
+}
+
+.project-card p {
+  font-size: 0.95rem;
+  opacity: 0.9;
+  line-height: 1.5;
+}
+
+.project-links {
+  margin-top: 12px;
+}
+
+.project-links a {
+  color: #9fb3ff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.project-links a:hover {
+  text-decoration: underline;
+}
+
+/* TAG BADGE */
+.tag {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: #e53935;
+  color: #ffffff;
+  font-size: 0.7rem;
+  padding: 5px 10px;
+  border-radius: 999px;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+}
+
+/* Mobile polish */
+@media (max-width: 480px) {
+  .project-card {
+    padding: 18px;
+  }
+
+  .tag {
+    font-size: 0.65rem;
+    padding: 4px 8px;
+  }
+}
+
+
+/* ===============================
+   ICON LINKS
+================================ */
+.icon-links {
+  display: flex;
+  gap: 32px;
+}
+
+.icon-links a svg {
+  width: 28px;
+  fill: var(--gold);
+  transition: transform 0.3s, filter 0.3s;
+}
+
+.icon-links a:hover svg {
+  transform: translateY(-4px) scale(1.05);
+  filter: drop-shadow(0 6px 14px rgba(201,162,77,0.7));
+}
+
+/* ===============================
+   REVEAL
+================================ */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: 0.8s ease;
+}
+.reveal.show {
+  opacity: 1;
+  transform: none;
+}
+
+/* ===============================
+   MOBILE
+================================ */
+@media (max-width: 900px) {
+  .nav-links { display: none; }
+
+  .hero-center {
+    position: static;
+    transform: none;
+    margin-top: 40px;
+    text-align: center;
+  }
+
+
+}
+.footer {
+  margin-top: 4rem;
+  padding: 2rem 1rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #9aa4c7;
+  border-top: 1px solid rgba(0, 0, 0, 1);
+}
+
+.footer span {
+  color: #ffffff;
+  font-weight: 500;
+}
+
+.footer-note {
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  opacity: 0.8;
+}
+
+
+.about {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 4rem 1.5rem;
+}
+
+.about h2 {
+  margin-bottom: 1rem;
+}
+
+.about p {
+  margin-bottom: 1rem;
+  line-height: 1.7;
+  opacity: 0.9;
+}
+
+
+/* ===============================
+   ASTROPHOTOGRAPHY – APPLE STYLE
+================================ */
+
+.astro-apple {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 6rem 1.5rem;
+  text-align: center;
+}
+
+.astro-apple h2 {
+  font-size: 2rem;
+  margin-bottom: 0.6rem;
+}
+
+.astro-desc {
+  font-size: 1rem;
+  opacity: 0.75;
+  margin-bottom: 3.5rem;
+}
+
+.astro-apple-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 28px;
+}
+
+.astro-apple-card {
+  background: var(--card);
+  border-radius: 22px;
+  padding: 32px;
+  text-align: left;
+  text-decoration: none;
+  color: inherit;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dark .astro-apple-card {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.astro-apple-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+}
+
+.astro-icon-apple {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 18px;
+}
+
+.dark .astro-icon-apple {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.astro-icon-apple span {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--text);
+  opacity: 0.85;
+}
+
+.astro-apple-card h3 {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+}
+
+.astro-apple-card p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  opacity: 0.85;
+}
+
+.astro-cta {
+  display: inline-block;
+  margin-top: 18px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #6b7cff;
+}
+
+
+/* FORCE GOLD ICON TINT (FINAL OVERRIDE) */
+.icon-links a svg {
+  fill: var(--gold) !important;
+}
+
+.dark .icon-links a svg {
+  fill: var(--gold) !important;
+}
+
+/* FORCE GOLD ICON TINT (FINAL OVERRIDE) */
+.icon-links a svg {
+  fill: var(--gold) !important;
+}
+
+.dark .icon-links a svg {
+  fill: var(--gold) !important;
+}
+
+
+/* ===============================
+   FOOTER – FINAL FIX
+================================ */
+
+.footer {
+  margin-top: 6rem;
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #555;
+  background: transparent;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.footer span {
+  color: #111;
+  font-weight: 500;
+}
+
+.footer-note {
+  margin-top: 0.6rem;
+  font-size: 0.85rem;
+  opacity: 0.75;
+}
+
+/* Dark mode footer */
+.dark .footer {
+  color: #aaa;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.dark .footer span {
+  color: #fff;
+}
+
+
+/* ===============================
+   HERO NAME TYPE EFFECT (CSS)
+================================ */
+
+.hero-name {
+  font-size: 64px;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 2px solid var(--text);
+  width: 0;
+  animation:
+    typing 2.8s steps(14, end) forwards,
+    blink 0.8s step-end infinite;
+}
+
+/* Stop cursor after typing */
+.hero-name.finished {
+  border-right: none;
+}
+
+@keyframes typing {
+  from { width: 0; }
+  to { width: 14ch; } /* length of "Hridhaan Sahay" */
+}
+
+@keyframes blink {
+  50% { border-color: transparent; }
+}
+
+
+
