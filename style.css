@@ -501,3 +501,38 @@ body::before {
   }
 }
 
+/* ===============================
+   HERO MOBILE LAYOUT FIX
+================================ */
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 120px 24px 80px;
+  }
+
+  .hero-image img {
+    width: 260px;
+    margin: 0 auto;
+    display: block;
+  }
+
+  .hero-center {
+    position: static;
+    transform: none;
+    margin-top: 32px;
+    text-align: center;
+  }
+
+  .hero-name {
+    font-size: 40px;
+    line-height: 1.15;
+    white-space: normal;
+  }
+
+  .tagline,
+  .statement {
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
