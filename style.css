@@ -484,5 +484,20 @@ body::before {
   50% { border-color: transparent; }
 }
 
+/* ===============================
+   HERO MOBILE FIX
+================================ */
 
+@media (max-width: 600px) {
+  .hero-name {
+    font-size: 42px;
+    white-space: normal;
+    width: auto;
+    text-align: center;
+  }
+
+  .hero-name::after {
+    display: none;
+  }
+}
 
