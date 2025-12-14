@@ -536,3 +536,16 @@ body::before {
     margin-right: auto;
   }
 }
+
+@media (max-width: 768px) {
+  .hero-name {
+    white-space: normal;
+    width: auto;
+    font-size: 40px;
+    text-align: center;
+  }
+
+  .hero-name::after {
+    display: none;
+  }
+}
