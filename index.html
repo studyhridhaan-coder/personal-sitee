@@ -32,7 +32,7 @@
     </div>
 
     <div class="hero-center">
-      <h1 class="hero-name">Hridhaan Sahay</h1>
+      <h1 class="hero-name" id="heroName">Hridhaan Sahay</h1>
       <p class="tagline"><span id="typewriter"></span></p>
 
       <p class="statement">
@@ -253,6 +253,11 @@
     document.body.classList.toggle("dark");
 
   // Typewriter effect
+  const isMobile = window.innerWidth <= 768;
+
+if (isMobile) {
+  document.getElementById("heroName").textContent = "Hridhaan Sahay";
+}
   const text = "Student • Builder • Space & Tech";
   let i = 0;
   function type() {
