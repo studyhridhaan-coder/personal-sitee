@@ -129,13 +129,21 @@ body::before {
   50% { transform: translateY(-12px); }
 }
 
-.hero-center {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-30%, -50%);
+/* ===============================
+   HERO LAYOUT FIX (DESKTOP + MOBILE)
+================================ */
+
+.hero {
+  display: flex;
+  align-items: center;
+  gap: 64px;
 }
 
+.hero-center {
+  position: static;
+  transform: none;
+  max-width: 520px;
+}
 .hero-center h1 { font-size: 64px; }
 .tagline { color: gray; margin: 12px 0 24px; }
 
@@ -565,5 +573,20 @@ body::before {
 
   .hero-name::after {
     display: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .hero {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero-center {
+    max-width: 100%;
+  }
+
+  .hero-image img {
+    width: 260px;
   }
 }
