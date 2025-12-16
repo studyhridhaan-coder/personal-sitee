@@ -755,3 +755,154 @@ a, button {
   border-bottom-color: rgba(201, 162, 77, 0.7);
 }
 
+
+/* ===============================
+   TOOLS SECTION – FINAL POLISH
+   (Add at bottom of CSS)
+================================ */
+
+/* Section spacing & anchoring */
+.tools-apple {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  padding-bottom: 3rem;
+  overflow: hidden;
+  text-align: left;
+}
+
+/* Quiet divider (Apple-style) */
+.tools-apple::before {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 1px;
+  background: rgba(0, 0, 0, 0.08);
+  margin: 0 auto 2rem;
+}
+
+.dark .tools-apple::before {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* Title refinement */
+.tools-apple-title {
+  text-align: center;
+  font-size: 0.8rem;
+  letter-spacing: 0.02em;
+  opacity: 0.55;
+  margin-bottom: 1.6rem;
+}
+
+/* Lanes container */
+.tools-lanes {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* Individual lane */
+.tools-lane {
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+
+  /* Edge fade */
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 6%,
+    black 94%,
+    transparent
+  );
+}
+
+/* Moving track */
+.tools-track {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 14px;
+  width: max-content;
+
+  animation-name: toolsScroll;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+/* Faster, premium speeds */
+.tools-lane.slow   .tools-track { animation-duration: 26s; }
+.tools-lane.medium .tools-track { animation-duration: 20s; }
+.tools-lane.fast   .tools-track { animation-duration: 14s; }
+
+/* Pause on hover */
+.tools-lane:hover .tools-track {
+  animation-play-state: paused;
+}
+
+/* Tool chips (slightly smaller, premium) */
+.tool-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  white-space: nowrap;
+
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(18px);
+  border: 1px solid rgba(201, 162, 77, 0.28);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.4),
+    0 8px 24px rgba(0,0,0,0.08);
+
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.dark .tool-chip {
+  background: rgba(18, 18, 18, 0.65);
+}
+
+/* SVG icons */
+.tool-chip svg {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: var(--gold);
+  stroke-width: 1.6;
+}
+
+/* Hover polish */
+.tool-chip:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.5),
+    0 14px 30px rgba(201, 162, 77, 0.22);
+}
+
+/* Animation */
+@keyframes toolsScroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Mobile behavior */
+@media (max-width: 768px) {
+  .tools-track {
+    animation: none;
+    transform: none;
+    overflow-x: auto;
+    padding-bottom: 6px;
+  }
+
+  .tools-lane {
+    mask-image: none;
+  }
+}
+
+
