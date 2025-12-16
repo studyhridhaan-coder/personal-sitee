@@ -928,4 +928,29 @@ a, button {
   }
 }
 
+/* ===== TOOLS CENTER START OVERRIDE ===== */
+/* MUST BE LAST IN FILE */
+
+.tools-track {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 14px;
+  width: max-content;
+
+  /* start near visual center */
+  transform: translateX(-25%);
+  animation: toolsScroll 18s linear infinite;
+}
+
+@keyframes toolsScroll {
+  from {
+    transform: translateX(-25%);
+  }
+  to {
+    transform: translateX(-75%);
+  }
+}
+
+
 
