@@ -613,6 +613,7 @@ a, button {
 .tools-apple {
   padding: 4.5rem 0;
   overflow: hidden;
+  text-align: left;
 }
 
 .tools-apple-title {
@@ -630,17 +631,18 @@ a, button {
   gap: 14px;
 }
 
-/* single lane */
+/* lane */
 .tools-lane {
   position: relative;
   overflow: hidden;
+  white-space: nowrap;
 
   /* Apple-style edge fade */
   mask-image: linear-gradient(
     to right,
     transparent,
-    black 8%,
-    black 92%,
+    black 6%,
+    black 94%,
     transparent
   );
 }
@@ -648,20 +650,21 @@ a, button {
 /* moving track */
 .tools-track {
   display: flex;
+  align-items: center;
+  justify-content: flex-start;
   gap: 14px;
   width: max-content;
 
-  /* IMPORTANT FIX */
-  transform: translateX(-50%);
   animation-name: toolsScroll;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
+  animation-fill-mode: both;
 }
 
-/* speeds */
-.tools-lane.slow   .tools-track { animation-duration: 42s; }
-.tools-lane.medium .tools-track { animation-duration: 32s; }
-.tools-lane.fast   .tools-track { animation-duration: 24s; }
+/* 🔥 FASTER SPEEDS (premium feel) */
+.tools-lane.slow   .tools-track { animation-duration: 26s; }
+.tools-lane.medium .tools-track { animation-duration: 20s; }
+.tools-lane.fast   .tools-track { animation-duration: 14s; }
 
 /* pause on hover */
 .tools-lane:hover .tools-track {
@@ -670,7 +673,7 @@ a, button {
 
 /* chip */
 .tool-chip {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 8px;
   padding: 10px 18px;
@@ -710,13 +713,13 @@ a, button {
     0 14px 30px rgba(201, 162, 77, 0.22);
 }
 
-/* animation */
+/* animation — LEFT TO RIGHT SEAMLESS */
 @keyframes toolsScroll {
   from {
-    transform: translateX(-50%);
+    transform: translateX(0);
   }
   to {
-    transform: translateX(0);
+    transform: translateX(-50%);
   }
 }
 
@@ -725,8 +728,8 @@ a, button {
   .tools-track {
     animation: none;
     overflow-x: auto;
-    padding-bottom: 6px;
     transform: none;
+    padding-bottom: 6px;
   }
 
   .tools-lane {
