@@ -1148,6 +1148,30 @@ a, button {
   }
 }
 
+/* ===== SKILLS MARQUEE – TRUE INFINITE SCROLL ===== */
+
+.tools-track {
+  display: flex;
+  gap: 14px;
+  width: max-content;
+
+  animation: skillsInfinite linear infinite;
+}
+
+/* speeds */
+.tools-lane.slow   .tools-track { animation-duration: 22s; }
+.tools-lane.medium .tools-track { animation-duration: 18s; }
+.tools-lane.fast   .tools-track { animation-duration: 14s; }
+
+/* 🔑 REAL INFINITE MARQUEE */
+@keyframes skillsInfinite {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
 
 
 
