@@ -609,6 +609,7 @@ a, button {
 /* ===============================
    APPLE-STYLE TOOLS SECTION
 ================================ */
+
 .tools-apple {
   padding: 4.5rem 0;
   overflow: hidden;
@@ -622,31 +623,52 @@ a, button {
   margin-bottom: 2.2rem;
 }
 
+/* lanes container */
 .tools-lanes {
   display: flex;
   flex-direction: column;
   gap: 14px;
 }
 
+/* single lane */
 .tools-lane {
+  position: relative;
   overflow: hidden;
+
+  /* Apple-style edge fade */
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 8%,
+    black 92%,
+    transparent
+  );
 }
 
+/* moving track */
 .tools-track {
   display: flex;
   gap: 14px;
   width: max-content;
-  animation: scroll linear infinite;
+
+  /* IMPORTANT FIX */
+  transform: translateX(-50%);
+  animation-name: toolsScroll;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
 }
 
-.tools-lane.slow .tools-track { animation-duration: 42s; }
+/* speeds */
+.tools-lane.slow   .tools-track { animation-duration: 42s; }
 .tools-lane.medium .tools-track { animation-duration: 32s; }
-.tools-lane.fast .tools-track { animation-duration: 24s; }
+.tools-lane.fast   .tools-track { animation-duration: 24s; }
 
+/* pause on hover */
 .tools-lane:hover .tools-track {
   animation-play-state: paused;
 }
 
+/* chip */
 .tool-chip {
   display: flex;
   align-items: center;
@@ -671,6 +693,7 @@ a, button {
   background: rgba(18, 18, 18, 0.65);
 }
 
+/* svg icons */
 .tool-chip svg {
   width: 16px;
   height: 16px;
@@ -679,6 +702,7 @@ a, button {
   stroke-width: 1.6;
 }
 
+/* hover polish */
 .tool-chip:hover {
   transform: translateY(-2px);
   box-shadow:
@@ -686,16 +710,26 @@ a, button {
     0 14px 30px rgba(201, 162, 77, 0.22);
 }
 
-@keyframes scroll {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+/* animation */
+@keyframes toolsScroll {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
 }
 
+/* mobile behavior */
 @media (max-width: 768px) {
   .tools-track {
     animation: none;
     overflow-x: auto;
     padding-bottom: 6px;
+    transform: none;
+  }
+
+  .tools-lane {
+    mask-image: none;
   }
 }
-
