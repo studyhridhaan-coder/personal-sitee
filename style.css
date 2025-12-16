@@ -1407,3 +1407,80 @@ a, button {
 .about a:hover {
   opacity: 0.85;
 }
+
+
+/* ===============================
+   MOBILE NAVBAR
+================================ */
+
+.nav-toggle {
+  display: none;
+  font-size: 1.3rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* Mobile menu (hidden by default) */
+.nav-mobile {
+  position: fixed;
+  top: 64px;
+  left: 50%;
+  transform: translateX(-50%) translateY(-10px);
+  width: calc(100% - 32px);
+
+  background: rgba(255,255,255,0.7);
+  backdrop-filter: blur(20px) saturate(180%);
+  border-radius: 18px;
+  padding: 14px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  opacity: 0;
+  pointer-events: none;
+
+  box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.dark .nav-mobile {
+  background: rgba(18,18,18,0.7);
+}
+
+/* Active */
+.nav-mobile.open {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Mobile links */
+.nav-mobile a {
+  text-decoration: none;
+  color: var(--text);
+  font-size: 0.95rem;
+  padding: 10px 14px;
+  border-radius: 10px;
+}
+
+.nav-mobile a:hover {
+  background: rgba(0,0,0,0.06);
+}
+
+.dark .nav-mobile a:hover {
+  background: rgba(255,255,255,0.08);
+}
+
+/* Breakpoint */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
+
+  .nav-toggle {
+    display: block;
+  }
+}
+
