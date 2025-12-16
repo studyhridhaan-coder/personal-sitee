@@ -1507,3 +1507,9 @@ body {
   overflow-x: hidden;
 }
 
+/* ===== BACKGROUND FIX ===== */
+body::before {
+  height: 100vh;
+  inset: 0;
+}
+
