@@ -1484,3 +1484,26 @@ a, button {
   }
 }
 
+/* ===== GAP KILL OVERRIDE ===== */
+/* MUST BE LAST LINE OF CSS */
+
+.about {
+  padding-bottom: 2rem !important;
+  margin-bottom: 0 !important;
+}
+
+.tools-apple {
+  padding-top: 2rem !important;
+  padding-bottom: 2rem !important;
+  margin-bottom: 0 !important;
+}
+
+.footer {
+  margin-top: 2rem !important;
+}
+
+/* Prevent body creating fake space */
+body {
+  overflow-x: hidden;
+}
+
