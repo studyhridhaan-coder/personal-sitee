@@ -905,4 +905,27 @@ a, button {
   }
 }
 
+/* ===== TOOLS CENTER START OVERRIDE ===== */
+/* Paste this at the VERY END of your CSS */
+
+.tools-track {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 14px;
+  width: max-content;
+
+  transform: translateX(-25%);
+  animation: toolsScroll linear infinite;
+}
+
+@keyframes toolsScroll {
+  from {
+    transform: translateX(-25%);
+  }
+  to {
+    transform: translateX(-75%);
+  }
+}
+
 
