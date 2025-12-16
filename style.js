@@ -38,5 +38,18 @@ setTimeout(() => {
   document.querySelector(".hero-name")?.classList.add("finished");
 }, 2000);
 
+const navToggle = document.querySelector(".nav-toggle");
+const navMobile = document.querySelector(".nav-mobile");
+
+navToggle.onclick = () => {
+  navMobile.classList.toggle("open");
+};
+
+/* Close on link click */
+navMobile.querySelectorAll("a").forEach(link => {
+  link.onclick = () => navMobile.classList.remove("open");
+});
+
+
 
 
