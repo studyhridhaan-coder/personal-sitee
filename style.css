@@ -606,60 +606,88 @@ a, button {
       </div> <!-- project-card -->
     </div> <!-- projects-grid -->
 
-   /* ===============================
-   TOOLS SECTION (MOVING)
+/* ===============================
+   APPLE-STYLE TOOLS SECTION
 ================================ */
 
-.tools-section {
-  padding: 4rem 0;
+.tools-apple {
+  padding: 4.5rem 0;
   overflow: hidden;
 }
 
-.tools-title {
+.tools-apple-title {
   text-align: center;
   font-size: 0.95rem;
-  opacity: 0.75;
-  margin-bottom: 1.5rem;
+  opacity: 0.7;
+  margin-bottom: 2rem;
 }
 
-.tools-marquee {
-  overflow: hidden;
-  width: 100%;
-}
-
-.tools-track {
+/* lanes container */
+.tools-lanes {
   display: flex;
-  gap: 16px;
-  width: max-content;
-  animation: toolsScroll 30s linear infinite;
+  flex-direction: column;
+  gap: 14px;
 }
 
-.tools-track:hover {
+/* lane */
+.tools-lane {
+  display: flex;
+  gap: 14px;
+  width: max-content;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.tools-lane:hover {
   animation-play-state: paused;
 }
 
+/* speeds */
+.tools-lane.slow {
+  animation: toolsScroll 38s linear infinite;
+}
+.tools-lane.medium {
+  animation: toolsScroll 30s linear infinite;
+}
+.tools-lane.fast {
+  animation: toolsScroll 24s linear infinite;
+}
+
+/* chip */
 .tool-chip {
   display: flex;
   align-items: center;
   gap: 8px;
   padding: 10px 18px;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.55);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(201, 162, 77, 0.4);
   font-size: 0.85rem;
   white-space: nowrap;
+
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(201, 162, 77, 0.35);
+
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .dark .tool-chip {
-  background: rgba(20, 20, 20, 0.55);
+  background: rgba(18, 18, 18, 0.6);
 }
 
-.tool-chip .icon {
-  color: var(--gold);
+/* svg icons */
+.tool-chip svg {
+  width: 16px;
+  height: 16px;
+  fill: var(--gold);
 }
 
-/* Animation */
+/* hover polish */
+.tool-chip:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(201, 162, 77, 0.25);
+}
+
+/* animation */
 @keyframes toolsScroll {
   from {
     transform: translateX(0);
@@ -669,12 +697,12 @@ a, button {
   }
 }
 
-/* Mobile: disable auto-scroll */
+/* mobile behavior */
 @media (max-width: 768px) {
-  .tools-track {
+  .tools-lane {
     animation: none;
     overflow-x: auto;
-    padding-bottom: 10px;
+    padding-bottom: 8px;
   }
 }
 
