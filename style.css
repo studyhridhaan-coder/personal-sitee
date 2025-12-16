@@ -736,3 +736,22 @@ a, button {
     mask-image: none;
   }
 }
+
+
+/* ===============================
+   ABOUT SECTION – LINKS
+================================ */
+
+.about a {
+  color: var(--gold);
+  text-decoration: none;
+  font-weight: 500;
+  border-bottom: 1px solid rgba(201, 162, 77, 0.35);
+  transition: opacity 0.2s ease, border-color 0.2s ease;
+}
+
+.about a:hover {
+  opacity: 0.85;
+  border-bottom-color: rgba(201, 162, 77, 0.7);
+}
+
