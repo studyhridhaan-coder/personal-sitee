@@ -590,3 +590,15 @@ body::before {
     width: 260px;
   }
 }
+
+/* ===============================
+   GLOBAL ROCKET CURSOR
+================================ */
+
+html, body {
+  cursor: url("/assets/cursors/rocket.png") 16 16, auto;
+}
+
+a, button {
+  cursor: pointer;
+}
