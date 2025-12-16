@@ -1283,4 +1283,34 @@ a, button {
   animation-play-state: paused;
 }
 
+/* DESKTOP TYPING */
+.hero-name {
+  font-size: 64px;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 2px solid var(--text);
+  width: 0;
+  animation:
+    typing 2.8s steps(14, end) forwards,
+    blink 0.8s step-end infinite;
+}
+
+/* Stop cursor */
+.hero-name.finished {
+  border-right: none;
+}
+
+/* MOBILE FIX */
+@media (max-width: 768px) {
+  .hero-name {
+    animation: none;        /* ❌ kill typing */
+    width: auto;            /* ❌ remove width limit */
+    white-space: normal;    /* ✅ allow wrap */
+    border-right: none;     /* ❌ cursor gone */
+    font-size: 40px;
+    line-height: 1.2;
+    text-align: center;
+  }
+}
 
