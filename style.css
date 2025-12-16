@@ -606,61 +606,76 @@ a, button {
       </div> <!-- project-card -->
     </div> <!-- projects-grid -->
 
-    <!-- TOOLS USED (SUB-SECTION INSIDE PROJECTS) -->
-    <div class="tools-used">
-      <p class="tools-title">These projects were built with the following tools</p>
+   /* ===============================
+   TOOLS SECTION (MOVING)
+================================ */
 
-      <div class="tools-marquee">
-        <div class="tools-track">
+.tools-section {
+  padding: 4rem 0;
+  overflow: hidden;
+}
 
-          <div class="tool-chip">
-            <svg viewBox="0 0 24 24"><path d="M3 4h18v4H3zM3 10h18v10H3z"/></svg>
-            <span>HTML + CSS</span>
-          </div>
+.tools-title {
+  text-align: center;
+  font-size: 0.95rem;
+  opacity: 0.75;
+  margin-bottom: 1.5rem;
+}
 
-          <div class="tool-chip">
-            <svg viewBox="0 0 24 24"><path d="M12 2l4 8-4 12-4-12z"/></svg>
-            <span>Programming</span>
-          </div>
+.tools-marquee {
+  overflow: hidden;
+  width: 100%;
+}
 
-          <div class="tool-chip">
-            <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20 10 10 0 000-20z"/></svg>
-            <span>Robotics</span>
-          </div>
+.tools-track {
+  display: flex;
+  gap: 16px;
+  width: max-content;
+  animation: toolsScroll 30s linear infinite;
+}
 
-          <div class="tool-chip">
-            <svg viewBox="0 0 24 24"><path d="M4 6h16v12H4z"/></svg>
-            <span>Arduino</span>
-          </div>
+.tools-track:hover {
+  animation-play-state: paused;
+}
 
-          <div class="tool-chip">
-            <svg viewBox="0 0 24 24"><path d="M3 12h18"/></svg>
-            <span>Web Development</span>
-          </div>
+.tool-chip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(201, 162, 77, 0.4);
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
 
-          <div class="tool-chip">
-            <svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4 2 7-6.5-4.5L6 20l2-7L2 9h7z"/></svg>
-            <span>Astrophotography</span>
-          </div>
+.dark .tool-chip {
+  background: rgba(20, 20, 20, 0.55);
+}
 
-          <div class="tool-chip">
-            <svg viewBox="0 0 24 24"><path d="M12 2l6 20-6-4-6 4z"/></svg>
-            <span>Satellite Systems</span>
-          </div>
+.tool-chip .icon {
+  color: var(--gold);
+}
 
-          <div class="tool-chip">
-            <svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/></svg>
-            <span>Graphic Design</span>
-          </div>
+/* Animation */
+@keyframes toolsScroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
 
-          <div class="tool-chip">
-            <svg viewBox="0 0 24 24"><path d="M3 5h18v14H3z"/></svg>
-            <span>Video Editing</span>
-          </div>
+/* Mobile: disable auto-scroll */
+@media (max-width: 768px) {
+  .tools-track {
+    animation: none;
+    overflow-x: auto;
+    padding-bottom: 10px;
+  }
+}
 
-        </div>
-      </div>
-    </div>
-
-  </section> <!-- ✅ PROJECTS SECTION ENDS HERE -->
 
