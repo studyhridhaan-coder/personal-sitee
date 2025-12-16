@@ -20,9 +20,6 @@ type();
 
 
 // Hero name typing effect (safe)
-window.addEventListener("load", () => {
-  const heroText = "Hridhaan Sahay";
-  const heroEl = document.getElementById("hero-name");
 
   let j = 0;
   function typeHero() {
