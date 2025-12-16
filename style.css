@@ -596,7 +596,7 @@ body::before {
 ================================ */
 
 html, body {
-  cursor: url("/assets/cursors/rocket.png") 16 16, auto;
+  cursor: url("/assets/rocket.png") 16 16, auto;
 }
 
 a, button {
