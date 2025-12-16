@@ -1173,5 +1173,72 @@ a, button {
   }
 }
 
+/* ===============================
+   SKILLS – TRUE INFINITE MARQUEE
+   NO DEAD SPACE
+================================ */
+
+.tools-lane {
+  position: relative;
+  display: flex;
+  overflow: hidden;
+  white-space: nowrap;
+
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 8%,
+    black 92%,
+    transparent
+  );
+}
+
+.tools-track {
+  display: flex;
+  gap: 14px;
+  width: max-content;
+  animation: marquee linear infinite;
+}
+
+/* second track starts immediately after first */
+.tools-track:nth-child(2) {
+  animation-delay: calc(var(--duration) / -2);
+}
+
+/* speeds per lane */
+.tools-lane.slow   { --duration: 26s; }
+.tools-lane.medium { --duration: 20s; }
+.tools-lane.fast   { --duration: 14s; }
+
+.tools-track {
+  animation-duration: var(--duration);
+}
+
+/* TRUE infinite motion */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+/* pause on hover */
+.tools-lane:hover .tools-track {
+  animation-play-state: paused;
+}
+
+/* mobile fallback */
+@media (max-width: 768px) {
+  .tools-track {
+    animation: none;
+  }
+
+  .tools-lane {
+    mask-image: none;
+  }
+}
+
 
 
