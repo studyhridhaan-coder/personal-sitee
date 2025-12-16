@@ -1240,5 +1240,47 @@ a, button {
   }
 }
 
+/* ===== SKILLS – TRUE CONTINUOUS MARQUEE ===== */
+
+.tools-lane {
+  display: flex;
+  overflow: hidden;
+  white-space: nowrap;
+  position: relative;
+
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 8%,
+    black 92%,
+    transparent
+  );
+}
+
+.tools-track {
+  display: flex;
+  gap: 14px;
+  min-width: 200vw;   /* 🔑 THIS IS THE MAGIC */
+  animation: marquee linear infinite;
+}
+
+/* speeds */
+.tools-lane.slow   .tools-track { animation-duration: 26s; }
+.tools-lane.medium .tools-track { animation-duration: 20s; }
+
+/* second track offset */
+.tools-track:nth-child(2) {
+  animation-delay: -13s;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* pause on hover */
+.tools-lane:hover .tools-track {
+  animation-play-state: paused;
+}
 
 
