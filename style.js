@@ -5,7 +5,7 @@ toggle.onclick = () => {
 };
 
 /* TYPEWRITER */
-const text = "Student • Builder • Space & Tech";
+const text = "Student • Space & Tech Enthusiast";
 let i = 0;
 const speed = 60;
 
