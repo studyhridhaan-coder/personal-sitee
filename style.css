@@ -2108,3 +2108,110 @@ body::before {
     animation: none !important;
   }
 }
+
+/* ===============================
+   DARK MODE SPACE BACKGROUND
+================================ */
+
+body.dark .space-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at top, #0b1225 0%, #05070d 80%);
+  overflow: hidden;
+}
+
+/* ---------- STARS ---------- */
+
+body.dark .stars {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  background: transparent;
+  box-shadow:
+    120px 200px #fff,
+    400px 100px #fff,
+    800px 300px #fff,
+    1200px 150px #fff,
+    1600px 250px #fff,
+    200px 600px #fff,
+    600px 800px #fff,
+    1400px 700px #fff,
+    1800px 900px #fff,
+    1000px 500px #fff;
+  animation: starTwinkle 6s infinite alternate;
+}
+
+@keyframes starTwinkle {
+  from { opacity: 0.6; }
+  to { opacity: 1; }
+}
+
+/* ---------- METEORS ---------- */
+
+body.dark .meteor {
+  position: absolute;
+  width: 220px;
+  height: 2px;
+  background: linear-gradient(
+    -45deg,
+    rgba(255,255,255,1),
+    rgba(255,255,255,0)
+  );
+  filter: drop-shadow(0 0 6px rgba(255,255,255,0.6));
+  opacity: 0;
+  animation: meteorFall 8s linear infinite;
+}
+
+@keyframes meteorFall {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(-45deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(-1200px, 1200px, 0) rotate(-45deg);
+    opacity: 0;
+  }
+}
+
+/* ---------- VARIATIONS (THIS IS WHAT MAKES IT PREMIUM) ---------- */
+
+body.dark .m1 {
+  top: 10%;
+  left: 90%;
+  animation-delay: 0s;
+  animation-duration: 7s;
+}
+
+body.dark .m2 {
+  top: 25%;
+  left: 95%;
+  animation-delay: 2s;
+  animation-duration: 9s;
+}
+
+body.dark .m3 {
+  top: 40%;
+  left: 85%;
+  animation-delay: 4s;
+  animation-duration: 6.5s;
+}
+
+body.dark .m4 {
+  top: 60%;
+  left: 92%;
+  animation-delay: 6s;
+  animation-duration: 8.5s;
+}
+
+body.dark .m5 {
+  top: 75%;
+  left: 88%;
+  animation-delay: 9s;
+  animation-duration: 7.8s;
+}
