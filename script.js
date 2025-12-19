@@ -26,3 +26,25 @@ window.addEventListener("popstate", () => {
 
 show(location.pathname === "/achievements" ? "achievements" : "home", false);
 
+function updateActiveNav(page) {
+  document.querySelectorAll(".nav-links a").forEach(a => {
+    a.classList.remove("active");
+    if (a.dataset.route === page) {
+      a.classList.add("active");
+    }
+  });
+}
+
+function showPage(page) {
+  updateActiveNav(page);
+
+  if (page === "achievements") {
+    home.style.display = "none";
+    achievements.style.display = "block";
+  } else {
+    achievements.style.display = "none";
+    home.style.display = "block";
+  }
+}
+
+
