@@ -46,5 +46,38 @@ function showPage(page) {
     home.style.display = "block";
   }
 }
+const blog = document.getElementById("page-blog");
+
+function showPage(page) {
+  updateActiveNav(page);
+
+  home.style.display = "none";
+  achievements.style.display = "none";
+  blog.style.display = "none";
+
+  if (page === "achievements") achievements.style.display = "block";
+  else if (page === "blog") blog.style.display = "block";
+  else home.style.display = "block";
+}
+
+// Blog post toggle
+document.querySelectorAll(".read-btn").forEach(btn => {
+  btn.onclick = () => {
+    document.querySelector(".blog-list").style.display = "none";
+    document.querySelector("#post-1").classList.remove("hidden");
+  };
+});
+
+document.querySelectorAll(".back-btn").forEach(btn => {
+  btn.onclick = () => {
+    document.querySelector("#post-1").classList.add("hidden");
+    document.querySelector(".blog-list").style.display = "flex";
+  };
+});
+
+// Handle direct /blog
+if (location.pathname === "/blog") {
+  showPage("blog");
+}
 
 
