@@ -2123,18 +2123,30 @@ body.dark .space-bg {
   overflow: hidden;
 }
 
-/* ---------- SHOOTING STARS ---------- */
+/* ---------- SHOOTING STARS ---------- *//* ===============================
+   STAR CANVAS (DARK MODE ONLY)
+================================ */
+
 #starCanvas {
   position: fixed;
   inset: 0;
   pointer-events: none;
-  z-index: -1; /* behind content, above bg */
+
+  /* IMPORTANT: must be ABOVE bg, BELOW content */
+  z-index: 0;
+
   opacity: 0;
   transition: opacity 0.4s ease;
 }
 
-/* Only visible in dark mode */
+/* Show stars only in dark mode */
 body.dark #starCanvas {
   opacity: 1;
+}
+
+/* Ensure all site content stays above stars */
+body > * {
+  position: relative;
+  z-index: 1;
 }
 
