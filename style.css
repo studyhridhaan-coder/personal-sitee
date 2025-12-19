@@ -2125,99 +2125,52 @@ body.dark .space-bg {
 
 /* ---------- STARS ---------- */
 /* ===============================
-   METEORS — CLEAN & BALANCED
+   CINEMATIC RARE METEOR
 ================================ */
 
 body.dark .meteor {
   position: absolute;
-  width: 260px;
-  height: 2px;
+  width: 160px;          /* shorter = elegant */
+  height: 1px;           /* thin trail */
   opacity: 0;
   background: linear-gradient(
-    to left,
+    to bottom left,
     rgba(255,255,255,1),
     rgba(255,255,255,0)
   );
-  filter: drop-shadow(0 0 8px rgba(255,255,255,0.55));
-  animation: meteorFall linear infinite;
+  filter: drop-shadow(0 0 4px rgba(255,255,255,0.5));
+  animation: rareMeteor linear infinite;
   will-change: transform, opacity;
 }
 
-/* Perfect diagonal: ↘ (top-right → bottom-left) */
-@keyframes meteorFall {
+/* Head goes DOWNWARD, tail follows */
+@keyframes rareMeteor {
   0% {
-    transform: translate(120vw, -20vh) rotate(-45deg);
+    transform: translate(120vw, -30vh) rotate(-45deg);
     opacity: 0;
   }
   8% {
     opacity: 1;
   }
   100% {
-    transform: translate(-40vw, 120vh) rotate(-45deg);
+    transform: translate(-40vw, 130vh) rotate(-45deg);
     opacity: 0;
   }
 }
 
-/* ---------- VARIANTS (FULL SCREEN SPREAD) ---------- */
-
-body.dark .m1 { animation-duration: 7.5s; animation-delay: -1s; }
-body.dark .m2 { animation-duration: 9s;   animation-delay: -3.5s; }
-body.dark .m3 { animation-duration: 6.8s; animation-delay: -6s; }
-body.dark .m4 { animation-duration: 8.6s; animation-delay: -8.5s; }
-body.dark .m5 { animation-duration: 7.2s; animation-delay: -11s; }
-
-
-
-/* ===============================
-   PREMIUM STARFIELD (3 LAYERS)
-================================ */
-
-body.dark .stars,
-body.dark .stars::before,
-body.dark .stars::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-repeat: repeat;
-  pointer-events: none;
+body.dark .m1 {
+  animation-duration: 16s;
+  animation-delay: -2s;
 }
 
-/* FAR STARS — tiny, dense */
-body.dark .stars {
-  background-image:
-    radial-gradient(1px 1px at 20% 30%, rgba(255,255,255,0.8), transparent),
-    radial-gradient(1px 1px at 80% 70%, rgba(255,255,255,0.6), transparent),
-    radial-gradient(1px 1px at 50% 90%, rgba(255,255,255,0.7), transparent);
-  background-size: 200px 200px;
-  animation: starDrift 180s linear infinite;
+body.dark .m2 {
+  animation-duration: 18s;
+  animation-delay: -9s;
 }
 
-/* MID STARS */
-body.dark .stars::before {
-  background-image:
-    radial-gradient(2px 2px at 40% 60%, rgba(255,255,255,0.9), transparent),
-    radial-gradient(2px 2px at 70% 20%, rgba(255,255,255,0.8), transparent);
-  background-size: 400px 400px;
-  animation: starDrift 240s linear infinite reverse;
+/* Disable extra meteors if they exist */
+body.dark .m3,
+body.dark .m4,
+body.dark .m5 {
+  display: none;
 }
-
-/* NEAR STARS — subtle glow */
-body.dark .stars::after {
-  background-image:
-    radial-gradient(2.5px 2.5px at 30% 40%, rgba(255,255,255,1), transparent),
-    radial-gradient(2.5px 2.5px at 60% 80%, rgba(255,255,255,0.9), transparent);
-  background-size: 600px 600px;
-  filter: drop-shadow(0 0 6px rgba(255,255,255,0.4));
-  animation: starTwinkle 6s ease-in-out infinite alternate;
-}
-
-@keyframes starDrift {
-  from { transform: translateY(0); }
-  to   { transform: translateY(-200px); }
-}
-
-@keyframes starTwinkle {
-  from { opacity: 0.6; }
-  to   { opacity: 1; }
-}
-
