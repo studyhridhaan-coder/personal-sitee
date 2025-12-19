@@ -2215,3 +2215,25 @@ body.dark .m5 {
   animation-delay: 9s;
   animation-duration: 7.8s;
 }
+
+@keyframes meteorFall {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(135deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(1200px, 1200px, 0) rotate(135deg);
+    opacity: 0;
+  }
+}
+
+body.dark .meteor {
+  background: linear-gradient(
+    135deg,
+    rgba(255,255,255,1),
+    rgba(255,255,255,0)
+  );
+}
