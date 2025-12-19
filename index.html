@@ -20,6 +20,7 @@
   <li><a href="#projects">Projects</a></li>
   <li><a href="/achievements" data-route="achievements">Achievements</a></li>
   <li><a href="#astrophotography">Astrophotography</a></li>
+  <li><a href="/blog" data-route="blog">Blog</a></li>
   <li><a href="#links">Links</a></li>
 </ul>
 
@@ -431,6 +432,61 @@
   </div>
 
 </section>
+
+  <section id="page-blog" class="hidden">
+  <div class="blog-wrap">
+
+    <header class="blog-hero">
+      <h1>Blog</h1>
+      <p>
+        Notes from building, breaking, and understanding technology.
+        Long-form thinking over short-term noise.
+      </p>
+    </header>
+
+    <div class="blog-list">
+
+      <!-- BLOG CARD -->
+      <article class="blog-card" data-post="post-1">
+        <h3>Building this Personal Portfolio Without Frameworks</h3>
+        <span class="blog-meta">December 2025 · 6 min read</span>
+        <p>
+          I thought this would be the best project to make before 2025 ends!!,
+           made it without React, Vue, or libraries.
+        </p>
+        <button class="read-btn">Read →</button>
+      </article>
+
+    </div>
+
+    <!-- BLOG POST -->
+    <article id="post-1" class="blog-post hidden">
+      <h2>Building this Personal Portfolio Without Frameworks</h2>
+      <span class="blog-meta">December 2025 · 6 min read</span>
+
+      <p>
+        I wanted client-side routing without using React or any framework.
+        This post documents what broke, why it broke, and how I fixed it.
+      </p>
+
+      <h4>The Problem</h4>
+      <p>
+        When navigating directly to a route like <code>/achievements</code>,
+        the server returned a 404. The browser never loaded my JavaScript.
+      </p>
+
+      <h4>The Fix</h4>
+      <p>
+        I used Vercel rewrites to ensure all routes resolve to <code>index.html</code>,
+        allowing the SPA router to take control.
+      </p>
+
+      <button class="back-btn">← Back to Blog</button>
+    </article>
+
+  </div>
+</section>
+
   
   
 <script src="script.js"></script>
