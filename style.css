@@ -2123,51 +2123,18 @@ body.dark .space-bg {
   overflow: hidden;
 }
 
-/* ---------- STARS ---------- */
-/* ===============================/* ===============================
-   REALISTIC NIGHT-SKY METEOR
-================================ */
-
-body.dark .meteor {
-  position: absolute;
-  width: 2px;                 /* head */
-  height: 2px;
-  border-radius: 50%;
-  background: white;
-  box-shadow:
-    0 0 6px rgba(255,255,255,0.9),
-    -6px 8px 12px rgba(255,255,255,0.25);
+/* ---------- SHOOTING STARS ---------- */
+#starCanvas {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1; /* behind content, above bg */
   opacity: 0;
-  animation: realMeteor 18s cubic-bezier(0.2, 0.6, 0.4, 1) infinite;
-  will-change: transform, opacity;
+  transition: opacity 0.4s ease;
 }
 
-/* Head-first, tail forms naturally */
-@keyframes realMeteor {
-  0% {
-    transform: translate(60vw, -15vh);
-    opacity: 0;
-  }
-  5% {
-    opacity: 1;
-  }
-  15% {
-    transform: translate(52vw, 20vh);
-    opacity: 0.9;
-  }
-  100% {
-    transform: translate(45vw, 80vh);
-    opacity: 0;
-  }
-}
-body.dark .m1 {
-  animation-delay: -6s;
+/* Only visible in dark mode */
+body.dark #starCanvas {
+  opacity: 1;
 }
 
-/* Kill the rest — silence = premium */
-body.dark .m2,
-body.dark .m3,
-body.dark .m4,
-body.dark .m5 {
-  display: none;
-}
