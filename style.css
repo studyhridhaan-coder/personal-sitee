@@ -2150,3 +2150,25 @@ body > * {
   z-index: 1;
 }
 
+/* ===============================
+   STAR CANVAS (DARK MODE ONLY)
+================================ */
+#starCanvas {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+body.dark #starCanvas {
+  opacity: 1;
+}
+
+/* keep content above canvas */
+body > * {
+  position: relative;
+  z-index: 1;
+}
+
