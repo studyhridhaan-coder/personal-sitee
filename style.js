@@ -1,115 +1,106 @@
-/* DARK MODE */
+/* ===============================
+   DARK MODE
+================================ */
+
 const toggle = document.getElementById("themeToggle");
-toggle.onclick = () => {
-  document.body.classList.toggle("dark");
-};
-
-/* TYPEWRITER */
-const text = "Student • Space & Tech Enthusiast";
-let i = 0;
-const speed = 60;
-
-function type() {
-  if (i < text.length) {
-    document.getElementById("typewriter").textContent += text.charAt(i);
-    i++;
-    setTimeout(type, speed);
-  }
+if (toggle) {
+  toggle.onclick = () => {
+    document.body.classList.toggle("dark");
+  };
 }
-type();
-
-
-// Hero name typing effect (safe)
-
-  let j = 0;
-  function typeHero() {
-    if (j < heroText.length) {
-      heroEl.textContent += heroText.charAt(j);
-      j++;
-      setTimeout(typeHero, 80);
-    }
-  }
-
-  typeHero();
-});
-
-
-setTimeout(() => {
-  document.querySelector(".hero-name")?.classList.add("finished");
-}, 2000);
-
-const navToggle = document.querySelector(".nav-toggle");
-const navMobile = document.querySelector(".nav-mobile");
-
-navToggle.onclick = () => {
-  navMobile.classList.toggle("open");
-};
-
-/* Close on link click */
-navMobile.querySelectorAll("a").forEach(link => {
-  link.onclick = () => navMobile.classList.remove("open");
-});
-
-const canvas = document.getElementById("starCanvas");
-const ctx = canvas.getContext("2d");
-
-let w, h, dpr;
-let stars = [];
-let running = false;
-let rafId = null;
-
-function resize() {
-  dpr = window.devicePixelRatio || 1;
-  w = window.innerWidth;
-  h = window.innerHeight;
-
-  canvas.width = w * dpr;
-  canvas.height = h * dpr;
-  canvas.style.width = w + "px";
-  canvas.style.height = h + "px";
-
-  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-}
-resize();
-window.addEventListener("resize", resize);
 
 /* ===============================
-   FORCE TAGLINE RESET (NUCLEAR)
-   PLACE AT VERY BOTTOM
+   FORCE TAGLINE TYPEWRITER
 ================================ */
 
 (function forceTagline() {
   const TEXT = "Student • Space & Tech Enthusiast";
-  const SPEED = 55;
+  const SPEED = 60;
 
   function start() {
     const el = document.getElementById("typewriter");
     if (!el) return;
 
-    el.textContent = ""; // hard wipe
-
+    el.textContent = "";
     let i = 0;
+
     function type() {
       if (i < TEXT.length) {
         el.textContent += TEXT.charAt(i++);
         setTimeout(type, SPEED);
       }
     }
+
     type();
   }
 
-  // Run once DOM is stable
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", start);
   } else {
     start();
   }
 
-  // EXTRA FORCE: re-run after everything else finishes
+  // override any other script
   setTimeout(start, 300);
 })();
-</script>
 
+/* ===============================
+   MOBILE NAV
+================================ */
 
+const navToggle = document.querySelector(".nav-toggle");
+const navMobile = document.querySelector(".nav-mobile");
 
+if (navToggle && navMobile) {
+  navToggle.onclick = () => {
+    navMobile.classList.toggle("open");
+  };
 
+  navMobile.querySelectorAll("a").forEach(link => {
+    link.onclick = () => navMobile.classList.remove("open");
+  });
+}
+
+/* ===============================
+   STAR CANVAS (SAFE INIT)
+================================ */
+
+const canvas = document.getElementById("starCanvas");
+if (canvas) {
+  const ctx = canvas.getContext("2d");
+  let w, h;
+
+  function resize() {
+    w = canvas.width = window.innerWidth;
+    h = canvas.height = window.innerHeight;
+  }
+
+  resize();
+  window.addEventListener("resize", resize);
+
+  const stars = Array.from({ length: 180 }, () => ({
+    x: Math.random() * w,
+    y: Math.random() * h,
+    r: Math.random() * 1.2 + 0.3,
+    a: Math.random() * 0.6 + 0.2
+  }));
+
+  function draw() {
+    if (!document.body.classList.contains("dark")) return;
+
+    ctx.clearRect(0, 0, w, h);
+    ctx.fillStyle = "#fff";
+
+    for (const s of stars) {
+      ctx.globalAlpha = s.a;
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    ctx.globalAlpha = 1;
+    requestAnimationFrame(draw);
+  }
+
+  draw();
+}
