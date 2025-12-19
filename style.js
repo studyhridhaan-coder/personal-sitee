@@ -74,187 +74,39 @@ resize();
 window.addEventListener("resize", resize);
 
 /* ===============================
-   STAR GENERATION
+   FORCE TAGLINE RESET (NUCLEAR)
+   PLACE AT VERY BOTTOM
 ================================ */
 
-function createStars() {
-  const count = Math.min(300, Math.floor((w * h) / 6000));
-  stars = Array.from({ length: count }, () => ({
-    x: Math.random() * w,
-    y: Math.random() * h,
-    r: Math.random() * 1.2 + 0.2,
-    a: Math.random(),
-    t: Math.random() * Math.PI * 2,
-    s: Math.random() * 0.002 + 0.001
-  }));
-}
+(function forceTagline() {
+  const TEXT = "Student • Space & Tech Enthusiast";
+  const SPEED = 55;
 
-/* ===============================
-   RENDER LOOP
-================================ */
+  function start() {
+    const el = document.getElementById("typewriter");
+    if (!el) return;
 
-function draw() {
-  if (!running) return;
+    el.textContent = ""; // hard wipe
 
-  ctx.clearRect(0, 0, w, h);
-
-  for (const star of stars) {
-    star.t += star.s;
-    const alpha = 0.4 + Math.sin(star.t) * 0.3 + star.a * 0.3;
-
-    ctx.fillStyle = `rgba(255,255,255,${alpha})`;
-    ctx.beginPath();
-    ctx.arc(star.x, star.y, star.r, 0, Math.PI * 2);
-    ctx.fill();
-  }
-
-  rafId = requestAnimationFrame(draw);
-}
-
-/* ===============================
-   DARK MODE CONTROL
-================================ */
-
-function startStars() {
-  if (running) return;
-  running = true;
-  createStars();
-  draw();
-}
-
-function stopStars() {
-  running = false;
-  if (rafId) cancelAnimationFrame(rafId);
-  ctx.clearRect(0, 0, w, h);
-}
-
-/* Observe dark mode changes */
-const observer = new MutationObserver(() => {
-  document.body.classList.contains("dark")
-    ? startStars()
-    : stopStars();
-});
-
-observer.observe(document.body, { attributes: true, attributeFilter: ["class"] });
-
-/* Initial state */
-if (document.body.classList.contains("dark")) {
-  startStars();
-}
-
-<script>
-(() => {
-  const canvas = document.getElementById("starCanvas");
-  if (!canvas) return;
-
-  const ctx = canvas.getContext("2d");
-  let w, h;
-
-  function resize() {
-    w = canvas.width = window.innerWidth;
-    h = canvas.height = window.innerHeight;
-  }
-  resize();
-  window.addEventListener("resize", resize);
-
-  /* ===============================
-     STATIC STARFIELD
-  ================================ */
-  const STAR_COUNT = 180;
-  const stars = [];
-
-  for (let i = 0; i < STAR_COUNT; i++) {
-    stars.push({
-      x: Math.random() * w,
-      y: Math.random() * h,
-      r: Math.random() * 1.2 + 0.3,
-      a: Math.random() * 0.5 + 0.3
-    });
-  }
-
-  function drawStars() {
-    ctx.fillStyle = "#fff";
-    for (const s of stars) {
-      ctx.globalAlpha = s.a;
-      ctx.beginPath();
-      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-      ctx.fill();
-    }
-    ctx.globalAlpha = 1;
-  }
-
-  /* ===============================
-     SHOOTING STAR (PREMIUM)
-  ================================ */
-  class ShootingStar {
-    reset() {
-      this.x = Math.random() * w * 0.6 + w * 0.4;
-      this.y = Math.random() * h * 0.3;
-      this.len = Math.random() * 80 + 120;
-      this.speed = Math.random() * 6 + 10;
-      this.life = 0;
-      this.maxLife = 60;
-      this.active = true;
-    }
-
-    update() {
-      if (!this.active) return;
-
-      this.x -= this.speed;
-      this.y += this.speed;
-      this.life++;
-
-      ctx.strokeStyle = "rgba(255,255,255,0.85)";
-      ctx.lineWidth = 1;
-      ctx.beginPath();
-      ctx.moveTo(this.x, this.y);
-      ctx.lineTo(
-        this.x + this.len,
-        this.y - this.len
-      );
-      ctx.stroke();
-
-      // bright head
-      ctx.fillStyle = "white";
-      ctx.beginPath();
-      ctx.arc(this.x, this.y, 1.8, 0, Math.PI * 2);
-      ctx.fill();
-
-      if (this.life > this.maxLife) {
-        this.active = false;
-        scheduleNext();
+    let i = 0;
+    function type() {
+      if (i < TEXT.length) {
+        el.textContent += TEXT.charAt(i++);
+        setTimeout(type, SPEED);
       }
     }
+    type();
   }
 
-  const meteor = new ShootingStar();
-  let nextTime = 0;
-
-  function scheduleNext() {
-    nextTime = performance.now() + Math.random() * 6000 + 4000;
-  }
-  scheduleNext();
-
-  /* ===============================
-     MAIN LOOP
-  ================================ */
-  function animate(t) {
-    ctx.clearRect(0, 0, w, h);
-
-    if (document.body.classList.contains("dark")) {
-      drawStars();
-
-      if (!meteor.active && t > nextTime) {
-        meteor.reset();
-      }
-
-      meteor.update();
-    }
-
-    requestAnimationFrame(animate);
+  // Run once DOM is stable
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", start);
+  } else {
+    start();
   }
 
-  animate();
+  // EXTRA FORCE: re-run after everything else finishes
+  setTimeout(start, 300);
 })();
 </script>
 
