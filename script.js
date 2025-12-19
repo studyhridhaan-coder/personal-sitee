@@ -1,14 +1,27 @@
-const highlightsOverlay = document.getElementById("highlightsOverlay");
-const closeOverlay = document.querySelector(".overlay-close");
+const home = document.getElementById("page-home");
+const achievements = document.getElementById("page-achievements");
 
-document
-  .querySelector("[data-open-highlights]")
-  ?.addEventListener("click", () => {
-    highlightsOverlay.classList.remove("hidden");
-    document.body.style.overflow = "hidden";
-  });
+function show(route, push = true) {
+  if (route === "achievements") {
+    home.classList.add("hidden");
+    achievements.classList.remove("hidden");
+    if (push) history.pushState({}, "", "/achievements");
+  } else {
+    achievements.classList.add("hidden");
+    home.classList.remove("hidden");
+    if (push) history.pushState({}, "", "/");
+  }
+}
 
-closeOverlay.addEventListener("click", () => {
-  highlightsOverlay.classList.add("hidden");
-  document.body.style.overflow = "";
+document.addEventListener("click", (e) => {
+  const link = e.target.closest("[data-route]");
+  if (!link) return;
+  e.preventDefault();
+  show(link.dataset.route);
 });
+
+window.addEventListener("popstate", () => {
+  show(location.pathname === "/achievements" ? "achievements" : "home", false);
+});
+
+show(location.pathname === "/achievements" ? "achievements" : "home", false);
