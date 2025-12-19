@@ -2171,4 +2171,67 @@ body > * {
   position: relative;
   z-index: 1;
 }
+/* =========================================
+   PREMIUM DENSE STARFIELD (DARK MODE ONLY)
+   CSS-ONLY — NO JS
+========================================= */
+
+body.dark {
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Base star layer */
+body.dark::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image:
+    radial-gradient(1px 1px at 10% 20%, rgba(255,255,255,0.8) 50%, transparent 51%),
+    radial-gradient(1px 1px at 30% 80%, rgba(255,255,255,0.7) 50%, transparent 51%),
+    radial-gradient(1px 1px at 50% 50%, rgba(255,255,255,0.9) 50%, transparent 51%),
+    radial-gradient(1px 1px at 70% 30%, rgba(255,255,255,0.6) 50%, transparent 51%),
+    radial-gradient(1px 1px at 90% 70%, rgba(255,255,255,0.8) 50%, transparent 51%);
+  background-size: 200px 200px;
+  opacity: 0.5;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Dense small stars */
+body.dark::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image:
+    radial-gradient(0.7px 0.7px at 20% 40%, rgba(255,255,255,0.6) 50%, transparent 51%),
+    radial-gradient(0.7px 0.7px at 40% 60%, rgba(255,255,255,0.5) 50%, transparent 51%),
+    radial-gradient(0.7px 0.7px at 60% 20%, rgba(255,255,255,0.7) 50%, transparent 51%),
+    radial-gradient(0.7px 0.7px at 80% 80%, rgba(255,255,255,0.4) 50%, transparent 51%);
+  background-size: 120px 120px;
+  opacity: 0.35;
+  pointer-events: none;
+  z-index: -1;
+  animation: stars-fade 6s ease-in-out infinite;
+}
+
+/* Extra far-depth stars */
+body.dark .star-layer {
+  position: fixed;
+  inset: 0;
+  background-image:
+    radial-gradient(0.5px 0.5px at 15% 25%, rgba(255,255,255,0.4) 50%, transparent 51%),
+    radial-gradient(0.5px 0.5px at 55% 65%, rgba(255,255,255,0.3) 50%, transparent 51%),
+    radial-gradient(0.5px 0.5px at 75% 45%, rgba(255,255,255,0.35) 50%, transparent 51%);
+  background-size: 90px 90px;
+  opacity: 0.25;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Subtle twinkle */
+@keyframes stars-fade {
+  0%, 100% { opacity: 0.25; }
+  50% { opacity: 0.4; }
+}
 
