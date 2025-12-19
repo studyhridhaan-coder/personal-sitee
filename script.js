@@ -87,5 +87,13 @@ if (page === "achievements") {
 } else {
   document.title = "Hridhaan Sahay — Portfolio";
 }
+document.querySelectorAll("[data-route]").forEach(el => {
+  el.addEventListener("click", e => {
+    e.preventDefault();
+    const page = el.dataset.route;
+    history.pushState({}, "", page === "home" ? "/" : "/" + page);
+    showPage(page);
+  });
+});
 
 
