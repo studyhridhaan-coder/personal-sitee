@@ -2459,3 +2459,25 @@ body.dark .star-layer {
   box-shadow: 0 10px 25px rgba(201,162,77,0.35);
 }
 
+.nav-mobile {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 20px;
+  background: var(--card);
+  border-radius: 14px;
+  padding: 16px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+.nav-mobile.active {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.nav-mobile a {
+  text-decoration: none;
+  color: var(--text);
+  font-weight: 500;
+}
