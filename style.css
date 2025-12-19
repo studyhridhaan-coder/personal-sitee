@@ -2124,73 +2124,100 @@ body.dark .space-bg {
 }
 
 /* ---------- STARS ---------- */
-/* ---------- METEORS (LOCKED & CORRECT) ---------- */
+/* ===============================
+   METEORS — CLEAN & BALANCED
+================================ */
 
 body.dark .meteor {
   position: absolute;
-  width: 240px;
+  width: 260px;
   height: 2px;
   opacity: 0;
   background: linear-gradient(
-    135deg,
+    to left,
     rgba(255,255,255,1),
     rgba(255,255,255,0)
   );
-  filter: drop-shadow(0 0 6px rgba(255,255,255,0.6));
-  animation-name: meteorFall;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
+  filter: drop-shadow(0 0 8px rgba(255,255,255,0.55));
+  animation: meteorFall linear infinite;
   will-change: transform, opacity;
 }
 
-/* 🔒 Correct vector: top-right → bottom-left */
+/* Perfect diagonal: ↘ (top-right → bottom-left) */
 @keyframes meteorFall {
   0% {
-    transform: translate3d(300px, -300px, 0) rotate(135deg);
+    transform: translate(120vw, -20vh) rotate(-45deg);
     opacity: 0;
   }
-  10% {
+  8% {
     opacity: 1;
   }
   100% {
-    transform: translate3d(-1400px, 1400px, 0) rotate(135deg);
+    transform: translate(-40vw, 120vh) rotate(-45deg);
     opacity: 0;
   }
 }
 
-/* ---------- VARIANTS (SPREAD + NEGATIVE DELAYS) ---------- */
+/* ---------- VARIANTS (FULL SCREEN SPREAD) ---------- */
 
-body.dark .m1 {
-  top: 0%;
-  left: 100%;
-  animation-duration: 7.5s;
-  animation-delay: -1s;
+body.dark .m1 { animation-duration: 7.5s; animation-delay: -1s; }
+body.dark .m2 { animation-duration: 9s;   animation-delay: -3.5s; }
+body.dark .m3 { animation-duration: 6.8s; animation-delay: -6s; }
+body.dark .m4 { animation-duration: 8.6s; animation-delay: -8.5s; }
+body.dark .m5 { animation-duration: 7.2s; animation-delay: -11s; }
+
+
+
+/* ===============================
+   PREMIUM STARFIELD (3 LAYERS)
+================================ */
+
+body.dark .stars,
+body.dark .stars::before,
+body.dark .stars::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-repeat: repeat;
+  pointer-events: none;
 }
 
-body.dark .m2 {
-  top: 20%;
-  left: 105%;
-  animation-duration: 9s;
-  animation-delay: -3.5s;
+/* FAR STARS — tiny, dense */
+body.dark .stars {
+  background-image:
+    radial-gradient(1px 1px at 20% 30%, rgba(255,255,255,0.8), transparent),
+    radial-gradient(1px 1px at 80% 70%, rgba(255,255,255,0.6), transparent),
+    radial-gradient(1px 1px at 50% 90%, rgba(255,255,255,0.7), transparent);
+  background-size: 200px 200px;
+  animation: starDrift 180s linear infinite;
 }
 
-body.dark .m3 {
-  top: 40%;
-  left: 95%;
-  animation-duration: 6.8s;
-  animation-delay: -6s;
+/* MID STARS */
+body.dark .stars::before {
+  background-image:
+    radial-gradient(2px 2px at 40% 60%, rgba(255,255,255,0.9), transparent),
+    radial-gradient(2px 2px at 70% 20%, rgba(255,255,255,0.8), transparent);
+  background-size: 400px 400px;
+  animation: starDrift 240s linear infinite reverse;
 }
 
-body.dark .m4 {
-  top: 60%;
-  left: 110%;
-  animation-duration: 8.8s;
-  animation-delay: -8.5s;
+/* NEAR STARS — subtle glow */
+body.dark .stars::after {
+  background-image:
+    radial-gradient(2.5px 2.5px at 30% 40%, rgba(255,255,255,1), transparent),
+    radial-gradient(2.5px 2.5px at 60% 80%, rgba(255,255,255,0.9), transparent);
+  background-size: 600px 600px;
+  filter: drop-shadow(0 0 6px rgba(255,255,255,0.4));
+  animation: starTwinkle 6s ease-in-out infinite alternate;
 }
 
-body.dark .m5 {
-  top: 80%;
-  left: 100%;
-  animation-duration: 7.2s;
-  animation-delay: -11s;
+@keyframes starDrift {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-200px); }
 }
+
+@keyframes starTwinkle {
+  from { opacity: 0.6; }
+  to   { opacity: 1; }
+}
+
