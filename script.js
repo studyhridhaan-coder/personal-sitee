@@ -25,3 +25,17 @@ window.addEventListener("popstate", () => {
 });
 
 show(location.pathname === "/achievements" ? "achievements" : "home", false);
+
+const navToggle = document.querySelector(".nav-toggle");
+const navMobile = document.querySelector(".nav-mobile");
+
+navToggle.addEventListener("click", () => {
+  navMobile.classList.toggle("active");
+});
+
+// Close menu when a link is clicked (UX polish)
+navMobile.querySelectorAll("a").forEach(link => {
+  link.addEventListener("click", () => {
+    navMobile.classList.remove("active");
+  });
+});
