@@ -80,4 +80,12 @@ if (location.pathname === "/blog") {
   showPage("blog");
 }
 
+if (page === "achievements") {
+  document.title = "Achievements — Hridhaan Sahay";
+} else if (page === "blog") {
+  document.title = "Blog — Hridhaan Sahay";
+} else {
+  document.title = "Hridhaan Sahay — Portfolio";
+}
+
 
