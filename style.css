@@ -2124,226 +2124,73 @@ body.dark .space-bg {
 }
 
 /* ---------- STARS ---------- */
-
-body.dark .stars {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  background: transparent;
-  box-shadow:
-    120px 200px #fff,
-    400px 100px #fff,
-    800px 300px #fff,
-    1200px 150px #fff,
-    1600px 250px #fff,
-    200px 600px #fff,
-    600px 800px #fff,
-    1400px 700px #fff,
-    1800px 900px #fff,
-    1000px 500px #fff;
-  animation: starTwinkle 6s infinite alternate;
-}
-
-@keyframes starTwinkle {
-  from { opacity: 0.6; }
-  to { opacity: 1; }
-}
-
-/* ---------- METEORS ---------- */
+/* ---------- METEORS (LOCKED & CORRECT) ---------- */
 
 body.dark .meteor {
   position: absolute;
-  width: 220px;
+  width: 240px;
   height: 2px;
-  background: linear-gradient(
-    -45deg,
-    rgba(255,255,255,1),
-    rgba(255,255,255,0)
-  );
-  filter: drop-shadow(0 0 6px rgba(255,255,255,0.6));
   opacity: 0;
-  animation: meteorFall 8s linear infinite;
-}
-
-@keyframes meteorFall {
-  0% {
-    transform: translate3d(0, 0, 0) rotate(-45deg);
-    opacity: 0;
-  }
-  10% {
-    opacity: 1;
-  }
-  100% {
-    transform: translate3d(-1200px, 1200px, 0) rotate(-45deg);
-    opacity: 0;
-  }
-}
-
-/* ---------- VARIATIONS (THIS IS WHAT MAKES IT PREMIUM) ---------- */
-
-body.dark .m1 {
-  top: 10%;
-  left: 90%;
-  animation-delay: 0s;
-  animation-duration: 7s;
-}
-
-body.dark .m2 {
-  top: 25%;
-  left: 95%;
-  animation-delay: 2s;
-  animation-duration: 9s;
-}
-
-body.dark .m3 {
-  top: 40%;
-  left: 85%;
-  animation-delay: 4s;
-  animation-duration: 6.5s;
-}
-
-body.dark .m4 {
-  top: 60%;
-  left: 92%;
-  animation-delay: 6s;
-  animation-duration: 8.5s;
-}
-
-body.dark .m5 {
-  top: 75%;
-  left: 88%;
-  animation-delay: 9s;
-  animation-duration: 7.8s;
-}
-
-@keyframes meteorFall {
-  0% {
-    transform: translate3d(0, 0, 0) rotate(135deg);
-    opacity: 0;
-  }
-  10% {
-    opacity: 1;
-  }
-  100% {
-    transform: translate3d(1200px, 1200px, 0) rotate(135deg);
-    opacity: 0;
-  }
-}
-
-body.dark .meteor {
-  background: linear-gradient(
-    135deg,
-    rgba(255,255,255,1),
-    rgba(255,255,255,0)
-  );
-}
-/* ===============================
-   DARK MODE — SPACE BACKGROUND
-================================ */
-
-body.dark .space-bg {
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
-  background:
-    radial-gradient(ellipse at top, #0b1225 0%, #05070d 85%);
-  overflow: hidden;
-}
-
-/* ---------- STARS ---------- */
-
-body.dark .stars {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  background: transparent;
-  box-shadow:
-    120px 200px #fff,
-    400px 100px #fff,
-    800px 300px #fff,
-    1200px 150px #fff,
-    1600px 250px #fff,
-    200px 600px #fff,
-    600px 800px #fff,
-    1400px 700px #fff,
-    1800px 900px #fff,
-    1000px 500px #fff;
-  opacity: 0.85;
-  animation: starTwinkle 6s infinite alternate ease-in-out;
-}
-
-@keyframes starTwinkle {
-  from { opacity: 0.5; }
-  to   { opacity: 1; }
-}
-
-/* ---------- METEORS ---------- */
-
-body.dark .meteor {
-  position: absolute;
-  width: 220px;
-  height: 2px;
   background: linear-gradient(
     135deg,
     rgba(255,255,255,1),
     rgba(255,255,255,0)
   );
   filter: drop-shadow(0 0 6px rgba(255,255,255,0.6));
-  opacity: 0;
   animation-name: meteorFall;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
   will-change: transform, opacity;
 }
 
+/* 🔒 Correct vector: top-right → bottom-left */
 @keyframes meteorFall {
   0% {
-    transform: translate3d(0, 0, 0) rotate(135deg);
+    transform: translate3d(300px, -300px, 0) rotate(135deg);
     opacity: 0;
   }
-  8% {
+  10% {
     opacity: 1;
   }
   100% {
-    transform: translate3d(1200px, 1200px, 0) rotate(135deg);
+    transform: translate3d(-1400px, 1400px, 0) rotate(135deg);
     opacity: 0;
   }
 }
 
-/* ---------- VARIANTS (NEGATIVE DELAYS = NEVER STOPS) ---------- */
+/* ---------- VARIANTS (SPREAD + NEGATIVE DELAYS) ---------- */
 
 body.dark .m1 {
-  top: 10%;
-  left: 85%;
-  animation-duration: 7.2s;
-  animation-delay: -0s;
+  top: 0%;
+  left: 100%;
+  animation-duration: 7.5s;
+  animation-delay: -1s;
 }
 
 body.dark .m2 {
-  top: 25%;
-  left: 92%;
-  animation-duration: 9.1s;
-  animation-delay: -2.8s;
+  top: 20%;
+  left: 105%;
+  animation-duration: 9s;
+  animation-delay: -3.5s;
 }
 
 body.dark .m3 {
-  top: 42%;
-  left: 88%;
+  top: 40%;
+  left: 95%;
   animation-duration: 6.8s;
-  animation-delay: -5.3s;
+  animation-delay: -6s;
 }
 
 body.dark .m4 {
   top: 60%;
-  left: 94%;
-  animation-duration: 8.6s;
-  animation-delay: -7.9s;
+  left: 110%;
+  animation-duration: 8.8s;
+  animation-delay: -8.5s;
 }
 
 body.dark .m5 {
-  top: 75%;
-  left: 90%;
-  animation-duration: 7.7s;
-  animation-delay: -10.4s;
+  top: 80%;
+  left: 100%;
+  animation-duration: 7.2s;
+  animation-delay: -11s;
 }
