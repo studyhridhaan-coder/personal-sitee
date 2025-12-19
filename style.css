@@ -1,5 +1,5 @@
 /* ===============================
-   RESET & VARIABLES
+   RESET + VARIABLES
 ================================ */
 * {
   margin: 0;
@@ -14,12 +14,15 @@
   --gold: #c9a24d;
 }
 
-.dark {
+body.dark {
   --bg: #0e0e0e;
   --text: #f5f5f5;
   --card: #161616;
 }
 
+/* ===============================
+   BODY + GLOBALS
+================================ */
 body {
   font-family: -apple-system, BlinkMacSystemFont, Inter, sans-serif;
   background: var(--bg);
@@ -29,9 +32,19 @@ body {
   overflow-x: hidden;
 }
 
+html, body {
+  cursor: url("/assets/rocket.png") 16 16, auto;
+}
+
+a, button {
+  cursor: pointer;
+}
+
 /* ===============================
-   BACKGROUND (LIGHT MODE ONLY)
+   BACKGROUNDS
 ================================ */
+
+/* Light mode dots */
 body::before {
   content: "";
   position: fixed;
@@ -44,28 +57,7 @@ body::before {
 }
 
 /* ===============================
-   STAR CANVAS (DARK MODE ONLY)
-================================ */
-#starCanvas {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  opacity: 0;
-  transition: opacity 0.4s ease;
-}
-
-body.dark #starCanvas {
-  opacity: 1;
-}
-
-body > * {
-  position: relative;
-  z-index: 1;
-}
-
-/* ===============================
-   NAVBAR
+   NAVBAR (APPLE GLASS)
 ================================ */
 .navbar {
   position: fixed;
@@ -78,7 +70,7 @@ body > * {
   border-bottom: 1px solid rgba(0,0,0,0.06);
 }
 
-.dark .navbar {
+body.dark .navbar {
   background: rgba(18,18,18,0.6);
   border-bottom: 1px solid rgba(255,255,255,0.08);
 }
@@ -93,15 +85,72 @@ body > * {
   justify-content: space-between;
 }
 
+.nav-logo {
+  font-weight: 600;
+}
+
 .nav-links {
   display: flex;
   gap: 28px;
 }
 
 .nav-links a {
-  text-decoration: none;
   color: var(--text);
+  text-decoration: none;
   font-weight: 500;
+  position: relative;
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 100%;
+  height: 2px;
+  background: var(--gold);
+  transform: scaleX(0);
+  transition: transform 0.25s ease;
+}
+
+.nav-links a:hover::after {
+  transform: scaleX(1);
+}
+
+/* Mobile nav */
+.nav-toggle {
+  display: none;
+  font-size: 1.3rem;
+  background: none;
+  border: none;
+}
+
+.nav-mobile {
+  position: fixed;
+  top: 64px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 32px);
+  background: rgba(255,255,255,0.7);
+  backdrop-filter: blur(20px);
+  border-radius: 18px;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.25s ease;
+}
+
+.nav-mobile.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .nav-toggle { display: block; }
 }
 
 /* ===============================
@@ -121,18 +170,10 @@ body > * {
   box-shadow: 0 20px 40px rgba(0,0,0,0.15);
 }
 
-.floating {
-  animation: float 6s ease-in-out infinite;
+.hero-center {
+  max-width: 520px;
 }
 
-@keyframes float {
-  0%,100% { transform: translateY(0); }
-  50% { transform: translateY(-12px); }
-}
-
-/* ===============================
-   HERO NAME TYPE
-================================ */
 .hero-name {
   font-size: 64px;
   font-weight: 600;
@@ -140,8 +181,7 @@ body > * {
   overflow: hidden;
   border-right: 2px solid var(--text);
   width: 0;
-  animation: typing 2.8s steps(14,end) forwards,
-             blink 0.8s step-end infinite;
+  animation: typing 2.8s steps(14,end) forwards, blink 0.8s infinite;
 }
 
 .hero-name.finished {
@@ -149,12 +189,16 @@ body > * {
 }
 
 @keyframes typing {
-  from { width: 0; }
   to { width: 14ch; }
 }
 
 @keyframes blink {
   50% { border-color: transparent; }
+}
+
+.tagline {
+  color: gray;
+  margin: 12px 0 24px;
 }
 
 /* ===============================
@@ -165,7 +209,7 @@ body > * {
 }
 
 /* ===============================
-   PROJECT CARDS
+   PROJECTS
 ================================ */
 .projects-grid {
   display: grid;
@@ -177,12 +221,12 @@ body > * {
   background: var(--card);
   border-radius: 20px;
   padding: 20px;
-  transition: transform .35s, box-shadow .35s;
+  transition: 0.35s ease;
 }
 
 .project-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 20px 40px rgba(0,0,0,.35);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.35);
 }
 
 /* ===============================
@@ -196,20 +240,7 @@ body > * {
 .icon-links svg {
   width: 28px;
   fill: var(--gold);
-}
-
-/* ===============================
-   REVEAL
-================================ */
-.reveal {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: .8s ease;
-}
-
-.reveal.show {
-  opacity: 1;
-  transform: none;
+  transition: 0.3s ease;
 }
 
 /* ===============================
@@ -217,19 +248,42 @@ body > * {
 ================================ */
 .footer {
   margin-top: 2rem;
-  padding: 2.5rem 1rem;
+  padding: 2.5rem 1.5rem;
   text-align: center;
-  font-size: .9rem;
-  border-top: 1px solid rgba(0,0,0,.08);
+  font-size: 0.9rem;
+  border-top: 1px solid rgba(0,0,0,0.08);
 }
 
-.dark .footer {
-  border-top-color: rgba(255,255,255,.08);
+body.dark .footer {
+  border-top: 1px solid rgba(255,255,255,0.08);
 }
 
 /* ===============================
-   CURSOR
+   DARK MODE STARFIELD (FINAL)
 ================================ */
-html, body {
-  cursor: url("/assets/rocket.png") 16 16, auto;
+body.dark::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(1px 1px at 20% 30%, white, transparent),
+    radial-gradient(1px 1px at 60% 70%, white, transparent),
+    radial-gradient(1px 1px at 80% 20%, white, transparent);
+  animation: stars 8s ease-in-out infinite alternate;
+  opacity: 0.7;
+}
+
+@keyframes stars {
+  50% { opacity: 0.9; }
+}
+
+/* ===============================
+   REDUCED MOTION
+================================ */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
 }
