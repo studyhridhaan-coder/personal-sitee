@@ -142,6 +142,121 @@ if (document.body.classList.contains("dark")) {
   startStars();
 }
 
+<script>
+(() => {
+  const canvas = document.getElementById("starCanvas");
+  if (!canvas) return;
+
+  const ctx = canvas.getContext("2d");
+  let w, h;
+
+  function resize() {
+    w = canvas.width = window.innerWidth;
+    h = canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener("resize", resize);
+
+  /* ===============================
+     STATIC STARFIELD
+  ================================ */
+  const STAR_COUNT = 180;
+  const stars = [];
+
+  for (let i = 0; i < STAR_COUNT; i++) {
+    stars.push({
+      x: Math.random() * w,
+      y: Math.random() * h,
+      r: Math.random() * 1.2 + 0.3,
+      a: Math.random() * 0.5 + 0.3
+    });
+  }
+
+  function drawStars() {
+    ctx.fillStyle = "#fff";
+    for (const s of stars) {
+      ctx.globalAlpha = s.a;
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+      ctx.fill();
+    }
+    ctx.globalAlpha = 1;
+  }
+
+  /* ===============================
+     SHOOTING STAR (PREMIUM)
+  ================================ */
+  class ShootingStar {
+    reset() {
+      this.x = Math.random() * w * 0.6 + w * 0.4;
+      this.y = Math.random() * h * 0.3;
+      this.len = Math.random() * 80 + 120;
+      this.speed = Math.random() * 6 + 10;
+      this.life = 0;
+      this.maxLife = 60;
+      this.active = true;
+    }
+
+    update() {
+      if (!this.active) return;
+
+      this.x -= this.speed;
+      this.y += this.speed;
+      this.life++;
+
+      ctx.strokeStyle = "rgba(255,255,255,0.85)";
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(this.x, this.y);
+      ctx.lineTo(
+        this.x + this.len,
+        this.y - this.len
+      );
+      ctx.stroke();
+
+      // bright head
+      ctx.fillStyle = "white";
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, 1.8, 0, Math.PI * 2);
+      ctx.fill();
+
+      if (this.life > this.maxLife) {
+        this.active = false;
+        scheduleNext();
+      }
+    }
+  }
+
+  const meteor = new ShootingStar();
+  let nextTime = 0;
+
+  function scheduleNext() {
+    nextTime = performance.now() + Math.random() * 6000 + 4000;
+  }
+  scheduleNext();
+
+  /* ===============================
+     MAIN LOOP
+  ================================ */
+  function animate(t) {
+    ctx.clearRect(0, 0, w, h);
+
+    if (document.body.classList.contains("dark")) {
+      drawStars();
+
+      if (!meteor.active && t > nextTime) {
+        meteor.reset();
+      }
+
+      meteor.update();
+    }
+
+    requestAnimationFrame(animate);
+  }
+
+  animate();
+})();
+</script>
 
 
 
