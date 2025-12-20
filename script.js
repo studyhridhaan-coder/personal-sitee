@@ -1,56 +1,14 @@
 const home = document.getElementById("page-home");
 const achievements = document.getElementById("page-achievements");
-
-function show(route, push = true) {
-  if (route === "achievements") {
-    home.classList.add("hidden");
-    achievements.classList.remove("hidden");
-    if (push) history.pushState({}, "", "/achievements");
-  } else {
-    achievements.classList.add("hidden");
-    home.classList.remove("hidden");
-    if (push) history.pushState({}, "", "/");
-  }
-}
-
-document.addEventListener("click", (e) => {
-  const link = e.target.closest("[data-route]");
-  if (!link) return;
-  e.preventDefault();
-  show(link.dataset.route);
-});
-
-window.addEventListener("popstate", () => {
-  show(location.pathname === "/achievements" ? "achievements" : "home", false);
-});
-
-show(location.pathname === "/achievements" ? "achievements" : "home", false);
+const blog = document.getElementById("page-blog");
 
 function updateActiveNav(page) {
   document.querySelectorAll(".nav-links a").forEach(a => {
-    a.classList.remove("active");
-    if (a.dataset.route === page) {
-      a.classList.add("active");
-    }
+    a.classList.toggle("active", a.dataset.route === page);
   });
 }
 
-function showPage(page) {
-  updateActiveNav(page);
-
-  if (page === "achievements") {
-    home.style.display = "none";
-    achievements.style.display = "block";
-  } else {
-    achievements.style.display = "none";
-    home.style.display = "block";
-  }
-}
-const blog = document.getElementById("page-blog");
-
-function showPage(page) {
-  updateActiveNav(page);
-
+function showPage(page, push = true) {
   home.style.display = "none";
   achievements.style.display = "none";
   blog.style.display = "none";
@@ -58,42 +16,40 @@ function showPage(page) {
   if (page === "achievements") achievements.style.display = "block";
   else if (page === "blog") blog.style.display = "block";
   else home.style.display = "block";
+
+  updateActiveNav(page);
+
+  if (push) {
+    history.pushState({}, "", page === "home" ? "/" : "/" + page);
+  }
+
+  document.title =
+    page === "achievements" ? "Achievements — Hridhaan Sahay" :
+    page === "blog" ? "Blog — Hridhaan Sahay" :
+    "Hridhaan Sahay — Portfolio";
 }
 
-// Blog post toggle
-document.querySelectorAll(".read-btn").forEach(btn => {
+// Handle nav clicks
+document.querySelectorAll("[data-route]").forEach(el => {
+  el.addEventListener("click", e => {
+    e.preventDefault();
+    showPage(el.dataset.route);
+  });
+});
+
+// Handle back/forward
+window.addEventListener("popstate", () => {
+  const page = location.pathname.replace("/", "") || "home";
+  showPage(page, false);
+});
+
+// Initial load
+const initialPage = location.pathname.replace("/", "") || "home";
+showPage(initialPage, false);
+
+document.querySelectorAll("#page-blog .read-btn").forEach(btn => {
   btn.onclick = () => {
     document.querySelector(".blog-list").style.display = "none";
     document.querySelector("#post-1").classList.remove("hidden");
   };
 });
-
-document.querySelectorAll(".back-btn").forEach(btn => {
-  btn.onclick = () => {
-    document.querySelector("#post-1").classList.add("hidden");
-    document.querySelector(".blog-list").style.display = "flex";
-  };
-});
-
-// Handle direct /blog
-if (location.pathname === "/blog") {
-  showPage("blog");
-}
-
-if (page === "achievements") {
-  document.title = "Achievements — Hridhaan Sahay";
-} else if (page === "blog") {
-  document.title = "Blog — Hridhaan Sahay";
-} else {
-  document.title = "Hridhaan Sahay — Portfolio";
-}
-document.querySelectorAll("[data-route]").forEach(el => {
-  el.addEventListener("click", e => {
-    e.preventDefault();
-    const page = el.dataset.route;
-    history.pushState({}, "", page === "home" ? "/" : "/" + page);
-    showPage(page);
-  });
-});
-
-
