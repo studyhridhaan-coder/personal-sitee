@@ -70,33 +70,23 @@ document.querySelectorAll("[data-section]").forEach(link => {
     }, 50);
   });
 });
+document.addEventListener("DOMContentLoaded", () => {
+  const navToggle = document.querySelector(".nav-toggle");
+  const navMobile = document.querySelector(".nav-mobile");
 
-const navToggle = document.querySelector(".nav-toggle");
-const navMobile = document.querySelector(".nav-mobile");
+  if (!navToggle || !navMobile) return;
 
-navToggle.addEventListener("click", () => {
-  navMobile.classList.toggle("open");
-});
+  navToggle.addEventListener("click", (e) => {
+    e.stopPropagation(); // prevents SPA click handlers from blocking
+    navMobile.classList.toggle("open");
+  });
 
-// Close menu after clicking a link
-navMobile.querySelectorAll("a").forEach(link => {
-  link.addEventListener("click", () => {
-    navMobile.classList.remove("open");
+  navMobile.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", () => {
+      navMobile.classList.remove("open");
+    });
   });
 });
 
-const navToggle = document.querySelector(".nav-toggle");
-const navMobile = document.querySelector(".nav-mobile");
-
-navToggle.addEventListener("click", () => {
-  navMobile.classList.toggle("open");
-});
-
-// Close mobile nav on any link click
-navMobile.querySelectorAll("a").forEach(link => {
-  link.addEventListener("click", () => {
-    navMobile.classList.remove("open");
-  });
-});
 
 
