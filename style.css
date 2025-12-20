@@ -3025,4 +3025,28 @@ body.dark::before {
     display: block;
   }
 }
+/* ===============================
+   GLOBAL SPACING FIX (ALL SCREENS)
+================================ */
+
+/* Stop hero from hogging full screen */
+.hero {
+  min-height: auto;
+  padding-top: 120px;
+  padding-bottom: 80px;
+}
+
+/* Tighten Find Me section */
+.links {
+  margin-top: 40px;
+  margin-bottom: 40px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+/* Pull Projects section up */
+.projects {
+  margin-top: 0;
+  padding-top: 40px;
+}
 
