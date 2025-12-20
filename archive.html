@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Certificate Archive — Hridhaan Sahay</title>
+
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    body {
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    .archive-wrap {
+      max-width: 1000px;
+      margin: auto;
+      padding: 100px 20px 120px;
+    }
+
+    .archive-header {
+      text-align: center;
+      margin-bottom: 70px;
+    }
+
+    .archive-header h1 {
+      font-size: 2.4rem;
+      margin-bottom: 10px;
+    }
+
+    .archive-header p {
+      opacity: 0.7;
+      max-width: 620px;
+      margin: auto;
+    }
+
+    .archive-item {
+      margin-bottom: 70px;
+    }
+
+    .archive-item h2 {
+      font-size: 1.3rem;
+      margin-bottom: 14px;
+    }
+
+    .archive-note {
+      font-size: 0.9rem;
+      opacity: 0.6;
+      margin-bottom: 14px;
+    }
+
+    .pdf-frame {
+      width: 100%;
+      height: 520px;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid rgba(0,0,0,0.08);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+      background: var(--card);
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    @media (max-width: 768px) {
+      .pdf-frame {
+        height: 420px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <main class="archive-wrap">
+
+    <header class="archive-header">
+      <h1>Certificate Archive</h1>
+      <p>
+        Selected academic, leadership, and external recognitions.
+        Documents are view-only for verification.
+      </p>
+    </header>
+
+    <!-- ITEM 1 -->
+    <section class="archive-item">
+      <h2>Middle School Achievements</h2>
+      <p class="archive-note">Academic and co-curricular recognition</p>
+
+      <div class="pdf-frame">
+        <iframe
+          src="https://drive.google.com/file/d/FILE_ID_1/preview"
+          allow="autoplay">
+        </iframe>
+      </div>
+    </section>
+
+    <!-- ITEM 2 -->
+    <section class="archive-item">
+      <h2>External & Institutional Recognition</h2>
+      <p class="archive-note">IIT Delhi · IIT Bombay · ITC</p>
+
+      <div class="pdf-frame">
+        <iframe
+          src="https://drive.google.com/file/d/FILE_ID_2/preview"
+          allow="autoplay">
+        </iframe>
+      </div>
+    </section>
+
+    <!-- OPTIONAL -->
+    <section class="archive-item">
+      <h2>Early Academic Foundations</h2>
+      <p class="archive-note">Early school recognitions (selected)</p>
+
+      <div class="pdf-frame">
+        <iframe
+          src="https://drive.google.com/file/d/FILE_ID_3/preview"
+          allow="autoplay">
+        </iframe>
+      </div>
+    </section>
+
+  </main>
+
+</body>
+</html>
