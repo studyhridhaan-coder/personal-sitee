@@ -3050,3 +3050,32 @@ body.dark::before {
   padding-top: 40px;
 }
 
+/* ===============================
+   FINAL STAR BACKGROUND (DARK)
+   OVERRIDES EVERYTHING
+================================ */
+
+/* Kill any previous background */
+body.dark::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+
+  background:
+    radial-gradient(1px 1px at 10% 20%, rgba(255,255,255,0.8) 1px, transparent 1px),
+    radial-gradient(1px 1px at 30% 80%, rgba(255,255,255,0.7) 1px, transparent 1px),
+    radial-gradient(1px 1px at 70% 30%, rgba(255,255,255,0.6) 1px, transparent 1px),
+    radial-gradient(1px 1px at 90% 60%, rgba(255,255,255,0.5) 1px, transparent 1px),
+    radial-gradient(1px 1px at 50% 50%, rgba(255,255,255,0.4) 1px, transparent 1px);
+
+  background-size:
+    120px 120px,
+    200px 200px,
+    260px 260px,
+    320px 320px,
+    400px 400px;
+
+  background-repeat: repeat;
+}
