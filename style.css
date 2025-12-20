@@ -2706,4 +2706,175 @@ body.dark .star-layer {
 
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
+/* ===============================
+   ACHIEVEMENTS PAGE
+================================ */
+
+#page-achievements {
+  padding: 100px 20px 120px;
+}
+
+.achievements-wrap {
+  max-width: 1000px;
+  margin: auto;
+}
+
+/* HERO */
+.achievements-hero {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.achievements-hero h1 {
+  font-size: 2.4rem;
+  margin-bottom: 12px;
+}
+
+.achievements-hero p {
+  max-width: 620px;
+  margin: auto;
+  opacity: 0.7;
+  line-height: 1.6;
+}
+
+/* ACHIEVEMENT CARD */
+.achievement {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 40px;
+  padding: 36px;
+  margin-bottom: 40px;
+
+  background: var(--card);
+  border-radius: 24px;
+
+  box-shadow:
+    0 20px 40px rgba(0,0,0,0.08);
+
+  position: relative;
+  overflow: hidden;
+}
+
+/* TEXT */
+.achievement-text {
+  position: relative;
+}
+
+.achievement-text h2 {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  opacity: 0.5;
+  margin-bottom: 6px;
+}
+
+.achievement-text h3 {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+}
+
+.achievement-text p {
+  line-height: 1.6;
+  opacity: 0.85;
+}
+
+/* IMAGE / PROOF */
+.achievement-proof,
+.ICT-Proof {
+  display: flex;
+  align-items: center;
+}
+
+.achievement-proof img,
+.ICT-Proof img {
+  width: 100%;
+  border-radius: 18px;
+  object-fit: cover;
+
+  background:
+    radial-gradient(
+      circle at top left,
+      rgba(255,255,255,0.25),
+      transparent 60%
+    );
+
+  box-shadow:
+    0 12px 30px rgba(0,0,0,0.18);
+
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.achievement-proof img:hover,
+.ICT-Proof img:hover {
+  transform: scale(1.03);
+  box-shadow:
+    0 24px 60px rgba(0,0,0,0.28);
+}
+
+/* TAG — FIXED POSITIONING */
+.achievement .tag {
+  position: absolute;
+  top: 22px;
+  right: 22px;
+}
+
+/* ARCHIVE CARD */
+.achievement-archive {
+  margin-top: 90px;
+  padding: 48px;
+  text-align: center;
+  border-radius: 28px;
+
+  background: linear-gradient(
+    135deg,
+    rgba(201,162,77,0.12),
+    rgba(201,162,77,0.04)
+  );
+}
+
+.dark .achievement-archive {
+  background: linear-gradient(
+    135deg,
+    rgba(201,162,77,0.18),
+    rgba(201,162,77,0.06)
+  );
+}
+
+.achievement-archive h4 {
+  font-size: 1.25rem;
+  margin-bottom: 12px;
+}
+
+.achievement-archive p {
+  opacity: 0.75;
+  margin-bottom: 20px;
+}
+
+.achievement-archive a {
+  text-decoration: none;
+  font-weight: 600;
+  color: var(--gold);
+}
+
+/* ===============================
+   MOBILE
+================================ */
+@media (max-width: 768px) {
+  .achievement {
+    grid-template-columns: 1fr;
+    padding: 28px;
+  }
+
+  .achievement .tag {
+    top: 16px;
+    right: 16px;
+  }
+
+  .achievement-proof,
+  .ICT-Proof {
+    margin-top: 18px;
+  }
+}
 
