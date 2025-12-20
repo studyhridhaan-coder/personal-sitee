@@ -53,3 +53,21 @@ document.querySelectorAll("#page-blog .read-btn").forEach(btn => {
     document.querySelector("#post-1").classList.remove("hidden");
   };
 });
+
+document.querySelectorAll("[data-section]").forEach(link => {
+  link.addEventListener("click", e => {
+    e.preventDefault();
+    const section = link.dataset.section;
+
+    // Always go to home first
+    showPage("home");
+
+    // Wait for DOM switch, then scroll
+    setTimeout(() => {
+      document.getElementById(section)?.scrollIntoView({
+        behavior: "smooth"
+      });
+    }, 50);
+  });
+});
+
