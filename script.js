@@ -85,4 +85,18 @@ navMobile.querySelectorAll("a").forEach(link => {
   });
 });
 
+const navToggle = document.querySelector(".nav-toggle");
+const navMobile = document.querySelector(".nav-mobile");
+
+navToggle.addEventListener("click", () => {
+  navMobile.classList.toggle("open");
+});
+
+// Close mobile nav on any link click
+navMobile.querySelectorAll("a").forEach(link => {
+  link.addEventListener("click", () => {
+    navMobile.classList.remove("open");
+  });
+});
+
 
