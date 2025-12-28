@@ -3114,3 +3114,12 @@ body.dark::before {
   transform: scale(1.05);
 }
 
+.project-thumb {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 14px;
+  margin-bottom: 12px;
+}
+
+
