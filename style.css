@@ -3082,7 +3082,7 @@ body.dark::before {
 
 /* Hack Club badge - inside project card style */
 .hackclub-badge {
-  width: 52px;
+  width: 30px;
   margin-bottom: 10px;
   display: block;
   opacity: 0.95;
