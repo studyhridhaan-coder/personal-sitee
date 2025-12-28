@@ -3414,3 +3414,19 @@ body.dark::before {
   height: 220px;
   opacity: 0;
 }
+
+
+.project-card {
+  position: relative;
+  z-index: 1;
+}
+
+.project-links {
+  position: relative;
+  z-index: 5; /* ensures buttons sit on top of images/overlays */
+}
+
+.glass-btn {
+  pointer-events: auto; /* guarantees clicks work */
+}
+
