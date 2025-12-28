@@ -3501,6 +3501,112 @@ body.dark::before {
   letter-spacing: 0.4px;
   border-radius: 10px;
   cursor: pointer;
+
+
+
+
+
+
+
+
+  /* ===== RED GLASS ENCHANTMENT BUTTON ===== */
+.glass-btn {
+  position: relative;
+  display: inline-block;
+  padding: 12px 30px;
+  font-size: 15px;
+  font-weight: 800;
+  color: #fff; /* white text */
+  text-decoration: none;
+  letter-spacing: .4px;
+  border-radius: 12px;
+  cursor: pointer;
+
+  /* Glass + Red theme */
+  background: rgba(255, 0, 0, 0.18);
+  backdrop-filter: blur(18px) saturate(200%);
+  -webkit-backdrop-filter: blur(18px) saturate(200%);
+
+  border: 2px solid rgba(255, 0, 0, 0.55);
+  box-shadow:
+    0 6px 18px rgba(255,0,0,0.35),
+    inset 0 0 12px rgba(255,255,255,0.10);
+
+  overflow: hidden;
+  transition: 0.28s cubic-bezier(.35,.7,.4,1.05);
+}
+
+/* ===== ENCHANT ROTATING AURA ===== */
+.glass-btn::before {
+  content: "";
+  position: absolute;
+  top: -60%;
+  left: -60%;
+  width: 230%;
+  height: 230%;
+
+  /* red + cyan enchant like netherite+sharpness vibe */
+  background: linear-gradient(
+    120deg,
+    rgba(255,0,80,0.30),
+    rgba(0,255,255,0.25),
+    rgba(255,0,80,0.30)
+  );
+
+  animation: enchantGlass 4.5s linear infinite;
+  mix-blend-mode: screen;
+  pointer-events:none;
+}
+
+/* ===== SHINE GLINT SWIPE ===== */
+.glass-btn::after {
+  content:"";
+  position:absolute;
+  top:0;
+  left:-120%;
+  width:60%;
+  height:100%;
+
+  background: linear-gradient(115deg,
+    transparent,
+    rgba(255,255,255,0.50),
+    transparent
+  );
+
+  transform: skew(-20deg);
+  animation: glint 3s infinite ease-in-out;
+  pointer-events:none;
+}
+
+@keyframes glint {
+  0% { left:-120%; }
+  60% { left:140%; }
+  100% { left:140%; }
+}
+
+@keyframes enchantGlass {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* ===== HOVER LIFT + GLOW ===== */
+.glass-btn:hover {
+  transform: translateY(-3px) scale(1.06);
+
+  box-shadow:
+    0 0 28px rgba(255,0,0,0.65),
+    0 0 42px rgba(0,255,255,0.35);
+
+  border-color: rgba(255,0,0,0.85);
+  background: rgba(255, 0, 0, 0.28);
+}
+
+/* ===== CLICK FEEDBACK ===== */
+.glass-btn:active {
+  transform: scale(.92);
+  background: rgba(255,0,0,0.40);
+}
+
   
   background: linear-gradient(135deg, #0a0a0a, #121212, #1a1a1a);
   border: 2px solid rgba(138, 78, 255, 0.6);
@@ -3573,4 +3679,8 @@ body.dark::before {
 .enchanted-btn:active {
   transform: scale(0.92);
 }
+
+
+<a class="glass-btn" href="#" target="_blank">GitHub →</a>
+<a class="glass-btn" href="#" target="_blank">Visit →</a>
 
