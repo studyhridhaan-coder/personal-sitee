@@ -113,7 +113,7 @@ document.querySelectorAll(".project-card").forEach(card => {
 });
 
 async function loadVisits(){
-    const res = await fetch("https://api.countapi.xyz/update/hridhaan-portfolio/visits/?amount=1");
+    const res = await fetch("https://countapi.store/hit/hridhaan-portfolio/visits");
     const data = await res.json();
 
     const el = document.getElementById("visitor-count");
@@ -128,4 +128,3 @@ async function loadVisits(){
 }
 
 loadVisits();
-
