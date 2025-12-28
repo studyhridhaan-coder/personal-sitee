@@ -3277,3 +3277,42 @@ body.dark::before {
 .project-card::after {
   pointer-events: none !important;
 }
+
+/* ===== FINAL FIX LAYER (PUT AT END OF CSS) ===== */
+
+/* Prevent star layers & pseudo elements from blocking clicks */
+body::before,
+body::after,
+.dark::before,
+.dark::after {
+  pointer-events: none !important;
+}
+
+/* Ensure buttons and links are clickable on top of overlays */
+button,
+a,
+.back-btn,
+.read-btn {
+  position: relative;
+  z-index: 9999 !important;
+  pointer-events: auto !important;
+}
+
+/* Optional basic visible styling (SAFE — won't break layout) */
+.back-btn,
+.read-btn {
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  color: var(--gold);
+  background: transparent;
+  border: none;
+  transition: .25s ease;
+}
+
+.back-btn:hover,
+.read-btn:hover {
+  opacity: 0.8;
+  transform: translateY(-2px);
+}
