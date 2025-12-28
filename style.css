@@ -3353,4 +3353,41 @@ z-index: 9999;
     }
 }
 
+/* ===== FORCE BUTTON CLICKABLE ON DESKTOP ===== */
+.glass-btn {
+  position: relative !important;
+  z-index: 99999999 !important;
+  pointer-events: auto !important;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #5bc0de, #338eda) !important;
+  color: #fff !important;
+  font-weight: 700 !important;
+  padding: 12px 30px !important;
+  border-radius: 50px !important;
+  text-decoration: none !important;
+}
+
+
+/* ===== KILL EVERY OVERLAY THAT CAN BLOCK CLICKS ===== */
+*::before, *::after {
+  pointer-events: none !important;
+}
+
+*, * > * {
+  z-index: 0 !important;
+  pointer-events: auto !important;
+}
+
+body, html {
+  position: relative !important;
+  z-index: 0 !important;
+}
+
+/* Put button ABOVE EVERYTHING */
+.glass-btn {
+  z-index: 99999999 !important;
+  pointer-events: auto !important;
+}
 
