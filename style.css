@@ -3252,120 +3252,29 @@ body.dark::before {
   box-shadow: 0 28px 50px rgba(0,0,0,.35);
 }
 
-/* DARK MODE GLASS GOLD */
-.dark .tag {
-  background: rgba(255,215,100,0.22);
-  color: #f7d97f;
-  border: 1px solid rgba(255,215,100,0.55);
-  box-shadow:
-      0 0 25px rgba(255,215,100,0.25),
-      inset 0 1px 2px rgba(255,255,255,0.25),
-      inset 0 -2px 4px rgba(160,120,40,0.35);
+.hidden {
+  display: none !important;
 }
-
-/* strengthen shimmer in dark mode */
-.dark .tag::after {
-  background: linear-gradient(120deg,
-      rgba(255,255,255,0) 0%,
-      rgba(255,255,255,.5) 50%,
-      rgba(255,255,255,0) 100%
-  );
-  opacity: .75;
-}
-
-/* Dark Mode – Black + Gold Glass Tag */
-.dark .tag {
-  background: rgba(30, 30, 30, 0.55);         /* deep glass */
-  color: #f2d484;                            /* subtle rich gold text */
-  border: 1px solid rgba(240,200,90,0.55);    /* thin gold rim */
-  backdrop-filter: blur(14px) saturate(180%);
-  box-shadow:
-      0 0 18px rgba(240,200,90,0.15),
-      inset 0 1px 2px rgba(255,255,255,.15),
-      inset 0 -2px 4px rgba(90,70,30,.35);
-}
-
-/* make shimmer classy, not bright yellow */
-.dark .tag::after {
-  background: linear-gradient(120deg,
-      rgba(255,255,255,0) 0%,
-      rgba(255,255,255,.27) 50%,
-      rgba(255,255,255,0) 100%
-  );
-  opacity: .6;
-}
-
-/* Mobile-only project card interaction */
-@media (max-width: 768px) {
-  .project-card {
-    transition: transform .3s ease, box-shadow .3s ease;
-    transform: scale(1);
-  }
-
-  .project-card:active {
-    transform: scale(1.05) translateY(-4px);
-    box-shadow:
-      0 18px 32px rgba(0,0,0,.28),
-      0 0 0 1px rgba(255,255,255,.18) inset;
-  }
-}
-
-.project-links {
-  position: relative;
-  z-index: 10;
-}
-
-.project-card img {
-  pointer-events: none;
-}
-
-/* ====================== FINAL BUTTON ====================== */
 .glass-btn {
+  background: linear-gradient(135deg, #5bc0de, #338eda); /* same as sample */
+  color: #fff; 
+  font-weight: 700;
+  font-size: 16px;
+  padding: 12px 30px;
+  border-radius: 50px;
+  border: none;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-
-  padding: 12px 30px;
-  font-size: 15px;
-  font-weight: 800;
-  text-decoration: none;
   cursor: pointer;
 
-  /* FINAL Idle state */
-  color: #ffffff;                           /* PURE white text */
-  background: rgba(255, 255, 255, 0.28);     /* Premium visible glass */
-  border: 2px solid #ec3750;                /* Red accent */
-  border-radius: 28px;
-
-  backdrop-filter: blur(18px) saturate(200%);
-  -webkit-backdrop-filter: blur(18px) saturate(200%);
-
-  box-shadow:
-      0 3px 12px rgba(0,0,0,0.08),
-      inset 0 0 18px rgba(255,255,255,0.18); /* Inner shine for premium feel */
-
-  transition:
-      background .28s ease,
-      transform .25s ease,
-      box-shadow .28s ease,
-      color .25s ease;
+  transition: transform 0.2s ease;
 }
 
-/* ====================== HOVER ====================== */
 .glass-btn:hover {
-  background: #ec3750;                      /* Full red fill */
-  color: #ffffff;                           /* Stays white */
-  border-color: #ec3750;
-
-  box-shadow:
-      0 10px 28px rgba(236,55,80,0.35),
-      inset 0 0 14px rgba(255,255,255,0.2);
-
-  transform: translateY(-2px);              /* Smooth lift */
+  transform: scale(1.07);
 }
 
-/* ====================== CLICK ====================== */
 .glass-btn:active {
-  transform: scale(.95);
-  background: #d92d45;
+  transform: scale(0.96);
 }
