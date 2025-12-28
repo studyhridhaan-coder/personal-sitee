@@ -112,43 +112,20 @@ document.querySelectorAll(".project-card").forEach(card => {
   });
 });
 
-const ENDPOINT = "https://api.counterapi.dev/v2/hridhaan-sahays-team-2292/first-counter-2292";
-const API_KEY = "ut_A8S7btW56F4iJuMsKWgTrM71DReNmYsEjV1jsFsu";  // paste exact value
-
-
-async function loadVisits() {
-  try {
-    // increment counter properly in v2
-    const res = await fetch(`${ENDPOINT}/up`, {
-      method: "POST",
-      headers: { "Authorization": `Bearer ${API_KEY}` }
-    });
-
+async function loadVisits(){
+    const res = await fetch("https://api.countapi.xyz/update/hridhaan-portfolio/visits/?amount=1");
     const data = await res.json();
-    console.log("Increment Response:", data);
 
-    // Now fetch total count separately
-    const res2 = await fetch(ENDPOINT, {
-      headers: { "Authorization": `Bearer ${API_KEY}` }
-    });
-    const viewData = await res2.json();
-    console.log("Current Count:", viewData);
-
-    const count = viewData.up_count;   // <- correct property for v2
     const el = document.getElementById("visitor-count");
+    let current = 0, target = data.value;
 
-    // animation
-    let current = 0;
-    function animate() {
-      current += Math.ceil((count - current) * 0.1);
-      el.textContent = current;
-      if (current < count) requestAnimationFrame(animate);
+    function animate(){
+        current += Math.ceil((target - current)*0.1);
+        el.textContent = current;
+        if(current < target) requestAnimationFrame(animate);
     }
     animate();
-
-  } catch(err) {
-    console.error("Counter API Error:", err);
-  }
 }
 
-document.addEventListener("DOMContentLoaded", loadVisits);
+loadVisits();
+
