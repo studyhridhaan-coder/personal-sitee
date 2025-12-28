@@ -3277,22 +3277,3 @@ body.dark::before {
 .project-card::after {
   pointer-events: none !important;
 }
-
-/* FIX BUTTONS NOT CLICKING */
-body::before,
-body::after {
-  pointer-events: none !important;
-  z-index: -1 !important;
-}
-
-#starCanvas {
-  pointer-events: none !important;
-  z-index: -1 !important;
-}
-
-/* REMOVE GLOBAL Z-INDEX STACKING PROBLEM */
-body > * {
-  position: relative;
-  z-index: auto !important;
-}
-
