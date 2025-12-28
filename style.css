@@ -3318,62 +3318,41 @@ body.dark::before {
 .project-card img {
   pointer-events: none;
 }
-
-/* Base modern button style */
 .glass-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 12px 32px;
-  
-  background: rgba(255, 255, 255, 0.02); /* slight glass */
-  border: 2px solid #ec3750; /* red border */
-  border-radius: 30px;
-  
-  font-size: 15px;
-  font-weight: 800;
-  color: #ffffff;
-  text-decoration: none;
-  letter-spacing: .3px;
-  cursor: pointer;
-  
-  backdrop-filter: blur(18px); /* clean glass feel */
-  position: relative;
-  overflow: hidden;
-  transition: .3s ease;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+
+  padding:12px 30px;
+  font-size:15px;
+  font-weight:700;
+  color:#ec3750;               /* text red */
+  background:rgba(255,255,255,0.6);
+  border:2px solid #ec3750;
+  border-radius:28px;
+  text-decoration:none;
+  cursor:pointer;
+
+  box-shadow:
+      0 2px 8px rgba(0,0,0,0.04),
+      inset 0 0 0 rgba(255,255,255,0.3);
+  backdrop-filter:blur(14px);
+
+  transition:.3s cubic-bezier(.3,.7,.4,1.05);
 }
 
-/* Subtle shimmer overlay */
-.glass-btn::before {
-  content:"";
-  position:absolute;
-  top:0;
-  left:-100%;
-  width:60%;
-  height:100%;
-  
-  background: linear-gradient(120deg,
-    transparent,
-    rgba(255,255,255,0.45),
-    transparent
-  );
-  transform: skew(-20deg);
-  transition: .45s ease;
-}
-
-/* Light shimmer animation */
-.glass-btn:hover::before {
-  left:120%;
-}
-
-/* Hover — clean red fill + stop shine */
+/* Hover — full red + white text like premium CTA */
 .glass-btn:hover {
-  background:#ec3750 !important;
-  color:#fff;
-  border-color:#ec3750;
-  box-shadow:0 8px 24px rgba(236,55,80,0.4);
+  color:#ffffff;
+  background:#ec3750;
+  box-shadow:
+      0 6px 18px rgba(236,55,80,0.3),
+      inset 0 0 10px rgba(255,255,255,0.18);
+  transform:translateY(-2px);
 }
 
+/* Press — natural Apple/MacOS press feel */
 .glass-btn:active {
-  transform: scale(0.95);
+  transform:scale(.96);
+  background:#d73045;
 }
