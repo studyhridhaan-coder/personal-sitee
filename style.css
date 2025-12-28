@@ -3294,4 +3294,14 @@ body.dark::before {
   color: #fff !important;
   font-weight: 700 !important;
 }
+.glass-btn {
+  position: relative;
+  z-index: 10;
+  pointer-events: auto;
+}
+backdrop-filter
+filter
+opacity: 0.7
+::before
+::after
 
