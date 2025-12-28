@@ -3272,34 +3272,30 @@ body.dark::before {
 
 /* === REAL FIX: Buttons styled but still clickable === */
 
-/* base style for both blog + projects */
-.back-btn,
-.read-btn,
 .glass-btn {
-  padding: 10px 16px;
-  border-radius: 8px;
-  font-weight: 600;
-  cursor: pointer;
-  background: transparent;
-  border: none;
-  color: var(--gold);
-  transition: .25s ease;
   display: inline-block;
-  pointer-events: auto; /* keeps clickable */
-  z-index: 5;           /* NOT 9999 */
+  padding: 10px 18px;
+  border-radius: 8px;
+  backdrop-filter: blur(10px);
+  background: rgba(255,255,255,0.12);       /* works in dark + light */
+  border: 1px solid rgba(255,255,255,0.25);
+  color: inherit;                          /* adapts to theme */
+  font-weight: 500;
+  text-decoration: none;
+  transition: 0.25s ease;
 }
 
-.back-btn:hover,
-.read-btn:hover,
+/* Hover effect – subtle but classy */
 .glass-btn:hover {
-  opacity: .85;
+  background: rgba(255,255,255,0.22);
   transform: translateY(-2px);
+  border-color: rgba(255,255,255,0.45);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
-/* ensure project card doesn't block clicks */
-.project-card * {
-  pointer-events: auto;
+/* Click feedback – snappy */
+.glass-btn:active {
+  transform: translateY(0px) scale(0.97);
+  box-shadow: none;
 }
-.project-card::before,
-.project-card::after { pointer-events:none; }
 
