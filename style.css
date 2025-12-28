@@ -3342,438 +3342,86 @@ body.dark::before {
   gap: 12px;
   margin-top: 14px;
 }
-
-/* GLASS + NEON EDGE BUTTON — premium */
 .glass-btn {
+  position: relative;
   display: inline-flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
 
-  padding: 10px 22px;
-  font-size: 15px;
-  font-weight: 600;
-  border-radius: 50px; /* premium pill look */
-
-  color: #fff;
-  text-decoration: none;
-  cursor: pointer;
-
-  background: rgba(255, 255, 255, 0.08);
-  border: 1.2px solid rgba(255, 255, 255, 0.3);
-
-  backdrop-filter: blur(14px) saturate(160%);
-  -webkit-backdrop-filter: blur(14px) saturate(160%);
-
-  box-shadow: inset 0 0 12px rgba(255,255,255,0.1),
-              0 4px 18px rgba(0,0,0,0.25);
-
-  transition: 
-    transform .25s ease,
-    box-shadow .25s ease,
-    background .25s ease,
-    border-color .25s ease;
-
-  position: relative;
-  overflow: hidden;
-  z-index: 1;        /* fixes unclickable issue from card overflows */
-}
-
-/* Hover — POP + neon rim */
-.glass-btn:hover {
-  transform: translateY(-3px) scale(1.03);
-  background: rgba(255, 255, 255, 0.18);
-  border-color: rgba(255, 255, 255, 0.6);
-
-  box-shadow:
-    0 6px 22px rgba(0,0,0,0.35),
-    0 0 12px rgba(0,255,255,0.6); /* neon accent */
-}
-
-/* Click — tactile press */
-.glass-btn:active {
-  transform: scale(0.95);
-  box-shadow: 0 3px 8px rgba(0,0,0,0.3);
-}
-
-/* Ripple effect */
-.glass-btn::after {
-  content: "";
-  position: absolute;
-  width: 0; height: 0;
-  top: 50%; left: 50%;
-  transform: translate(-50%, -50%);
-  border-radius: 50%;
-  background: rgba(255,255,255,0.5);
-  opacity: 0;
-  transition: width .45s ease, height .45s ease, opacity .55s ease;
-  z-index: -1;
-}
-
-.glass-btn:active::after {
-  width: 220px;
-  height: 220px;
-  opacity: 0;
-}
-
-
-.project-card {
-  position: relative;
-  z-index: 1;
-}
-
-.project-links {
-  position: relative;
-  z-index: 5; /* ensures buttons sit on top of images/overlays */
-}
-
-.glass-btn {
-  pointer-events: auto; /* guarantees clicks work */
-}
-
-.glass-btn {
-  display: inline-block;
-  padding: 10px 26px;
-  border-radius: 14px;
-  font-size: 15px;
-  font-weight: 600;
-  letter-spacing: .2px;
-  color: #fff;
-  text-decoration: none;
-  cursor: pointer;
-
-  background: rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(18px) saturate(200%);
-  -webkit-backdrop-filter: blur(18px) saturate(200%);
-
-  border: 1.5px solid rgba(255, 255, 255, 0.32);
-  box-shadow: inset 0 0 10px rgba(255,255,255,0.05),
-              0 4px 16px rgba(0,0,0,0.25);
-
-  transition: 0.28s cubic-bezier(.3,.7,.4,1);
-  position: relative;
-  overflow: hidden;
-}
-
-/* Hover → levitating glass with glow */
-.glass-btn:hover {
-  transform: translateY(-3px);
-  background: rgba(255,255,255,0.22);
-  border-color: rgba(255,255,255,0.55);
-
-  box-shadow: 
-    0 7px 24px rgba(0,0,0,0.35),
-    0 0 12px rgba(255,255,255,0.35);
-}
-
-/* Press feedback */
-.glass-btn:active {
-  transform: scale(0.95);
-  background: rgba(255,255,255,0.30);
-  box-shadow: 0 3px 10px rgba(0,0,0,0.35) inset;
-}
-
-/* Subtle shine animation */
-.glass-btn::before {
-  content: "";
-  position: absolute;
-  top: -80%;
-  left: -40%;
-  width: 200%;
-  height: 200%;
-  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.4), transparent);
-  transform: rotate(25deg);
-  opacity: 0;
-  transition: opacity .35s;
-}
-
-.glass-btn:hover::before {
-  opacity: 1;
-}
-
-.enchanted-btn {
-  position: relative;
-  display: inline-block;
   padding: 12px 28px;
   font-size: 15px;
   font-weight: 700;
-  color: #fff;
+  color: #ffffff;
   text-decoration: none;
-  letter-spacing: 0.4px;
-  border-radius: 10px;
+  border-radius: 14px;
   cursor: pointer;
-
-N ===== */
-.glass-btn {
-  position: relative;
-  display: inline-block;
-  padding: 12px 30px;
-  font-size: 15px;
-  font-weight: 800;
-  color: #fff; /* white text */
-  text-decoration: none;
   letter-spacing: .4px;
-  border-radius: 12px;
-  cursor: pointer;
 
-  /* Glass + Red theme */
-  background: rgba(255, 0, 0, 0.18);
-  backdrop-filter: blur(18px) saturate(200%);
-  -webkit-backdrop-filter: blur(18px) saturate(200%);
-
-  border: 2px solid rgba(255, 0, 0, 0.55);
+  background: rgba(255,0,0,0.22);
+  backdrop-filter: blur(22px) saturate(220%);
+  -webkit-backdrop-filter: blur(22px) saturate(220%);
+  
+  border: 2px solid rgba(255,0,0,0.55);
   box-shadow:
-    0 6px 18px rgba(255,0,0,0.35),
-    inset 0 0 12px rgba(255,255,255,0.10);
+    0 0 12px rgba(255,0,0,0.45),
+    0 0 28px rgba(255,0,0,0.15),
+    inset 0 0 14px rgba(255,255,255,0.08);
 
+  transition: .28s cubic-bezier(.3,.7,.4,1.05);
   overflow: hidden;
-  transition: 0.28s cubic-bezier(.35,.7,.4,1.05);
 }
 
-/* ===== ENCHANT ROTATING AURA ===== */
+/* Minecraft Enchant Aura */
 .glass-btn::before {
-  content: "";
-  position: absolute;
-  top: -60%;
-  left: -60%;
-  width: 230%;
-  height: 230%;
-
-  /* red + cyan enchant like netherite+sharpness vibe */
-  background: linear-gradient(
-    120deg,
-    rgba(255,0,80,0.30),
-    rgba(0,255,255,0.25),
-    rgba(255,0,80,0.30)
+  content:"";
+  position:absolute;
+  inset:-60%;
+  background: conic-gradient(
+      from 0deg,
+      rgba(255, 0, 80, .35),
+      rgba(0,255,255,.25),
+      rgba(255, 0, 80, .35)
   );
-
-  animation: enchantGlass 4.5s linear infinite;
+  animation: spin 5s linear infinite;
   mix-blend-mode: screen;
-  pointer-events:none;
+  opacity: .7;
 }
 
-/* ===== SHINE GLINT SWIPE ===== */
+/* Shine Glint */
 .glass-btn::after {
   content:"";
   position:absolute;
-  top:0;
-  left:-120%;
-  width:60%;
-  height:100%;
-
+  top:0; left:-120%;
+  height:100%; width:65%;
   background: linear-gradient(115deg,
     transparent,
-    rgba(255,255,255,0.50),
+    rgba(255,255,255,.45),
     transparent
   );
-
-  transform: skew(-20deg);
-  animation: glint 3s infinite ease-in-out;
-  pointer-events:none;
+  transform: skew(-25deg);
+  animation: swipe 3.5s infinite ease-in-out;
 }
 
-@keyframes glint {
-  0% { left:-120%; }
-  60% { left:140%; }
-  100% { left:140%; }
+@keyframes spin { to{ transform: rotate(360deg);} }
+
+@keyframes swipe {
+  0%{ left:-130%; }
+  60%{ left:130%; }
+  100%{ left:130%; }
 }
 
-@keyframes enchantGlass {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-/* ===== HOVER LIFT + GLOW ===== */
-.glass-btn:hover {
-  transform: translateY(-3px) scale(1.06);
-
+/* Hover — premium lift */
+.glass-btn:hover{
+  transform: translateY(-4px) scale(1.05);
+  background: rgba(255,0,0,0.32);
+  border-color: rgba(255,0,0,0.8);
   box-shadow:
-    0 0 28px rgba(255,0,0,0.65),
-    0 0 42px rgba(0,255,255,0.35);
-
-  border-color: rgba(255,0,0,0.85);
-  background: rgba(255, 0, 0, 0.28);
+    0 0 28px rgba(255,0,0,.75),
+    0 0 40px rgba(0,255,255,.35);
 }
 
-/* ===== CLICK FEEDBACK ===== */
-.glass-btn:active {
+/* Press */
+.glass-btn:active{
   transform: scale(.92);
-  background: rgba(255,0,0,0.40);
+  background: rgba(255,0,0,.45);
 }
-
-  
-  background: linear-gradient(135deg, #0a0a0a, #121212, #1a1a1a);
-  border: 2px solid rgba(138, 78, 255, 0.6);
-
-  overflow: hidden;
-
-  transition: 0.28s cubic-bezier(.3,.7,.4,1);
-  box-shadow: 0 0 12px rgba(138, 78, 255, 0.25);
-}
-
-/* Purple-Aqua Minecraft Enchantment aura */
-.enchanted-btn::before {
-  content: "";
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-
-  background: linear-gradient(
-    120deg,
-    rgba(102,0,255,0.15),
-    rgba(0,255,255,0.15),
-    rgba(102,0,255,0.15)
-  );
-  
-  animation: enchant 3.8s linear infinite;
-  mix-blend-mode: screen;
-}
-
-/* Shine glint stripe animation */
-.enchanted-btn::after {
-  content:"";
-  position:absolute;
-  top:0;
-  left:-100%;
-  width:60%;
-  height:100%;
-  
-  background: linear-gradient(120deg,
-    transparent,
-    rgba(255,255,255,0.35),
-    transparent
-  );
-
-  transform: skew(-20deg);
-  animation: glint 2.8s infinite ease-in-out;
-}
-
-@keyframes glint {
-  0% { left:-120%; }
-  60% { left:120%; }
-  100% { left:120%; }
-}
-
-@keyframes enchant {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-/* Hover — levitation effect */
-.enchanted-btn:hover {
-  transform: translateY(-3px) scale(1.05);
-  box-shadow: 0 0 25px rgba(138,78,255,0.65),
-              0 0 40px rgba(0,255,255,0.35);
-  border-color: rgba(138,78,255,0.9);
-}
-
-/* Press feel */
-.enchanted-btn:active {
-  transform: scale(0.92);
-}
-
-
-<a class="glass-btn" href="#" target="_blank">GitHub →</a>
-<a class="glass-btn" href="#" target="_blank">Visit →</a>
-
-
-
-/* ===== RED GLASS ENCHANTMENT BUTTON ===== */
-.glass-btn {
-  position: relative;
-  display: inline-block;
-  padding: 12px 30px;
-  font-size: 15px;
-  font-weight: 800;
-  color: #fff; /* white text */
-  text-decoration: none;
-  letter-spacing: .4px;
-  border-radius: 12px;
-  cursor: pointer;
-
-  /* Glass + Red theme */
-  background: rgba(255, 0, 0, 0.18);
-  backdrop-filter: blur(18px) saturate(200%);
-  -webkit-backdrop-filter: blur(18px) saturate(200%);
-
-  border: 2px solid rgba(255, 0, 0, 0.55);
-  box-shadow:
-    0 6px 18px rgba(255,0,0,0.35),
-    inset 0 0 12px rgba(255,255,255,0.10);
-
-  overflow: hidden;
-  transition: 0.28s cubic-bezier(.35,.7,.4,1.05);
-}
-
-/* ===== ENCHANT ROTATING AURA ===== */
-.glass-btn::before {
-  content: "";
-  position: absolute;
-  top: -60%;
-  left: -60%;
-  width: 230%;
-  height: 230%;
-
-  /* red + cyan enchant like netherite+sharpness vibe */
-  background: linear-gradient(
-    120deg,
-    rgba(255,0,80,0.30),
-    rgba(0,255,255,0.25),
-    rgba(255,0,80,0.30)
-  );
-
-  animation: enchantGlass 4.5s linear infinite;
-  mix-blend-mode: screen;
-  pointer-events:none;
-}
-
-/* ===== SHINE GLINT SWIPE ===== */
-.glass-btn::after {
-  content:"";
-  position:absolute;
-  top:0;
-  left:-120%;
-  width:60%;
-  height:100%;
-
-  background: linear-gradient(115deg,
-    transparent,
-    rgba(255,255,255,0.50),
-    transparent
-  );
-
-  transform: skew(-20deg);
-  animation: glint 3s infinite ease-in-out;
-  pointer-events:none;
-}
-
-@keyframes glint {
-  0% { left:-120%; }
-  60% { left:140%; }
-  100% { left:140%; }
-}
-
-@keyframes enchantGlass {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-/* ===== HOVER LIFT + GLOW ===== */
-.glass-btn:hover {
-  transform: translateY(-3px) scale(1.06);
-
-  box-shadow:
-    0 0 28px rgba(255,0,0,0.65),
-    0 0 42px rgba(0,255,255,0.35);
-
-  border-color: rgba(255,0,0,0.85);
-  background: rgba(255, 0, 0, 0.28);
-}
-
-/* ===== CLICK FEEDBACK ===== */
-.glass-btn:active {
-  transform: scale(.92);
-  background: rgba(255,0,0,0.40);
-}
-
