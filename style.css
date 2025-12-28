@@ -3310,3 +3310,25 @@ body.dark::before {
   }
 }
 
+.visits {
+  margin-top: 8px;
+  font-size: 0.9rem;
+  opacity: .7;
+  text-align:center;
+  transition: .25s ease;
+}
+
+.visits span {
+  font-weight: 700;
+  color: var(--gold);
+  transition: .25s ease;
+}
+
+/* Hover glow flex — not childish */
+.visits:hover span {
+  text-shadow: 0 0 8px rgba(255,215,100,.55);
+  color: #ffdf6e;
+  transform: scale(1.05);
+}
+
+
