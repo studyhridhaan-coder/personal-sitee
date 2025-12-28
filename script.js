@@ -110,22 +110,22 @@ document.querySelectorAll(".project-card").forEach(card => {
     card.style.transform =
       "perspective(800px) rotateX(0deg) rotateY(0deg) scale(1)";
   });
-});const APP_ID = "YOUR_APP_ID";
-const API_KEY = "YOUR_REST_KEY";
 
-async function loadVisits() {
-    let res = await fetch(`https://api.backendless.com/${APP_ID}/${API_KEY}/data/counter/1`);
-    let data = await res.json();
-    
-    let count = data.visits + 1;
+                                                   // 100% working local unique visitor counter
+const countElement = document.getElementById("visitor-count");
 
-    await fetch(`https://api.backendless.com/${APP_ID}/${API_KEY}/data/counter/1`, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ visits: count })
-    });
+function updateCounter() {
+  let visits = localStorage.getItem("site-visits");
 
-    document.getElementById("visitor-count").textContent = count;
+  if (visits === null) { 
+    visits = 1; 
+    localStorage.setItem("site-visits", visits);
+  } else {
+    visits = parseInt(visits) + 1;
+    localStorage.setItem("site-visits", visits);
+  }
+
+  countElement.textContent = visits;
 }
 
-loadVisits();
+updateCounter();
