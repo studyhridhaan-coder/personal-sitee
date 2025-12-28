@@ -112,5 +112,22 @@ document.querySelectorAll(".project-card").forEach(card => {
   });
 });
 
+// ========= VISITOR COUNTER WITH SMOOTH ANIMATION =========
+async function loadVisits() {
+  const res = await fetch('https://api.countapi.xyz/hit/hridhaan.bitbuzz.club/visits');
+  const data = await res.json();
+  const target = data.value;
+  const el = document.getElementById("visitor-count");
+  let current = 0;
+
+  const update = () => {
+    current += Math.ceil((target - current) * 0.08); // smooth ease-out animation
+    el.textContent = current;
+    if (current < target) requestAnimationFrame(update);
+  }
+  update();
+}
+loadVisits();
+
 
 
