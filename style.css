@@ -3278,3 +3278,20 @@ body.dark::before {
 .glass-btn:active {
   transform: scale(0.96);
 }
+
+.glass-btn {
+  text-decoration: none;   /* remove hyperlink style */
+  color: #fff;             /* force white text */
+  font-weight: 700;        /* bold text */
+}
+
+.glass-btn {
+  color: #fff !important;
+  font-weight: 700 !important;
+}
+
+.glass-btn {
+  color: #fff !important;
+  font-weight: 700 !important;
+}
+
