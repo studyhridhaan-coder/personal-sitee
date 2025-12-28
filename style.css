@@ -3330,31 +3330,66 @@ body.dark::before {
   color: #ffdf6e;
   transform: scale(1.05);
 }
+/* Container for buttons inside project cards */
+.project-links {
+  display: flex;
+  gap: 10px;
+  margin-top: 14px;
+}
 
+/* Main Glass Button */
 .glass-btn {
   display: inline-block;
-  padding: 8px 18px;
-  font-size: 14px;
+  padding: 9px 20px;
+  font-size: 14.5px;
   font-weight: 600;
   color: #fff;
   text-decoration: none;
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(10px) saturate(150%);
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  transition: 0.25s ease;
+  border-radius: 10px;
+  
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(12px) saturate(160%);
+  -webkit-backdrop-filter: blur(12px) saturate(160%);
+  border: 1.5px solid rgba(255, 255, 255, 0.35);
+
+  transition: transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  position: relative;
+  overflow: hidden;
 }
 
+/* Hover - premium lift + clarity */
 .glass-btn:hover {
-  transform: translateY(-2px);
-  background: rgba(255, 255, 255, 0.25);
-  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+  transform: translateY(-3px);
+  background: rgba(255, 255, 255, 0.28);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.20);
 }
 
+/* Click Feedback - gives that "felt" press */
 .glass-btn:active {
-  transform: scale(0.96);
-  background: rgba(255, 255, 255, 0.35);
+  transform: scale(0.95);
+  background: rgba(255, 255, 255, 0.38);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
 }
 
 
+/* Optional Ripple Effect - makes click satisfying without JS */
+.glass-btn::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: width 0.4s ease, height 0.4s ease, opacity 0.5s ease;
+}
 
+.glass-btn:active::after {
+  width: 180px;
+  height: 180px;
+  opacity: 0;
+}
