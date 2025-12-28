@@ -3243,3 +3243,33 @@ body.dark::before {
       0 0 0 1px rgba(255,255,255,.15) inset;
 }
 
+.project-card {
+  transform-style: preserve-3d;
+  transition: transform .25s ease, box-shadow .32s ease;
+}
+
+.project-card:hover {
+  box-shadow: 0 28px 50px rgba(0,0,0,.35);
+}
+
+/* DARK MODE GLASS GOLD */
+.dark .tag {
+  background: rgba(255,215,100,0.22);
+  color: #f7d97f;
+  border: 1px solid rgba(255,215,100,0.55);
+  box-shadow:
+      0 0 25px rgba(255,215,100,0.25),
+      inset 0 1px 2px rgba(255,255,255,0.25),
+      inset 0 -2px 4px rgba(160,120,40,0.35);
+}
+
+/* strengthen shimmer in dark mode */
+.dark .tag::after {
+  background: linear-gradient(120deg,
+      rgba(255,255,255,0) 0%,
+      rgba(255,255,255,.5) 50%,
+      rgba(255,255,255,0) 100%
+  );
+  opacity: .75;
+}
+
