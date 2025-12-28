@@ -3148,3 +3148,19 @@ body.dark::before {
   opacity: 1;
 }
 
+
+.hackclub-badge {
+  width: 26px !important;   /* FORCING override */
+  margin-bottom: 6px;
+  opacity: 0.9;
+  display: block;
+  transition: transform .2s ease, opacity .2s ease;
+}
+
+.hackclub-badge {
+  width: 26px !important;   /* FORCING override */
+  margin-bottom: 6px;
+  opacity: 0.9;
+  display: block;
+  transition: transform .2s ease, opacity .2s ease;
+}
