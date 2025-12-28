@@ -3319,78 +3319,53 @@ body.dark::before {
   pointer-events: none;
 }
 
-/* FINAL PREMIUM BUTTON — CLEAN, SMOOTH, NO GLITCH */
+/* ====================== FINAL BUTTON ====================== */
 .glass-btn {
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 
-  padding:12px 30px;
-  border-radius:28px;
-  font-size:15px;
-  font-weight:800;
-  text-decoration:none;
-  cursor:pointer;
+  padding: 12px 30px;
+  font-size: 15px;
+  font-weight: 800;
+  text-decoration: none;
+  cursor: pointer;
 
-  color:#ffffff;               /* always white */
-  background:rgba(255,255,255,0.08); /* modern glass */
-  border:2px solid #ec3750;
+  /* FINAL Idle state */
+  color: #ffffff;                           /* PURE white text */
+  background: rgba(255, 255, 255, 0.28);     /* Premium visible glass */
+  border: 2px solid #ec3750;                /* Red accent */
+  border-radius: 28px;
 
-  backdrop-filter:blur(16px);
-  -webkit-backdrop-filter:blur(16px);
+  backdrop-filter: blur(18px) saturate(200%);
+  -webkit-backdrop-filter: blur(18px) saturate(200%);
+
+  box-shadow:
+      0 3px 12px rgba(0,0,0,0.08),
+      inset 0 0 18px rgba(255,255,255,0.18); /* Inner shine for premium feel */
 
   transition:
-      background .25s ease,
-      transform .22s ease,
-      box-shadow .25s ease;
-
-  /* minimal shadow so UI stays clean */
-  box-shadow:
-      0 2px 8px rgba(0,0,0,0.05),
-      inset 0 0 0 rgba(255,255,255,0.25);
+      background .28s ease,
+      transform .25s ease,
+      box-shadow .28s ease,
+      color .25s ease;
 }
 
-/* HOVER — smooth fill, NO JUMP, NO WEIRD GLITCH */
+/* ====================== HOVER ====================== */
 .glass-btn:hover {
-  background:#ec3750;          /* full red */
-  color:#fff;
-  border-color:#ec3750;
-  transform:translateY(-2px);  /* subtle lift only */
-  box-shadow:0 8px 22px rgba(236,55,80,0.35);
-}
-
-/* CLICK FEEL — clean press */
-.glass-btn:active {
-  transform:scale(.96);
-  background:#d92d45;
-}
-
-.glass-btn {
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-
-  padding:12px 30px;
-  border-radius:28px;
-  font-size:15px;
-  font-weight:800;
-  text-decoration:none;
-  cursor:pointer;
-
-  /* New better idle styling ↓ */
-  color:#ffffff;                                      
-  background:rgba(255,255,255,0.18); /* more visible glass */
-  border:2px solid #ec3750;
-  backdrop-filter:blur(16px) saturate(180%);
-  -webkit-backdrop-filter:blur(16px) saturate(180%);
+  background: #ec3750;                      /* Full red fill */
+  color: #ffffff;                           /* Stays white */
+  border-color: #ec3750;
 
   box-shadow:
-      0 3px 10px rgba(0,0,0,0.08),
-      inset 0 0 12px rgba(255,255,255,0.20);  /* gives polished inner glow */
+      0 10px 28px rgba(236,55,80,0.35),
+      inset 0 0 14px rgba(255,255,255,0.2);
 
-  transition:
-      background .25s ease,
-      transform .22s ease,
-      box-shadow .25s ease;
+  transform: translateY(-2px);              /* Smooth lift */
 }
 
+/* ====================== CLICK ====================== */
+.glass-btn:active {
+  transform: scale(.95);
+  background: #d92d45;
+}
