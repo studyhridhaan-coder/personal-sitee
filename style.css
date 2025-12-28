@@ -3208,4 +3208,23 @@ body.dark::before {
       inset 0 -2px 5px rgba(160,120,40,.30);
 }
 
+/*shimer 2 */
+.tag::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -130%;
+  width: 140%;
+  height: 100%;
+  background: linear-gradient(115deg,
+      rgba(255,255,255,0) 0%,
+      rgba(255,255,255,.75) 50%,
+      rgba(255,255,255,0) 100%
+  );
+  transform: skewX(-25deg);
+  animation: shine 4s ease-in-out infinite;
+  opacity: .9;
+}
+
+
 
