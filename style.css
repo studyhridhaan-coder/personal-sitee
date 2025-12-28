@@ -3416,3 +3416,36 @@ nav, .navbar, header {
   z-index: 1;
   transform-style: preserve-3d;
 }
+
+
+/* --- NAV: stays on top and fixed --- */
+nav, .navbar {
+  position: fixed;       /* <--- THIS BRINGS IT BACK */
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10000;        /* Above pages, below nothing important */
+}
+
+/* --- PAGE CONTAINERS BELOW NAV --- */
+#page-home,
+#page-achievements,
+#page-blog {
+  position: relative;
+  z-index: 1;
+  padding-top: 80px;     /* so content doesn't hide behind nav */
+}
+
+/* --- BLOG BUTTONS (clickable, not above nav) --- */
+.read-btn, .back-btn, .glass-btn {
+  position: relative;
+  z-index: 200;          /* below nav, above project cards */
+}
+
+/* --- PROJECT CARDS stays lowest to avoid blocking buttons --- */
+.project-card {
+  position: relative;
+  z-index: 1;
+  transform-style: preserve-3d;
+}
+
