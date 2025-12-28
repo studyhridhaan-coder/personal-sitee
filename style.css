@@ -3102,7 +3102,7 @@ body.dark::before {
 }
 
 .hackclub-badge {
-  width: 42px !important;      /* Forced size */
+  width: 142px !important;      /* Forced size */
   height: auto !important;
   margin-bottom: 6px;
   display: block;
