@@ -111,21 +111,9 @@ document.querySelectorAll(".project-card").forEach(card => {
       "perspective(800px) rotateX(0deg) rotateY(0deg) scale(1)";
   });
 
-                                                   // 100% working local unique visitor counter
-const countElement = document.getElementById("visitor-count");
-
-function updateCounter() {
-  let visits = localStorage.getItem("site-visits");
-
-  if (visits === null) { 
-    visits = 1; 
-    localStorage.setItem("site-visits", visits);
-  } else {
-    visits = parseInt(visits) + 1;
-    localStorage.setItem("site-visits", visits);
-  }
-
-  countElement.textContent = visits;
+                                                   async function loadVisits(){
+  const res = await fetch("/api/counter");
+  const data = await res.json();
+  document.getElementById("visitor-count").textContent = data.visits;
 }
-
-updateCounter();
+loadVisits();
