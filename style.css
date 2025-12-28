@@ -3271,31 +3271,30 @@ body.dark::before {
 }
 
 /* === REAL FIX: Buttons styled but still clickable === */
-
 .glass-btn {
   display: inline-block;
   padding: 10px 18px;
   border-radius: 8px;
-  backdrop-filter: blur(10px);
-  background: rgba(255,255,255,0.12);       /* works in dark + light */
-  border: 1px solid rgba(255,255,255,0.25);
-  color: inherit;                          /* adapts to theme */
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.18);
+  color: inherit;
   font-weight: 500;
   text-decoration: none;
-  transition: 0.25s ease;
+  cursor: pointer;                 /* must have */
+  position: relative;              /* ensure no overlays */
+  z-index: 1;                      /* clickable layer */
+  transition: .25s;
 }
 
-/* Hover effect – subtle but classy */
+/* Hover — subtle but premium */
 .glass-btn:hover {
-  background: rgba(255,255,255,0.22);
+  background: rgba(255,255,255,0.18);
+  border-color: rgba(255,255,255,0.35);
   transform: translateY(-2px);
-  border-color: rgba(255,255,255,0.45);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
-/* Click feedback – snappy */
+/* Click feedback */
 .glass-btn:active {
-  transform: translateY(0px) scale(0.97);
-  box-shadow: none;
+  transform: translateY(0) scale(.97);
 }
 
