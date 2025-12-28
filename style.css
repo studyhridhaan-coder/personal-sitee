@@ -3318,41 +3318,49 @@ body.dark::before {
 .project-card img {
   pointer-events: none;
 }
+
+/* FINAL PREMIUM BUTTON — CLEAN, SMOOTH, NO GLITCH */
 .glass-btn {
   display:inline-flex;
   align-items:center;
   justify-content:center;
 
   padding:12px 30px;
-  font-size:15px;
-  font-weight:700;
-  color:#ec3750;               /* text red */
-  background:rgba(255,255,255,0.6);
-  border:2px solid #ec3750;
   border-radius:28px;
+  font-size:15px;
+  font-weight:800;
   text-decoration:none;
   cursor:pointer;
 
-  box-shadow:
-      0 2px 8px rgba(0,0,0,0.04),
-      inset 0 0 0 rgba(255,255,255,0.3);
-  backdrop-filter:blur(14px);
+  color:#ffffff;               /* always white */
+  background:rgba(255,255,255,0.08); /* modern glass */
+  border:2px solid #ec3750;
 
-  transition:.3s cubic-bezier(.3,.7,.4,1.05);
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+
+  transition:
+      background .25s ease,
+      transform .22s ease,
+      box-shadow .25s ease;
+
+  /* minimal shadow so UI stays clean */
+  box-shadow:
+      0 2px 8px rgba(0,0,0,0.05),
+      inset 0 0 0 rgba(255,255,255,0.25);
 }
 
-/* Hover — full red + white text like premium CTA */
+/* HOVER — smooth fill, NO JUMP, NO WEIRD GLITCH */
 .glass-btn:hover {
-  color:#ffffff;
-  background:#ec3750;
-  box-shadow:
-      0 6px 18px rgba(236,55,80,0.3),
-      inset 0 0 10px rgba(255,255,255,0.18);
-  transform:translateY(-2px);
+  background:#ec3750;          /* full red */
+  color:#fff;
+  border-color:#ec3750;
+  transform:translateY(-2px);  /* subtle lift only */
+  box-shadow:0 8px 22px rgba(236,55,80,0.35);
 }
 
-/* Press — natural Apple/MacOS press feel */
+/* CLICK FEEL — clean press */
 .glass-btn:active {
   transform:scale(.96);
-  background:#d73045;
+  background:#d92d45;
 }
