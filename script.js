@@ -115,27 +115,40 @@ document.querySelectorAll(".project-card").forEach(card => {
 const ENDPOINT = "https://api.counterapi.dev/v2/hridhaan-sahays-team-2292/first-counter-2292";
 const API_KEY = "ut_A8S7btW56F4iJuMsKWgTrM71DReNmYsEjV1jsFsu";  // paste exact value
 
+
 async function loadVisits() {
-  // increment count
-  const res = await fetch(`${ENDPOINT}/up`, {
-    method: "POST",
-    headers: {
-      "Authorization": `Bearer ${API_KEY}`
+  try {
+    // increment counter properly in v2
+    const res = await fetch(`${ENDPOINT}/up`, {
+      method: "POST",
+      headers: { "Authorization": `Bearer ${API_KEY}` }
+    });
+
+    const data = await res.json();
+    console.log("Increment Response:", data);
+
+    // Now fetch total count separately
+    const res2 = await fetch(ENDPOINT, {
+      headers: { "Authorization": `Bearer ${API_KEY}` }
+    });
+    const viewData = await res2.json();
+    console.log("Current Count:", viewData);
+
+    const count = viewData.up_count;   // <- correct property for v2
+    const el = document.getElementById("visitor-count");
+
+    // animation
+    let current = 0;
+    function animate() {
+      current += Math.ceil((count - current) * 0.1);
+      el.textContent = current;
+      if (current < count) requestAnimationFrame(animate);
     }
-  });
+    animate();
 
-  const data = await res.json();
-  const target = data.count;
-  const el = document.getElementById("visitor-count");
-
-  let current = 0;
-  const animate = () => {
-    current += Math.ceil((target - current) * 0.08);
-    el.textContent = current;
-    if (current < target) requestAnimationFrame(animate);
-  };
-  animate();
+  } catch(err) {
+    console.error("Counter API Error:", err);
+  }
 }
 
-loadVisits();
-
+document.addEventListener("DOMContentLoaded", loadVisits);
