@@ -3316,3 +3316,22 @@ a,
   opacity: 0.8;
   transform: translateY(-2px);
 }
+
+.back-btn {
+  background: var(--gold);
+  color: #000;
+  font-weight: 600;
+  padding: 10px 16px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: .25s;
+  display:inline-block;
+  margin-top:20px;
+}
+
+.back-btn:hover{
+  opacity:0.85;
+  transform:translateY(-2px);
+}
+
