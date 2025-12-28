@@ -3092,3 +3092,25 @@ body.dark::before {
 .hackclub-badge:hover {
   transform: scale(1.05);
 }
+
+.project-thumb {
+  width: 100%;
+  border-radius: 12px;
+  margin-bottom: 12px;
+  object-fit: cover;
+  aspect-ratio: 16/9;  /* Makes it same style as other project images */
+}
+
+/* badge styling so it matches theme */
+.hackclub-badge {
+  width: 48px;
+  margin-bottom: 10px;
+  opacity: 0.95;
+  display: block;
+  transition: transform .2s ease;
+}
+
+.hackclub-badge:hover {
+  transform: scale(1.05);
+}
+
