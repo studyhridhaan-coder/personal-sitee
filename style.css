@@ -3311,3 +3311,10 @@ opacity: 0.7
 
 position: relative;
 z-index: 9999;
+
+.glass-btn {
+  position: relative;
+  z-index: 99999 !important;
+  pointer-events: auto !important;
+}
+
