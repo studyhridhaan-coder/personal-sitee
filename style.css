@@ -3101,3 +3101,17 @@ body.dark::before {
   aspect-ratio: 16/9;  /* Makes it same style as other project images */
 }
 
+.hackclub-badge {
+  width: 42px !important;      /* Forced size */
+  height: auto !important;
+  margin-bottom: 6px;
+  display: block;
+  opacity: 0.9;
+  transition: transform .2s ease;
+}
+
+.hackclub-badge:hover {
+  transform: scale(1.08);
+  opacity: 1;
+}
+
