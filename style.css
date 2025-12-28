@@ -3270,3 +3270,36 @@ body.dark::before {
   transform:translateY(-2px);
 }
 
+/* === REAL FIX: Buttons styled but still clickable === */
+
+/* base style for both blog + projects */
+.back-btn,
+.read-btn,
+.glass-btn {
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  color: var(--gold);
+  transition: .25s ease;
+  display: inline-block;
+  pointer-events: auto; /* keeps clickable */
+  z-index: 5;           /* NOT 9999 */
+}
+
+.back-btn:hover,
+.read-btn:hover,
+.glass-btn:hover {
+  opacity: .85;
+  transform: translateY(-2px);
+}
+
+/* ensure project card doesn't block clicks */
+.project-card * {
+  pointer-events: auto;
+}
+.project-card::before,
+.project-card::after { pointer-events:none; }
+
