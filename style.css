@@ -3270,31 +3270,37 @@ body.dark::before {
   transform:translateY(-2px);
 }
 
-/* === REAL FIX: Buttons styled but still clickable === */
+
 .glass-btn {
   display: inline-block;
-  padding: 10px 18px;
-  border-radius: 8px;
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.18);
+  padding: 10px 20px;
+  margin-top: 12px;
+  
+  /* Subtle glass effect */
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  
+  /* Clean border */
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 6px;
+  
+  /* Text */
   color: inherit;
-  font-weight: 500;
   text-decoration: none;
-  cursor: pointer;                 /* must have */
-  position: relative;              /* ensure no overlays */
-  z-index: 1;                      /* clickable layer */
-  transition: .25s;
+  font-size: 14px;
+  font-weight: 500;
+  
+  /* Smooth transitions */
+  transition: all 0.25s ease;
 }
 
-/* Hover — subtle but premium */
 .glass-btn:hover {
-  background: rgba(255,255,255,0.18);
-  border-color: rgba(255,255,255,0.35);
-  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.25);
+  transform: translateX(4px);
 }
 
-/* Click feedback */
 .glass-btn:active {
-  transform: translateY(0) scale(.97);
+  transform: translateX(2px);
 }
-
