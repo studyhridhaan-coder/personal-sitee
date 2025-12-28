@@ -3336,3 +3336,21 @@ z-index: 9999;
 }
 
 
+@media (min-width: 768px) {
+    * {
+        pointer-events: auto !important;
+    }
+
+    /* Kill overlays that block PC clicks */
+    .overlay, .project-overlay, .card-overlay, .hero-overlay, .banner-overlay,
+    .bg-blur, .glass-overlay, .project-card::before, .project-card::after,
+    section::before, section::after, div::before, div::after {
+        pointer-events: none !important;
+    }
+
+    .glass-btn {
+        z-index: 9999999 !important;
+    }
+}
+
+
