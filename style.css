@@ -3227,4 +3227,19 @@ body.dark::before {
 }
 
 
+.project-card {
+  background: var(--card);
+  border-radius: 22px;
+  padding: 18px;
+  transition: transform .2s ease-out, box-shadow .25s ease;
+  transform-style: preserve-3d;
+  will-change: transform;
+  cursor: pointer;
+}
+
+.project-card:hover {
+  box-shadow:
+      0 25px 40px rgba(0,0,0,.14),
+      0 0 0 1px rgba(255,255,255,.15) inset;
+}
 
