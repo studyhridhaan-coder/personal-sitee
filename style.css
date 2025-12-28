@@ -3310,118 +3310,70 @@ body.dark::before {
   }
 }
 
-.visits {
-  margin-top: 8px;
-  font-size: 0.9rem;
-  opacity: .7;
-  text-align:center;
-  transition: .25s ease;
-}
-
-.visits span {
-  font-weight: 700;
-  color: var(--gold);
-  transition: .25s ease;
-}
-
-/* Hover glow flex — not childish */
-.visits:hover span {
-  text-shadow: 0 0 8px rgba(255,215,100,.55);
-  color: #ffdf6e;
-  transform: scale(1.05);
-}
-/* Container for buttons inside project cards */
 .project-links {
-  display: flex;
-  gap: 10px;
-  margin-top: 14px;
-}
-
-.project-links {
-  display: flex;
-  gap: 12px;
-  margin-top: 14px;
-}
-.glass-btn {
   position: relative;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
+  z-index: 10;
+}
 
-  padding: 12px 28px;
+.project-card img {
+  pointer-events: none;
+}
+
+/* Base modern button style */
+.glass-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 32px;
+  
+  background: rgba(255, 255, 255, 0.02); /* slight glass */
+  border: 2px solid #ec3750; /* red border */
+  border-radius: 30px;
+  
   font-size: 15px;
-  font-weight: 700;
+  font-weight: 800;
   color: #ffffff;
   text-decoration: none;
-  border-radius: 14px;
+  letter-spacing: .3px;
   cursor: pointer;
-  letter-spacing: .4px;
-
-  background: rgba(255,0,0,0.22);
-  backdrop-filter: blur(22px) saturate(220%);
-  -webkit-backdrop-filter: blur(22px) saturate(220%);
   
-  border: 2px solid rgba(255,0,0,0.55);
-  box-shadow:
-    0 0 12px rgba(255,0,0,0.45),
-    0 0 28px rgba(255,0,0,0.15),
-    inset 0 0 14px rgba(255,255,255,0.08);
-
-  transition: .28s cubic-bezier(.3,.7,.4,1.05);
+  backdrop-filter: blur(18px); /* clean glass feel */
+  position: relative;
   overflow: hidden;
+  transition: .3s ease;
 }
 
-/* Minecraft Enchant Aura */
+/* Subtle shimmer overlay */
 .glass-btn::before {
   content:"";
   position:absolute;
-  inset:-60%;
-  background: conic-gradient(
-      from 0deg,
-      rgba(255, 0, 80, .35),
-      rgba(0,255,255,.25),
-      rgba(255, 0, 80, .35)
-  );
-  animation: spin 5s linear infinite;
-  mix-blend-mode: screen;
-  opacity: .7;
-}
-
-/* Shine Glint */
-.glass-btn::after {
-  content:"";
-  position:absolute;
-  top:0; left:-120%;
-  height:100%; width:65%;
-  background: linear-gradient(115deg,
+  top:0;
+  left:-100%;
+  width:60%;
+  height:100%;
+  
+  background: linear-gradient(120deg,
     transparent,
-    rgba(255,255,255,.45),
+    rgba(255,255,255,0.45),
     transparent
   );
-  transform: skew(-25deg);
-  animation: swipe 3.5s infinite ease-in-out;
+  transform: skew(-20deg);
+  transition: .45s ease;
 }
 
-@keyframes spin { to{ transform: rotate(360deg);} }
-
-@keyframes swipe {
-  0%{ left:-130%; }
-  60%{ left:130%; }
-  100%{ left:130%; }
+/* Light shimmer animation */
+.glass-btn:hover::before {
+  left:120%;
 }
 
-/* Hover — premium lift */
-.glass-btn:hover{
-  transform: translateY(-4px) scale(1.05);
-  background: rgba(255,0,0,0.32);
-  border-color: rgba(255,0,0,0.8);
-  box-shadow:
-    0 0 28px rgba(255,0,0,.75),
-    0 0 40px rgba(0,255,255,.35);
+/* Hover — clean red fill + stop shine */
+.glass-btn:hover {
+  background:#ec3750 !important;
+  color:#fff;
+  border-color:#ec3750;
+  box-shadow:0 8px 24px rgba(236,55,80,0.4);
 }
 
-/* Press */
-.glass-btn:active{
-  transform: scale(.92);
-  background: rgba(255,0,0,.45);
+.glass-btn:active {
+  transform: scale(0.95);
 }
