@@ -3135,4 +3135,16 @@ body.dark::before {
   opacity: 1;
 }
 
+.hackclub-badge {
+  width: 26px;       /* REDUCED size — clean + subtle */
+  margin-bottom: 6px;
+  opacity: 0.9;
+  display: block;
+  transition: transform .2s ease, opacity .2s ease;
+}
+
+.hackclub-badge:hover {
+  transform: scale(1.07);
+  opacity: 1;
+}
 
