@@ -86,16 +86,14 @@ document.addEventListener("DOMContentLoaded", () => {
       navMobile.classList.remove("open");
     });
   });
-});
-
-// Stronger 3D tilt with diagonal tracking
+});// Stronger 3D tilt with diagonal tracking
 document.querySelectorAll(".project-card").forEach(card => {
   card.addEventListener("mousemove", e => {
     const rect = card.getBoundingClientRect();
     const x = (e.clientX - rect.left) / rect.width;
     const y = (e.clientY - rect.top) / rect.height;
 
-    const rotationX = (y - 0.5) * 18;   // increase depth here
+    const rotationX = (y - 0.5) * 18;
     const rotationY = (0.5 - x) * 18;
 
     card.style.transform = `
@@ -110,10 +108,6 @@ document.querySelectorAll(".project-card").forEach(card => {
     card.style.transform =
       "perspective(800px) rotateX(0deg) rotateY(0deg) scale(1)";
   });
+});
 
-                                                   async function loadVisits(){
-  const res = await fetch("/api/counter");
-  const data = await res.json();
-  document.getElementById("visitor-count").textContent = data.visits;
-}
-loadVisits();
+                                                   
