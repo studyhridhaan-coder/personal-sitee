@@ -3391,3 +3391,28 @@ body, html {
   pointer-events: auto !important;
 }
 
+/* NAV should be top layer */
+nav, .navbar, header {
+  position: relative;
+  z-index: 1000;
+}
+
+/* Blog content layer */
+#page-blog {
+  position: relative;
+  z-index: 500;
+}
+
+/* Buttons inside blog */
+.read-btn, .back-btn, .glass-btn {
+  position: relative;
+  z-index: 600;
+  pointer-events: auto;
+}
+
+/* Project cards lower so they don't overlap */
+.project-card {
+  position: relative;
+  z-index: 1;
+  transform-style: preserve-3d;
+}
