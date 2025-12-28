@@ -111,29 +111,31 @@ document.querySelectorAll(".project-card").forEach(card => {
       "perspective(800px) rotateX(0deg) rotateY(0deg) scale(1)";
   });
 });
-const COUNTER_ID = "first-counter-2292";     // paste your Counter ID
-const API_KEY = "ut_A8S7btW56F4iJuMsKWgTrM71DReNmYsEjV1jsFsu";        // paste your API KEY
+
+const ENDPOINT = "https://api.counterapi.dev/v2/hridhaan-sahays-team-2292/first-counter-2292";
+const API_KEY = "ut_A8S7btW56F4iJuMsKWgTrM71DReNmYsEjV1jsFsu";  // paste exact value
 
 async function loadVisits() {
-  const res = await fetch("https://app.counterapi.dev/api/v1/visits/increment", {
+  // increment count
+  const res = await fetch(`${ENDPOINT}/up`, {
     method: "POST",
     headers: {
-      "Content-Type": "application/json",
-      "x-api-key": API_KEY
-    },
-    body: JSON.stringify({ counter: COUNTER_ID })
+      "Authorization": `Bearer ${API_KEY}`
+    }
   });
 
   const data = await res.json();
+  const target = data.count;
   const el = document.getElementById("visitor-count");
 
-  let current = 0, target = data.count;
-  function animate() {
+  let current = 0;
+  const animate = () => {
     current += Math.ceil((target - current) * 0.08);
     el.textContent = current;
     if (current < target) requestAnimationFrame(animate);
-  }
+  };
   animate();
 }
 
 loadVisits();
+
