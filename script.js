@@ -111,23 +111,30 @@ document.querySelectorAll(".project-card").forEach(card => {
       "perspective(800px) rotateX(0deg) rotateY(0deg) scale(1)";
   });
 });
+const COUNTER_ID = "first-counter-2292";     // paste your Counter ID
+const API_KEY = "ut_A8S7btW56F4iJuMsKWgTrM71DReNmYsEjV1jsFsu";        // paste your API KEY
 
-// ========= VISITOR COUNTER WITH SMOOTH ANIMATION =========
 async function loadVisits() {
-  const res = await fetch('https://api.countapi.xyz/hit/hridhaan.bitbuzz.club/visits');
+  const res = await fetch("https://app.counterapi.dev/api/v1/visits/increment", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "x-api-key": API_KEY
+    },
+    body: JSON.stringify({ counter: COUNTER_ID })
+  });
+
   const data = await res.json();
-  const target = data.value;
   const el = document.getElementById("visitor-count");
-  let current = 0;
-
-  const update = () => {
-    current += Math.ceil((target - current) * 0.08); // smooth ease-out animation
+  
+  // animation
+  let current = 0, target = data.count;
+  function animate() {
+    current += Math.ceil((target - current) * 0.08);
     el.textContent = current;
-    if (current < target) requestAnimationFrame(update);
+    if (current < target) requestAnimationFrame(animate);
   }
-  update();
+  animate();
 }
+
 loadVisits();
-
-
-
