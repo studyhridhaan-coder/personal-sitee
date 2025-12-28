@@ -3318,3 +3318,21 @@ z-index: 9999;
   pointer-events: auto !important;
 }
 
+/* FINAL OVERRIDE FIX */
+.glass-btn {
+  position: relative !important;
+  z-index: 999999 !important;
+  pointer-events: auto !important;
+  color: #fff !important;
+  font-weight: 700 !important;
+  text-decoration: none !important;
+  display: inline-block !important;
+}
+
+/* Disable overlays that block clicks */
+*::before,
+*::after {
+  pointer-events: none !important;
+}
+
+
