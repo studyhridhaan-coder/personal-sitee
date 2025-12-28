@@ -3304,4 +3304,10 @@ filter
 opacity: 0.7
 ::before
 ::after
+.glass-btn,
+.glass-btn * {
+  pointer-events: auto !important;
+}
 
+position: relative;
+z-index: 9999;
