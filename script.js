@@ -126,8 +126,7 @@ async function loadVisits() {
 
   const data = await res.json();
   const el = document.getElementById("visitor-count");
-  
-  // animation
+
   let current = 0, target = data.count;
   function animate() {
     current += Math.ceil((target - current) * 0.08);
