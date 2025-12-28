@@ -3337,59 +3337,80 @@ body.dark::before {
   margin-top: 14px;
 }
 
-/* Main Glass Button */
+.project-links {
+  display: flex;
+  gap: 12px;
+  margin-top: 14px;
+}
+
+/* GLASS + NEON EDGE BUTTON — premium */
 .glass-btn {
-  display: inline-block;
-  padding: 9px 20px;
-  font-size: 14.5px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 10px 22px;
+  font-size: 15px;
   font-weight: 600;
+  border-radius: 50px; /* premium pill look */
+
   color: #fff;
   text-decoration: none;
-  border-radius: 10px;
-  
-  background: rgba(255, 255, 255, 0.18);
-  backdrop-filter: blur(12px) saturate(160%);
-  -webkit-backdrop-filter: blur(12px) saturate(160%);
-  border: 1.5px solid rgba(255, 255, 255, 0.35);
+  cursor: pointer;
 
-  transition: transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1.2px solid rgba(255, 255, 255, 0.3);
+
+  backdrop-filter: blur(14px) saturate(160%);
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
+
+  box-shadow: inset 0 0 12px rgba(255,255,255,0.1),
+              0 4px 18px rgba(0,0,0,0.25);
+
+  transition: 
+    transform .25s ease,
+    box-shadow .25s ease,
+    background .25s ease,
+    border-color .25s ease;
+
   position: relative;
   overflow: hidden;
+  z-index: 1;        /* fixes unclickable issue from card overflows */
 }
 
-/* Hover - premium lift + clarity */
+/* Hover — POP + neon rim */
 .glass-btn:hover {
-  transform: translateY(-3px);
-  background: rgba(255, 255, 255, 0.28);
-  box-shadow: 0 6px 18px rgba(0,0,0,0.20);
+  transform: translateY(-3px) scale(1.03);
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.6);
+
+  box-shadow:
+    0 6px 22px rgba(0,0,0,0.35),
+    0 0 12px rgba(0,255,255,0.6); /* neon accent */
 }
 
-/* Click Feedback - gives that "felt" press */
+/* Click — tactile press */
 .glass-btn:active {
   transform: scale(0.95);
-  background: rgba(255, 255, 255, 0.38);
-  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+  box-shadow: 0 3px 8px rgba(0,0,0,0.3);
 }
 
-
-/* Optional Ripple Effect - makes click satisfying without JS */
+/* Ripple effect */
 .glass-btn::after {
   content: "";
   position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 0;
-  height: 0;
-  background: rgba(255, 255, 255, 0.5);
-  border-radius: 50%;
+  width: 0; height: 0;
+  top: 50%; left: 50%;
   transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: rgba(255,255,255,0.5);
   opacity: 0;
-  transition: width 0.4s ease, height 0.4s ease, opacity 0.5s ease;
+  transition: width .45s ease, height .45s ease, opacity .55s ease;
+  z-index: -1;
 }
 
 .glass-btn:active::after {
-  width: 180px;
-  height: 180px;
+  width: 220px;
+  height: 220px;
   opacity: 0;
 }
