@@ -3331,4 +3331,30 @@ body.dark::before {
   transform: scale(1.05);
 }
 
+.glass-btn {
+  display: inline-block;
+  padding: 8px 18px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px) saturate(150%);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  transition: 0.25s ease;
+}
+
+.glass-btn:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+}
+
+.glass-btn:active {
+  transform: scale(0.96);
+  background: rgba(255, 255, 255, 0.35);
+}
+
+
 
