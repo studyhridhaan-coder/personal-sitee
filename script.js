@@ -110,21 +110,22 @@ document.querySelectorAll(".project-card").forEach(card => {
     card.style.transform =
       "perspective(800px) rotateX(0deg) rotateY(0deg) scale(1)";
   });
-});
+});const APP_ID = "YOUR_APP_ID";
+const API_KEY = "YOUR_REST_KEY";
 
-async function loadVisits(){
-    const res = await fetch("https://countapi.store/hit/hridhaan-portfolio/visits");
-    const data = await res.json();
+async function loadVisits() {
+    let res = await fetch(`https://api.backendless.com/${APP_ID}/${API_KEY}/data/counter/1`);
+    let data = await res.json();
+    
+    let count = data.visits + 1;
 
-    const el = document.getElementById("visitor-count");
-    let current = 0, target = data.value;
+    await fetch(`https://api.backendless.com/${APP_ID}/${API_KEY}/data/counter/1`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ visits: count })
+    });
 
-    function animate(){
-        current += Math.ceil((target - current)*0.1);
-        el.textContent = current;
-        if(current < target) requestAnimationFrame(animate);
-    }
-    animate();
+    document.getElementById("visitor-count").textContent = count;
 }
 
 loadVisits();
