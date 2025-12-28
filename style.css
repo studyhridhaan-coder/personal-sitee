@@ -3489,3 +3489,88 @@ body.dark::before {
 .glass-btn:hover::before {
   opacity: 1;
 }
+
+.enchanted-btn {
+  position: relative;
+  display: inline-block;
+  padding: 12px 28px;
+  font-size: 15px;
+  font-weight: 700;
+  color: #fff;
+  text-decoration: none;
+  letter-spacing: 0.4px;
+  border-radius: 10px;
+  cursor: pointer;
+  
+  background: linear-gradient(135deg, #0a0a0a, #121212, #1a1a1a);
+  border: 2px solid rgba(138, 78, 255, 0.6);
+
+  overflow: hidden;
+
+  transition: 0.28s cubic-bezier(.3,.7,.4,1);
+  box-shadow: 0 0 12px rgba(138, 78, 255, 0.25);
+}
+
+/* Purple-Aqua Minecraft Enchantment aura */
+.enchanted-btn::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+
+  background: linear-gradient(
+    120deg,
+    rgba(102,0,255,0.15),
+    rgba(0,255,255,0.15),
+    rgba(102,0,255,0.15)
+  );
+  
+  animation: enchant 3.8s linear infinite;
+  mix-blend-mode: screen;
+}
+
+/* Shine glint stripe animation */
+.enchanted-btn::after {
+  content:"";
+  position:absolute;
+  top:0;
+  left:-100%;
+  width:60%;
+  height:100%;
+  
+  background: linear-gradient(120deg,
+    transparent,
+    rgba(255,255,255,0.35),
+    transparent
+  );
+
+  transform: skew(-20deg);
+  animation: glint 2.8s infinite ease-in-out;
+}
+
+@keyframes glint {
+  0% { left:-120%; }
+  60% { left:120%; }
+  100% { left:120%; }
+}
+
+@keyframes enchant {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Hover — levitation effect */
+.enchanted-btn:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 0 25px rgba(138,78,255,0.65),
+              0 0 40px rgba(0,255,255,0.35);
+  border-color: rgba(138,78,255,0.9);
+}
+
+/* Press feel */
+.enchanted-btn:active {
+  transform: scale(0.92);
+}
+
