@@ -3122,4 +3122,17 @@ body.dark::before {
   margin-bottom: 12px;
 }
 
+.hackclub-badge {
+  width: 32px;          /* <- reduced size */
+  margin-bottom: 8px;
+  opacity: 0.9;
+  display: block;
+  transition: transform .2s ease, opacity .2s ease;
+}
+
+.hackclub-badge:hover {
+  transform: scale(1.08);
+  opacity: 1;
+}
+
 
