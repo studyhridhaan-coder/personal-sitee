@@ -3417,3 +3417,9 @@ body.dark::before {
   }
 }
 
+.typing-cursor {
+  display: inline-block;
+  margin-left: 2px;
+  animation: blink 1s steps(2, start) infinite;
+}
+
