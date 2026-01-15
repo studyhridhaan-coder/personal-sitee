@@ -3367,4 +3367,8 @@ body.dark::before {
   margin-left: auto !important;
   margin-right: auto !important;
 }
+/* ☢️ NUCLEAR RESET FOR PROJECT-CARD2 */
+.project-card2 {
+  all: unset !important;
+}
 
