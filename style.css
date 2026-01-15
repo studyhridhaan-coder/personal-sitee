@@ -3389,3 +3389,31 @@ body.dark::before {
 .projects-grid > .project-card2 {
   grid-column: auto !important;
 }
+
+/* Typing animation line */
+.typing-line {
+  margin-top: 12px;
+  font-size: 1rem;
+  color: #666;
+  font-weight: 400;
+}
+
+.cursor {
+  display: inline-block;
+  margin-left: 2px;
+  animation: blink 1s steps(2, start) infinite;
+}
+
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .cursor {
+    animation: none;
+  }
+}
+
