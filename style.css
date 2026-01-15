@@ -3389,19 +3389,3 @@ body.dark::before {
 .projects-grid > .project-card2 {
   grid-column: auto !important;
 }
-.project-card2 img {
-  width: 100%;
-  max-width: 100%;
-  height: 220px;
-
-  object-fit: contain;
-  display: block;
-
-  margin: 0 auto;
-}
-
-.project-card2 {
-  background: red !important;
-  border: 10px solid yellow !important;
-}
-
