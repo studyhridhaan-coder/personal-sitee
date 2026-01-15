@@ -109,5 +109,42 @@ document.querySelectorAll(".project-card").forEach(card => {
       "perspective(800px) rotateX(0deg) rotateY(0deg) scale(1)";
   });
 });
+<script>
+const phrases = [
+  "I like exploring space.",
+  "I like writing clean code.",
+  "I like building cool projects.",
+  "I like competitive programming.",
+  "I like learning something new."
+];
+
+const textEl = document.getElementById("typingText");
+
+let phraseIndex = 0;
+let charIndex = 0;
+let isDeleting = false;
+
+function typeLoop() {
+  const currentPhrase = phrases[phraseIndex];
+
+  if (!isDeleting) {
+    textEl.textContent = currentPhrase.slice(0, charIndex++);
+    if (charIndex > currentPhrase.length) {
+      setTimeout(() => isDeleting = true, 1200);
+    }
+  } else {
+    textEl.textContent = currentPhrase.slice(0, charIndex--);
+    if (charIndex === 0) {
+      isDeleting = false;
+      phraseIndex = (phraseIndex + 1) % phrases.length;
+    }
+  }
+
+  const speed = isDeleting ? 40 : 70;
+  setTimeout(typeLoop, speed);
+}
+
+typeLoop();
+</script>
 
                                                    
