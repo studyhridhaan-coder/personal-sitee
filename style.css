@@ -3399,3 +3399,9 @@ body.dark::before {
 
   margin: 0 auto;
 }
+
+.project-card2 {
+  background: red !important;
+  border: 10px solid yellow !important;
+}
+
