@@ -3308,4 +3308,20 @@ body.dark::before {
   transition: transform 0.4s ease;
 }
 
+.project-card wider one {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.project-card wider one img {
+  flex-shrink: 0;
+}
+
+@media (min-width: 1024px) {
+  .project-card wider one{
+    min-height: 420px;
+  }
+}
+
+
 
