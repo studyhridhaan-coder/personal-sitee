@@ -3423,3 +3423,11 @@ body.dark::before {
   animation: blink 1s steps(2, start) infinite;
 }
 
+
+.hero-name::after,
+.hero-name::before {
+  content: none !important;
+  animation: none !important;
+}
+
+
