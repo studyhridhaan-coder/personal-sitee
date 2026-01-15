@@ -109,7 +109,7 @@ document.querySelectorAll(".project-card").forEach(card => {
       "perspective(800px) rotateX(0deg) rotateY(0deg) scale(1)";
   });
 });
-<script>
+
 const phrases = [
   "I like exploring space.",
   "I like writing clean code.",
@@ -145,6 +145,5 @@ function typeLoop() {
 }
 
 typeLoop();
-</script>
 
                                                    
