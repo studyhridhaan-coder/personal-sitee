@@ -3324,4 +3324,47 @@ body.dark::before {
 }
 
 
+/* FORCE PROJECT-CARD2 TO SHRINK */
+.project-card2 {
+  width: auto !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+
+  display: flex !important;
+  flex-direction: column !important;
+
+  grid-column: auto !important;
+  align-self: stretch !important;
+  justify-self: stretch !important;
+
+  box-sizing: border-box !important;
+}
+
+.project-card2 * {
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.project-card2 img {
+  display: block !important;
+  width: 100% !important;
+  height: 220px !important;
+
+  object-fit: contain !important;
+
+  margin: 0 auto !important;
+  flex-shrink: 0 !important;
+}
+
+.projects-grid {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
+  align-items: stretch !important;
+}
+
+.project-card2 {
+  max-width: 360px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
 
