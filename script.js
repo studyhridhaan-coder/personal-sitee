@@ -171,3 +171,43 @@ window.addEventListener("load", () => {
   }, 800);
 });
 
+document.addEventListener("DOMContentLoaded", () => {
+  // 1. Setup Yellow Highlight
+  const yellowTarget = document.querySelector('#yellow-highlight');
+  const yellowNote = RoughNotation.annotate(yellowTarget, {
+    type: 'highlight',
+    color: '#fff000', // Bright Highlighter Yellow
+    padding: [2, 4],
+    iterations: 1,
+    multiline: true,
+    animationDuration: 800
+  });
+
+  // 2. Setup Red Underline
+  const redTarget = document.querySelector('#red-underline');
+  const redNote = RoughNotation.annotate(redTarget, {
+    type: 'underline',
+    color: '#ff4d4d', // Soft Red "Apple Pencil" color
+    padding: 2,
+    strokeWidth: 2,
+    iterations: 2,
+    animationDuration: 600
+  });
+
+  // 3. Trigger on Scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        // Start Yellow animation
+        setTimeout(() => yellowNote.show(), 400);
+        
+        // Start Red animation slightly after
+        setTimeout(() => redNote.show(), 1200);
+        
+        observer.unobserve(entry.target); // Only animate once
+      }
+    });
+  }, { threshold: 0.5 });
+
+  observer.observe(document.querySelector('.about'));
+});
