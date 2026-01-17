@@ -1,3 +1,7 @@
+/* ===============================
+   PAGE ROUTING (SPA)
+================================ */
+
 const home = document.getElementById("page-home");
 const achievements = document.getElementById("page-achievements");
 const blog = document.getElementById("page-blog");
@@ -29,7 +33,7 @@ function showPage(page, push = true) {
     "Hridhaan Sahay — Portfolio";
 }
 
-// Handle nav clicks
+// Nav routing
 document.querySelectorAll("[data-route]").forEach(el => {
   el.addEventListener("click", e => {
     e.preventDefault();
@@ -37,7 +41,7 @@ document.querySelectorAll("[data-route]").forEach(el => {
   });
 });
 
-// Handle back/forward
+// Browser back / forward
 window.addEventListener("popstate", () => {
   const page = location.pathname.replace("/", "") || "home";
   showPage(page, false);
@@ -47,37 +51,49 @@ window.addEventListener("popstate", () => {
 const initialPage = location.pathname.replace("/", "") || "home";
 showPage(initialPage, false);
 
+
+/* ===============================
+   BLOG READ MODE
+================================ */
+
 document.querySelectorAll("#page-blog .read-btn").forEach(btn => {
-  btn.onclick = () => {
+  btn.addEventListener("click", () => {
     document.querySelector(".blog-list").style.display = "none";
-    document.querySelector("#post-1").classList.remove("hidden");
-  };
+    document.getElementById("post-1").classList.remove("hidden");
+  });
 });
+
+
+/* ===============================
+   SECTION SCROLL (FROM ANY PAGE)
+================================ */
 
 document.querySelectorAll("[data-section]").forEach(link => {
   link.addEventListener("click", e => {
     e.preventDefault();
     const section = link.dataset.section;
 
-    // Always go to home first
     showPage("home");
 
-    // Wait for DOM switch, then scroll
     setTimeout(() => {
-      document.getElementById(section)?.scrollIntoView({
-        behavior: "smooth"
-      });
+      document.getElementById(section)?.scrollIntoView({ behavior: "smooth" });
     }, 50);
   });
 });
+
+
+/* ===============================
+   MOBILE NAV
+================================ */
+
 document.addEventListener("DOMContentLoaded", () => {
   const navToggle = document.querySelector(".nav-toggle");
   const navMobile = document.querySelector(".nav-mobile");
 
   if (!navToggle || !navMobile) return;
 
-  navToggle.addEventListener("click", (e) => {
-    e.stopPropagation(); // prevents SPA click handlers from blocking
+  navToggle.addEventListener("click", e => {
+    e.stopPropagation();
     navMobile.classList.toggle("open");
   });
 
@@ -86,29 +102,40 @@ document.addEventListener("DOMContentLoaded", () => {
       navMobile.classList.remove("open");
     });
   });
-});// Stronger 3D tilt with diagonal tracking
+});
+
+
+/* ===============================
+   PROJECT CARD 3D TILT
+================================ */
+
 document.querySelectorAll(".project-card").forEach(card => {
   card.addEventListener("mousemove", e => {
     const rect = card.getBoundingClientRect();
     const x = (e.clientX - rect.left) / rect.width;
     const y = (e.clientY - rect.top) / rect.height;
 
-    const rotationX = (y - 0.5) * 18;
-    const rotationY = (0.5 - x) * 18;
+    const rotateX = (y - 0.5) * 18;
+    const rotateY = (0.5 - x) * 18;
 
     card.style.transform = `
       perspective(800px)
-      rotateX(${rotationX}deg)
-      rotateY(${rotationY}deg)
+      rotateX(${rotateX}deg)
+      rotateY(${rotateY}deg)
       scale(1.05)
     `;
   });
 
   card.addEventListener("mouseleave", () => {
     card.style.transform =
-      "perspective(800px) rotateX(0deg) rotateY(0deg) scale(1)";
+      "perspective(800px) rotateX(0) rotateY(0) scale(1)";
   });
 });
+
+
+/* ===============================
+   HERO TYPING LOOP
+================================ */
 
 const phrases = [
   "I like exploring space.",
@@ -121,42 +148,38 @@ const phrases = [
 const textEl = document.getElementById("typingText");
 let phraseIndex = 0;
 let charIndex = 0;
-let isDeleting = false;
+let deleting = false;
 
 function typeLoop() {
-  const currentPhrase = phrases[phraseIndex];
-  
-  // Determine what to display
-  const displayText = currentPhrase.slice(0, charIndex);
-  
-  // Use &nbsp; or similar if empty to prevent height collapse
-  textEl.textContent = displayText || "\u00A0"; 
+  const phrase = phrases[phraseIndex];
+  textEl.textContent = phrase.slice(0, charIndex) || "\u00A0";
 
-  if (!isDeleting) {
+  if (!deleting) {
     charIndex++;
-    if (charIndex > currentPhrase.length) {
-      isDeleting = true;
-      setTimeout(typeLoop, 2000); // Pause at the end of a phrase
+    if (charIndex > phrase.length) {
+      deleting = true;
+      setTimeout(typeLoop, 2000);
       return;
     }
   } else {
     charIndex--;
     if (charIndex === 0) {
-      isDeleting = false;
+      deleting = false;
       phraseIndex = (phraseIndex + 1) % phrases.length;
-      setTimeout(typeLoop, 500); // Short pause before starting next word
+      setTimeout(typeLoop, 500);
       return;
     }
   }
 
-  const speed = isDeleting ? 40 : 80;
-  setTimeout(typeLoop, speed);
+  setTimeout(typeLoop, deleting ? 40 : 80);
 }
 
-window.addEventListener("load", () => {
-  typeLoop();
-});
+window.addEventListener("load", typeLoop);
 
+
+/* ===============================
+   NETFLIX INTRO
+================================ */
 
 window.addEventListener("load", () => {
   const intro = document.getElementById("netflix-intro");
@@ -164,56 +187,51 @@ window.addEventListener("load", () => {
 
   setTimeout(() => {
     intro.classList.add("active");
-
-    setTimeout(() => {
-      intro.remove();
-    }, 1300);
+    setTimeout(() => intro.remove(), 1300);
   }, 800);
 });
 
-document.addEventListener("DOMContentLoaded", () => {
-  document.addEventListener("DOMContentLoaded", () => {
-  // 1. SELECT THE ELEMENTS
-  const yellowEl = document.querySelector('#yellow-highlight');
-  const redEl = document.querySelector('#red-underline');
-  // Optional: Add a third one for your YouTube if you want
-  const youtubeEl = document.querySelector('#draw-youtube'); 
 
-  // 2. CONFIGURE THE "PENCIL" STYLES
+/* ===============================
+   ROUGH NOTATION (ABOUT SECTION)
+================================ */
+
+document.addEventListener("DOMContentLoaded", () => {
+  if (typeof RoughNotation === "undefined") return;
+
+  const yellowEl = document.getElementById("draw-space");
+  const redEl = document.getElementById("draw-connect");
+  const youtubeEl = document.getElementById("draw-youtube");
+
+  if (!yellowEl || !redEl) return;
+
   const yellowDraw = RoughNotation.annotate(yellowEl, {
-    type: 'highlight',
-    color: '#fff000',      // Premium Bright Yellow
+    type: "highlight",
+    color: "#fff000",
     padding: [2, 4],
     animationDuration: 1000,
-    multiline: true,       // Keeps it visible even if text wraps
+    multiline: true,
     strokeWidth: 2
   });
 
   const redDraw = RoughNotation.annotate(redEl, {
-    type: 'underline',
-    color: '#ff4d4d',      // Red pen color
+    type: "underline",
+    color: "#ff4d4d",
     padding: 2,
     strokeWidth: 2.5,
-    iterations: 3,         // This makes it "move" back and forth
+    iterations: 3,
     animationDuration: 800
   });
 
-  // 3. THE TRIGGER (Only animates when they look at it)
-  const observer = new IntersectionObserver((entries) => {
+  const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        // Sequential animation: Yellow first, Red second
         setTimeout(() => yellowDraw.show(), 600);
         setTimeout(() => redDraw.show(), 1600);
-        
-        // Stop watching once it has animated
-        observer.unobserve(entry.target);
+        observer.disconnect();
       }
     });
-  }, { 
-    threshold: 0.8 // Triggers when 80% of the text is visible
-  });
+  }, { threshold: 0.8 });
 
-  // Start watching the section
   observer.observe(yellowEl);
 });
