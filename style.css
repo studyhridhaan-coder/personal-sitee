@@ -3534,3 +3534,30 @@ body.dark::before {
 #netflix-intro.active .nf-bottom {
   transform: translateY(100%);
 }
+
+/* === HARD OVERRIDE: STOP ALL BLINKING & RETYPING === */
+
+/* Kill ALL animations on hero name */
+.hero-name,
+.hero-name * {
+  animation: none !important;
+  transition: none !important;
+}
+
+/* Force text to stay visible */
+.hero-name {
+  width: auto !important;
+  opacity: 1 !important;
+  overflow: visible !important;
+  white-space: normal !important;
+}
+
+/* Kill any cursor or pseudo cursor */
+.hero-name::before,
+.hero-name::after,
+.cursor,
+.typing-cursor {
+  content: none !important;
+  display: none !important;
+  animation: none !important;
+}
