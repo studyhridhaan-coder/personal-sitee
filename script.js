@@ -146,19 +146,16 @@ function typeLoop() {
 
 
 typeLoop();
-
 window.addEventListener("load", () => {
   const loader = document.getElementById("loader");
-
   if (!loader) return;
 
   setTimeout(() => {
     loader.classList.add("active");
 
     setTimeout(() => {
-      loader.classList.add("done");
+      loader.remove(); // SAFE NOW
     }, 1100);
 
-  }, 1200);
+  }, 1000);
 });
-
