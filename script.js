@@ -153,8 +153,7 @@ function typeLoop() {
   setTimeout(typeLoop, speed);
 }
 
-// Start the loop
-typeLoop();window.addEventListener("load", () => {
+// Start the loopwindow.addEventListener("load", () => {
   const intro = document.getElementById("netflix-intro");
   if (!intro) return;
 
