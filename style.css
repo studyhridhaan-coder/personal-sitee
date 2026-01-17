@@ -3422,62 +3422,65 @@ body.dark::before {
   content: none !important;
   animation: none !important;
 }
-
-
 /* ===============================
-   INTRO CUT LOADER (ISOLATED)
-   DOES NOT TOUCH SITE STYLES
+   NETFLIX-STYLE INTRO (ISOLATED)
 ================================ */
 
-#intro-cut {
+#netflix-intro {
   position: fixed;
   inset: 0;
   z-index: 999999;
-  background: #f44336;
+  background: #141414; /* Netflix black */
   pointer-events: none;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Panels */
-#intro-cut .cut-panel {
-  position: absolute;
+#netflix-intro .nf-panel {
+  position: relative;
   width: 100%;
   height: 50vh;
-  left: 0;
-  background: #f44336;
   overflow: hidden;
-  transition: transform 1.15s cubic-bezier(0.87, 0, 0.13, 1);
+  background: #141414;
+  transition: transform 1.2s cubic-bezier(0.77, 0, 0.175, 1);
 }
 
-/* Top panel */
-#intro-cut .cut-top {
-  top: 0;
+/* Masks */
+#netflix-intro .nf-mask {
+  position: absolute;
+  inset: 0;
   display: flex;
-  align-items: flex-end;
   justify-content: center;
 }
 
-/* Bottom panel */
-#intro-cut .cut-bottom {
-  bottom: 0;
+/* Top half shows top of text */
+#netflix-intro .nf-mask-top {
+  align-items: flex-end;
 }
 
-/* Logo exactly on cut line */
-#intro-cut .cut-logo {
-  position: absolute;
-  bottom: -28px; /* THIS creates the cut-through effect */
-  font-family: -apple-system, BlinkMacSystemFont, Inter, sans-serif;
-  font-size: 44px;
-  font-weight: 800;
-  letter-spacing: 0.18em;
-  color: #ffffff;
+/* Bottom half shows bottom of text */
+#netflix-intro .nf-mask-bottom {
+  align-items: flex-start;
+}
+
+/* Text */
+#netflix-intro span {
+  font-family: "Arial Black", Impact, "Helvetica Neue Condensed", sans-serif;
+  font-size: clamp(64px, 10vw, 120px);
+  font-weight: 900;
+  letter-spacing: 0.22em;
+  color: #e50914; /* Netflix red */
+  line-height: 1;
+  transform: translateY(50%);
   white-space: nowrap;
 }
 
 /* Animation trigger */
-#intro-cut.active .cut-top {
+#netflix-intro.active .nf-top {
   transform: translateY(-100%);
 }
 
-#intro-cut.active .cut-bottom {
+#netflix-intro.active .nf-bottom {
   transform: translateY(100%);
 }
