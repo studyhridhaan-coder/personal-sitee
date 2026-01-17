@@ -192,6 +192,8 @@ window.addEventListener("load", () => {
 });
 
 
+
+
 /* ===============================
    ROUGH NOTATION (ABOUT SECTION)
 ================================ */
@@ -274,3 +276,5 @@ document.addEventListener("DOMContentLoaded", () => {
 
   observer.observe(yellowEl);
 });
+
+
