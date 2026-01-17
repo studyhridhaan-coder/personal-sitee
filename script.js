@@ -211,3 +211,44 @@ document.addEventListener("DOMContentLoaded", () => {
 
   observer.observe(document.querySelector('.about'));
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+  const yellowEl = document.querySelector('#yellow-highlight');
+  const redEl = document.querySelector('#red-underline');
+
+  // 1. Create the Yellow Highlight (The "Marker" feel)
+  const yellowDraw = RoughNotation.annotate(yellowEl, {
+    type: 'highlight',
+    color: 'rgba(255, 240, 0, 0.6)', // Semi-transparent yellow
+    padding: [2, 4],
+    animationDuration: 1000,
+    strokeWidth: 2
+  });
+
+  // 2. Create the Red Underline (The "Pen" feel)
+  const redDraw = RoughNotation.annotate(redEl, {
+    type: 'underline',
+    color: '#ff4d4d', 
+    padding: 3,
+    strokeWidth: 2.5,
+    iterations: 3, // This makes the "moving/writing" effect stronger
+    animationDuration: 800
+  });
+
+  // 3. Trigger when visible on screen
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        // Start drawing yellow after 0.5s
+        setTimeout(() => yellowDraw.show(), 500);
+        
+        // Start drawing red after 1.5s (sequential feel)
+        setTimeout(() => redDraw.show(), 1500);
+        
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  observer.observe(yellowEl);
+});
