@@ -3429,3 +3429,18 @@ body.dark::before {
   content: none !important;
   animation: none !important;
 }
+
+window.addEventListener("load", () => {
+  const loader = document.getElementById("loader");
+
+  // Let logo breathe, not overstay
+  setTimeout(() => {
+    loader.classList.add("active");
+
+    // Remove loader completely after animation
+    setTimeout(() => {
+      loader.remove();
+    }, 1100);
+  }, 1300);
+});
+
