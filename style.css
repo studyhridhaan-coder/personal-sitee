@@ -3425,100 +3425,74 @@ body.dark::before {
    NETFLIX INTRO — DESIGN PASS
    (Cinematic, restrained, premium)
 ================================ */
-/* ===== BACKGROUND SYSTEM (CINEMATIC, QUIET) ===== */
-/* ===============================
-    NETFLIX INTRO — CINEMATIC SPLIT
-================================ */
-
 #netflix-intro {
   position: fixed;
   inset: 0;
   z-index: 999999;
-  pointer-events: none;
-  overflow: hidden;
-  background-color: transparent;
-}
-
-/* Panels */
-#netflix-intro .nf-panel {
-  position: absolute;
-  width: 100%;
-  height: 50.5vh; /* 0.5vh overlap prevents a pixel gap in the middle */
-  left: 0;
+  background-color: #000;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
+  pointer-events: none;
+}
+
+.nf-panel {
+  position: relative;
+  width: 100%;
+  height: 50.1vh; /* Slight overlap to prevent gap */
   overflow: hidden;
-  /* Smoother, slightly elastic curve */
-  transition: transform 1.4s cubic-bezier(0.85, 0, 0.15, 1);
+  /* Deep space gradient */
+  background: radial-gradient(circle at center, #1a1a1a 0%, #000 70%);
+  transition: transform 1.5s cubic-bezier(0.77, 0, 0.175, 1);
 }
 
-#netflix-intro .nf-top {
-  top: 0;
-  background: #111111;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-#netflix-intro .nf-bottom {
+/* The White "Event Horizon" Slicing Line */
+.nf-top::after {
+  content: "";
+  position: absolute;
   bottom: 0;
-  background: #0a0a0a;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 2px;
+  background: #fff;
+  box-shadow: 0 0 15px #fff, 0 0 30px #fff; /* Cosmic glow */
+  z-index: 10;
 }
 
-/* Text Styling */
-#netflix-intro .nf-word {
-  font-family: 'Bebas Neue', 'Helvetica Neue', Impact, sans-serif;
-  font-size: clamp(80px, 15vw, 180px); /* Slightly larger for impact */
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: #e50914; /* Netflix Red is more iconic than white */
-  line-height: 0;
+.nf-word {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+  font-family: 'Bebas Neue', sans-serif; /* Clean, bold, and modern */
+  font-size: clamp(60px, 10vw, 130px);
+  color: #e50914; /* Keeping the red for impact, or use #fff for star-white */
   white-space: nowrap;
-  user-select: none;
-  
-  /* Cinematic depth */
-  text-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
-  
-  /* Animate the letters expanding as the door opens */
-  transition: letter-spacing 1.2s cubic-bezier(0.85, 0, 0.15, 1), 
-              opacity 0.8s ease-in;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  transition: letter-spacing 1.2s ease, opacity 0.8s ease;
 }
 
-/* Split logic: Top shows upper half, Bottom shows lower half */
-#netflix-intro .nf-top .nf-word {
-  transform: translateY(25.25vh); /* Precisely half of the panel height */
+/* Precise slicing placement */
+.nf-top .nf-word {
+  bottom: -0.52em; /* Aligns top half to the bottom edge of panel */
 }
 
-#netflix-intro .nf-bottom .nf-word {
-  transform: translateY(-25.25vh);
+.nf-bottom .nf-word {
+  top: -0.52em; /* Aligns bottom half to the top edge of panel */
 }
 
-/* --- THE ANIMATION STATE --- */
+/* --- THE ANIMATION --- */
 
 #netflix-intro.active .nf-top {
-  transform: translateY(-100%) scaleY(1.2); /* Scale adds "stretch" feel */
+  transform: translateY(-100%);
 }
 
 #netflix-intro.active .nf-bottom {
-  transform: translateY(100%) scaleY(1.2);
+  transform: translateY(100%);
 }
 
 #netflix-intro.active .nf-word {
-  letter-spacing: 0.8em; /* Text expands as it disappears */
-  opacity: 0;
-}
-
-/* Vignette Overlay for cinematic feel */
-#netflix-intro::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle, transparent 40%, rgba(0,0,0,0.4) 100%);
-  z-index: 10;
-  pointer-events: none;
-  opacity: 1;
-  transition: opacity 1s ease;
-}
-
-#netflix-intro.active::after {
+  letter-spacing: 2em; /* Exploding star effect */
   opacity: 0;
 }
