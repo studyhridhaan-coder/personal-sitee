@@ -172,83 +172,48 @@ window.addEventListener("load", () => {
 });
 
 document.addEventListener("DOMContentLoaded", () => {
-  // 1. Setup Yellow Highlight
-  const yellowTarget = document.querySelector('#yellow-highlight');
-  const yellowNote = RoughNotation.annotate(yellowTarget, {
-    type: 'highlight',
-    color: '#fff000', // Bright Highlighter Yellow
-    padding: [2, 4],
-    iterations: 1,
-    multiline: true,
-    animationDuration: 800
-  });
-
-  // 2. Setup Red Underline
-  const redTarget = document.querySelector('#red-underline');
-  const redNote = RoughNotation.annotate(redTarget, {
-    type: 'underline',
-    color: '#ff4d4d', // Soft Red "Apple Pencil" color
-    padding: 2,
-    strokeWidth: 2,
-    iterations: 2,
-    animationDuration: 600
-  });
-
-  // 3. Trigger on Scroll
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        // Start Yellow animation
-        setTimeout(() => yellowNote.show(), 400);
-        
-        // Start Red animation slightly after
-        setTimeout(() => redNote.show(), 1200);
-        
-        observer.unobserve(entry.target); // Only animate once
-      }
-    });
-  }, { threshold: 0.5 });
-
-  observer.observe(document.querySelector('.about'));
-});
-
-document.addEventListener("DOMContentLoaded", () => {
+  document.addEventListener("DOMContentLoaded", () => {
+  // 1. SELECT THE ELEMENTS
   const yellowEl = document.querySelector('#yellow-highlight');
   const redEl = document.querySelector('#red-underline');
+  // Optional: Add a third one for your YouTube if you want
+  const youtubeEl = document.querySelector('#draw-youtube'); 
 
-  // 1. Create the Yellow Highlight (The "Marker" feel)
+  // 2. CONFIGURE THE "PENCIL" STYLES
   const yellowDraw = RoughNotation.annotate(yellowEl, {
     type: 'highlight',
-    color: 'rgba(255, 240, 0, 0.6)', // Semi-transparent yellow
+    color: '#fff000',      // Premium Bright Yellow
     padding: [2, 4],
     animationDuration: 1000,
+    multiline: true,       // Keeps it visible even if text wraps
     strokeWidth: 2
   });
 
-  // 2. Create the Red Underline (The "Pen" feel)
   const redDraw = RoughNotation.annotate(redEl, {
     type: 'underline',
-    color: '#ff4d4d', 
-    padding: 3,
+    color: '#ff4d4d',      // Red pen color
+    padding: 2,
     strokeWidth: 2.5,
-    iterations: 3, // This makes the "moving/writing" effect stronger
+    iterations: 3,         // This makes it "move" back and forth
     animationDuration: 800
   });
 
-  // 3. Trigger when visible on screen
+  // 3. THE TRIGGER (Only animates when they look at it)
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        // Start drawing yellow after 0.5s
-        setTimeout(() => yellowDraw.show(), 500);
+        // Sequential animation: Yellow first, Red second
+        setTimeout(() => yellowDraw.show(), 600);
+        setTimeout(() => redDraw.show(), 1600);
         
-        // Start drawing red after 1.5s (sequential feel)
-        setTimeout(() => redDraw.show(), 1500);
-        
+        // Stop watching once it has animated
         observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.5 });
+  }, { 
+    threshold: 0.8 // Triggers when 80% of the text is visible
+  });
 
+  // Start watching the section
   observer.observe(yellowEl);
 });
