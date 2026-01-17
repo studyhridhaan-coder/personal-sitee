@@ -3424,86 +3424,42 @@ body.dark::before {
 }/* ===============================
    NETFLIX INTRO — DESIGN PASS
    (Cinematic, restrained, premium)
-================================ *//* ===============================
-   NETFLIX INTRO — FINAL VERSION
 ================================ */
-/* ===============================
-   NETFLIX INTRO — CINEMATIC SPLIT
-================================ */
+/* ===== BACKGROUND SYSTEM (CINEMATIC, QUIET) ===== */
 
 #netflix-intro {
+  background: #141416;
+}
+
+/* TOP PANEL */
+#netflix-intro .nf-top {
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(255,255,255,0.035),
+      rgba(0,0,0,0.25)
+    ),
+    #141416;
+}
+
+/* BOTTOM PANEL */
+#netflix-intro .nf-bottom {
+  background:
+    linear-gradient(
+      to top,
+      rgba(255,255,255,0.02),
+      rgba(0,0,0,0.35)
+    ),
+    #141416;
+}
+
+/* Ultra-subtle grain (premium) */
+#netflix-intro::after {
+  content: "";
   position: fixed;
   inset: 0;
-  z-index: 999999;
   pointer-events: none;
+  background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+  opacity: 0.035;
 }
-
-/* Panels */
-#netflix-intro .nf-panel {
-  position: absolute;
-  width: 100%;
-  height: 50vh;
-  left: 0;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  transition: transform 1.25s cubic-bezier(0.77, 0, 0.175, 1);
-}
-
-/* TOP PANEL — slightly lighter */
-#netflix-intro .nf-top {
-  top: 0;
-  background: linear-gradient(
-    to bottom,
-    #1a1a1a,
-    #111111
-  );
-}
-
-/* BOTTOM PANEL — slightly darker */
-#netflix-intro .nf-bottom {
-  bottom: 0;
-  background: linear-gradient(
-    to top,
-    #0b0b0b,
-    #111111
-  );
-}
-
-/* Text */
-#netflix-intro .nf-word {
-  font-family: 'Bebas Neue', 'Helvetica Neue', Impact, sans-serif;
-  font-size: clamp(72px, 11vw, 140px);
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: #f5f5f1;
-  line-height: 1;
-  white-space: nowrap;
-
-  /* Netflix-style depth (NO glow) */
-  text-shadow:
-    0 1px 0 rgba(0,0,0,0.6),
-    0 18px 50px rgba(0,0,0,0.5);
-}
-
-/* Slight resting offset (feels alive) */
-#netflix-intro .nf-top .nf-word {
-  transform: translateY(10%);
-}
-
-#netflix-intro .nf-bottom .nf-word {
-  transform: translateY(-10%);
-}
-
-/* Exit animation */
-#netflix-intro.active .nf-top {
-  transform: translateY(-100%);
-}
-
-#netflix-intro.active .nf-bottom {
-  transform: translateY(100%);
-}
-
 
