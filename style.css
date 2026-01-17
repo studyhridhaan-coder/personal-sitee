@@ -493,6 +493,7 @@ body::before {
   width: 0;
   animation:
     typing 2.8s steps(14, end) forwards,
+    blink 0.8s step-end infinite;
 
 }
 
@@ -1162,6 +1163,7 @@ a, button {
   width: 0;
   animation:
     typing 2.8s steps(14, end) forwards,
+        blink 0.8s step-end infinite;
     }
 
 /* Stop cursor */
@@ -3400,6 +3402,7 @@ body.dark::before {
 .cursor {
   display: inline-block;
   margin-left: 2px;
+    animation: blink 1s steps(2, start) infinite;
 }
 
 @keyframes blink {
@@ -3418,6 +3421,7 @@ body.dark::before {
 .typing-cursor {
   display: inline-block;
   margin-left: 2px;
+    animation: blink 1s steps(2, start) infinite;
 }
 
 
