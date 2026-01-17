@@ -3438,25 +3438,26 @@ body.dark::before {
 .nf-panel {
   position: relative;
   width: 100%;
-  height: 50.1vh; /* Slight overlap to prevent gap */
+  height: 50vh;
   overflow: hidden;
-  /* Deep space gradient */
-  background: radial-gradient(circle at center, #1a1a1a 0%, #000 70%);
-  transition: transform 1.5s cubic-bezier(0.77, 0, 0.175, 1);
+  background: #000;
+  /* Add a subtle star-like glow */
+  background-image: radial-gradient(circle at center, #111 0%, #000 80%);
+  transition: transform 1.2s cubic-bezier(0.8, 0, 0.2, 1);
 }
 
-/* The White "Event Horizon" Slicing Line */
+/* The Glowing Slicing Line */
 .nf-top::after {
   content: "";
   position: absolute;
   bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 0;
   width: 100%;
-  height: 2px;
+  height: 1px;
   background: #fff;
-  box-shadow: 0 0 15px #fff, 0 0 30px #fff; /* Cosmic glow */
+  box-shadow: 0 0 10px #fff, 0 0 20px #fff;
   z-index: 10;
+  transition: opacity 0.5s ease;
 }
 
 .nf-word {
@@ -3464,25 +3465,27 @@ body.dark::before {
   left: 50%;
   transform: translateX(-50%);
   margin: 0;
-  font-family: 'Bebas Neue', sans-serif; /* Clean, bold, and modern */
-  font-size: clamp(60px, 10vw, 130px);
-  color: #e50914; /* Keeping the red for impact, or use #fff for star-white */
-  white-space: nowrap;
-  letter-spacing: 0.2em;
+  /* Use a modern, wide font for space vibes */
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  font-weight: 900;
+  font-size: clamp(40px, 8vw, 100px);
+  color: #fff;
   text-transform: uppercase;
-  transition: letter-spacing 1.2s ease, opacity 0.8s ease;
+  letter-spacing: 0.3em; /* Wider spacing looks more "premium" */
+  white-space: nowrap;
+  transition: letter-spacing 1s ease, opacity 0.5s ease;
 }
 
-/* Precise slicing placement */
+/* The "Slice" Math - Adjust these until the text joins perfectly */
 .nf-top .nf-word {
-  bottom: -0.52em; /* Aligns top half to the bottom edge of panel */
+  bottom: -0.62em; 
 }
 
 .nf-bottom .nf-word {
-  top: -0.52em; /* Aligns bottom half to the top edge of panel */
+  top: -0.62em;
 }
 
-/* --- THE ANIMATION --- */
+/* --- THE EXIT ANIMATION --- */
 
 #netflix-intro.active .nf-top {
   transform: translateY(-100%);
@@ -3492,7 +3495,12 @@ body.dark::before {
   transform: translateY(100%);
 }
 
+/* Fade the line and expand text during exit */
+#netflix-intro.active .nf-top::after {
+  opacity: 0;
+}
+
 #netflix-intro.active .nf-word {
-  letter-spacing: 2em; /* Exploding star effect */
+  letter-spacing: 1.5em;
   opacity: 0;
 }
