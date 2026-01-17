@@ -235,3 +235,36 @@ document.addEventListener("DOMContentLoaded", () => {
 
   observer.observe(yellowEl);
 });
+document.addEventListener("DOMContentLoaded", () => {
+  const yellowEl = document.querySelector('#yellow-highlight');
+  const redEl = document.querySelector('#red-underline');
+  const section = document.querySelector('#highlight-section');
+
+  const yellowDraw = RoughNotation.annotate(yellowEl, {
+    type: 'highlight',
+    color: 'rgba(255, 240, 0, 0.6)',
+    padding: [2, 4],
+    animationDuration: 1000,
+    strokeWidth: 2
+  });
+
+  const redDraw = RoughNotation.annotate(redEl, {
+    type: 'underline',
+    color: '#ff4d4d',
+    padding: 3,
+    strokeWidth: 2.5,
+    iterations: 3,
+    animationDuration: 800
+  });
+
+  const observer = new IntersectionObserver(([entry]) => {
+    if (!entry.isIntersecting) return;
+
+    setTimeout(() => yellowDraw.show(), 600);
+    setTimeout(() => redDraw.show(), 1600);
+
+    observer.disconnect(); // cleaner than unobserve here
+  }, { threshold: 0.4 });
+
+  observer.observe(section);
+});
