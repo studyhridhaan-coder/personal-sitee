@@ -270,8 +270,6 @@ closeOverlay.addEventListener("click", () => {
 });
 
 })();
-</script>
-
 
 
 
