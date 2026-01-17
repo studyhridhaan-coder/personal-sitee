@@ -119,42 +119,53 @@ const phrases = [
 ];
 
 const textEl = document.getElementById("typingText");
-
 let phraseIndex = 0;
 let charIndex = 0;
 let isDeleting = false;
 
 function typeLoop() {
   const currentPhrase = phrases[phraseIndex];
+  
+  // Determine what to display
+  const displayText = currentPhrase.slice(0, charIndex);
+  
+  // Use &nbsp; or similar if empty to prevent height collapse
+  textEl.textContent = displayText || "\u00A0"; 
 
   if (!isDeleting) {
-    textEl.textContent = currentPhrase.slice(0, charIndex++);
+    charIndex++;
     if (charIndex > currentPhrase.length) {
-      setTimeout(() => isDeleting = true, 1200);
+      isDeleting = true;
+      setTimeout(typeLoop, 2000); // Pause at the end of a phrase
+      return;
     }
   } else {
-    textEl.textContent = currentPhrase.slice(0, charIndex--);
+    charIndex--;
     if (charIndex === 0) {
       isDeleting = false;
       phraseIndex = (phraseIndex + 1) % phrases.length;
+      setTimeout(typeLoop, 500); // Short pause before starting next word
+      return;
     }
   }
 
-  const speed = isDeleting ? 40 : 70;
+  const speed = isDeleting ? 40 : 80;
   setTimeout(typeLoop, speed);
 }
 
+// Start the loop
+typeLoop();
 
-typeLoop();window.addEventListener("load", () => {
-  const intro = document.getElementById("intro-cut");
+window.addEventListener("load", () => {
+  const intro = document.getElementById("netflix-intro");
   if (!intro) return;
 
+  // ensure font paint before animation
   setTimeout(() => {
     intro.classList.add("active");
 
     setTimeout(() => {
-      intro.remove(); // clean exit
-    }, 1200);
-  }, 800);
+      intro.remove();
+    }, 1300);
+  }, 700);
 });
-
