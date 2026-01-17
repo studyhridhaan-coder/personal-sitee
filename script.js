@@ -153,6 +153,9 @@ function typeLoop() {
   setTimeout(typeLoop, speed);
 }
 
+window.addEventListener("load", () => {
+  typeLoop();
+});
 
 
 window.addEventListener("load", () => {
