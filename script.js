@@ -147,17 +147,18 @@ function typeLoop() {
 
 typeLoop();
 
-window.addEventListener('DOMContentLoaded', () => {
-    const loader = document.getElementById('loader');
-    
-    // Adjust the 2000 (2 seconds) to however long you want the logo to stay
+window.addEventListener("load", () => {
+  const loader = document.getElementById("loader");
+
+  if (!loader) return;
+
+  setTimeout(() => {
+    loader.classList.add("active");
+
     setTimeout(() => {
-        loader.classList.add('active');
-        
-        // Fully remove from DOM after animation finishes to save performance
-        setTimeout(() => {
-            loader.style.display = 'none';
-        }, 1200); 
-    }, 2500);
+      loader.classList.add("done");
+    }, 1100);
+
+  }, 1200);
 });
 
