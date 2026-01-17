@@ -195,76 +195,82 @@ window.addEventListener("load", () => {
 /* ===============================
    ROUGH NOTATION (ABOUT SECTION)
 ================================ */
-
-document.addEventListener("DOMContentLoaded", () => {
-  if (typeof RoughNotation === "undefined") return;
-
-  const yellowEl = document.getElementById("draw-space");
-  const redEl = document.getElementById("draw-connect");
-  const youtubeEl = document.getElementById("draw-youtube");
-
-  if (!yellowEl || !redEl) return;
-
-  const yellowDraw = RoughNotation.annotate(yellowEl, {
-    type: "highlight",
-    color: "#fff000",
-    padding: [2, 4],
-    animationDuration: 1000,
-    multiline: true,
-    strokeWidth: 2
-  });
-
-  const redDraw = RoughNotation.annotate(redEl, {
-    type: "underline",
-    color: "#ff4d4d",
-    padding: 2,
-    strokeWidth: 2.5,
-    iterations: 3,
-    animationDuration: 800
-  });
-
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        setTimeout(() => yellowDraw.show(), 600);
-        setTimeout(() => redDraw.show(), 1600);
-        observer.disconnect();
-      }
-    });
-  }, { threshold: 0.8 });
-
-  observer.observe(yellowEl);
-});
 document.addEventListener("DOMContentLoaded", () => {
   const yellowEl = document.querySelector('#yellow-highlight');
   const redEl = document.querySelector('#red-underline');
-  const section = document.querySelector('#highlight-section');
 
+  // 1. Create the Yellow Highlight (The "Marker" feel)
   const yellowDraw = RoughNotation.annotate(yellowEl, {
     type: 'highlight',
-    color: 'rgba(255, 240, 0, 0.6)',
+    color: 'rgba(255, 240, 0, 0.6)', // Semi-transparent yellow
     padding: [2, 4],
     animationDuration: 1000,
     strokeWidth: 2
   });
 
+  // 2. Create the Red Underline (The "Pen" feel)
   const redDraw = RoughNotation.annotate(redEl, {
     type: 'underline',
-    color: '#ff4d4d',
+    color: '#ff4d4d', 
     padding: 3,
     strokeWidth: 2.5,
-    iterations: 3,
+    iterations: 3, // This makes the "moving/writing" effect stronger
     animationDuration: 800
   });
 
-  const observer = new IntersectionObserver(([entry]) => {
-    if (!entry.isIntersecting) return;
+  // 3. Trigger when visible on screen
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        // Start drawing yellow after 0.5s
+        setTimeout(() => yellowDraw.show(), 500);
+        
+        // Start drawing red after 1.5s (sequential feel)
+        setTimeout(() => redDraw.show(), 1500);
+        
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
 
-    setTimeout(() => yellowDraw.show(), 600);
-    setTimeout(() => redDraw.show(), 1600);
+  observer.observe(yellowEl);
+});document.addEventListener("DOMContentLoaded", () => {
+  const yellowEl = document.querySelector('#yellow-highlight');
+  const redEl = document.querySelector('#red-underline');
 
-    observer.disconnect(); // cleaner than unobserve here
-  }, { threshold: 0.4 });
+  // 1. Create the Yellow Highlight (The "Marker" feel)
+  const yellowDraw = RoughNotation.annotate(yellowEl, {
+    type: 'highlight',
+    color: 'rgba(255, 240, 0, 0.6)', // Semi-transparent yellow
+    padding: [2, 4],
+    animationDuration: 1000,
+    strokeWidth: 2
+  });
 
-  observer.observe(section);
+  // 2. Create the Red Underline (The "Pen" feel)
+  const redDraw = RoughNotation.annotate(redEl, {
+    type: 'underline',
+    color: '#ff4d4d', 
+    padding: 3,
+    strokeWidth: 2.5,
+    iterations: 3, // This makes the "moving/writing" effect stronger
+    animationDuration: 800
+  });
+
+  // 3. Trigger when visible on screen
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        // Start drawing yellow after 0.5s
+        setTimeout(() => yellowDraw.show(), 500);
+        
+        // Start drawing red after 1.5s (sequential feel)
+        setTimeout(() => redDraw.show(), 1500);
+        
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  observer.observe(yellowEl);
 });
