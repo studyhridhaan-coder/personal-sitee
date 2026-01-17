@@ -145,16 +145,16 @@ function typeLoop() {
 }
 
 
-typeLoop();
-window.addEventListener("load", () => {
-  const loader = document.getElementById("intro-loader");
-  if (!loader) return;
+typeLoop();window.addEventListener("load", () => {
+  const intro = document.getElementById("intro-cut");
+  if (!intro) return;
 
   setTimeout(() => {
-    loader.classList.add("active");
+    intro.classList.add("active");
 
     setTimeout(() => {
-      loader.remove(); // hard remove — safe
-    }, 1100);
-  }, 900);
+      intro.remove(); // clean exit
+    }, 1200);
+  }, 800);
 });
+
