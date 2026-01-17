@@ -3481,3 +3481,60 @@ body.dark::before {
   transform: translateY(100%);
 }
 
+/* ===============================
+   INTRO CUT LOADER (ISOLATED)
+   DOES NOT TOUCH SITE STYLES
+================================ */
+
+#intro-cut {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  background: #f44336;
+  pointer-events: none;
+}
+
+/* Panels */
+#intro-cut .cut-panel {
+  position: absolute;
+  width: 100%;
+  height: 50vh;
+  left: 0;
+  background: #f44336;
+  overflow: hidden;
+  transition: transform 1.15s cubic-bezier(0.87, 0, 0.13, 1);
+}
+
+/* Top panel */
+#intro-cut .cut-top {
+  top: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+/* Bottom panel */
+#intro-cut .cut-bottom {
+  bottom: 0;
+}
+
+/* Logo exactly on cut line */
+#intro-cut .cut-logo {
+  position: absolute;
+  bottom: -28px; /* THIS creates the cut-through effect */
+  font-family: -apple-system, BlinkMacSystemFont, Inter, sans-serif;
+  font-size: 44px;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  color: #ffffff;
+  white-space: nowrap;
+}
+
+/* Animation trigger */
+#intro-cut.active .cut-top {
+  transform: translateY(-100%);
+}
+
+#intro-cut.active .cut-bottom {
+  transform: translateY(100%);
+}
