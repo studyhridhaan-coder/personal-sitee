@@ -3484,3 +3484,20 @@ body.dark::before {
 #netflix-intro.active .nf-bottom {
   transform: translateY(100%);
 }
+#netflix-intro span {
+  font-family: 'Gotham', 'Arial Black', sans-serif;
+  font-weight: 900;
+  color: #e50914;
+  letter-spacing: 0.5em; /* Netflix loves wide tracking */
+  text-transform: uppercase;
+  /* Add a slight glow for that CRT/TV feel */
+  text-shadow: 0 0 10px rgba(229, 9, 20, 0.3);
+  
+  /* Critical for the split effect */
+  display: block;
+  height: 100%;
+}
+
+/* Adjust the masks so the text meets perfectly in the center */
+.nf-mask-top span { transform: translateY(50%); }
+.nf-mask-bottom span { transform: translateY(-50%); }
