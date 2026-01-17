@@ -3429,3 +3429,55 @@ body.dark::before {
   content: none !important;
   animation: none !important;
 }
+
+/* ===============================
+   INTRO LOADER (ISOLATED — SAFE)
+================================ */
+
+#intro-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  background: #f44336; /* red like reference */
+  pointer-events: none;
+}
+
+#intro-loader .intro-panel {
+  position: absolute;
+  width: 100%;
+  height: 50vh;
+  left: 0;
+  background: #f44336;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 1.1s cubic-bezier(0.87, 0, 0.13, 1);
+}
+
+#intro-loader .top {
+  top: 0;
+}
+
+#intro-loader .bottom {
+  bottom: 0;
+}
+
+#intro-loader .intro-logo {
+  position: absolute;
+  bottom: -36px;
+  font-size: 42px;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  color: #ffffff;
+  font-family: -apple-system, BlinkMacSystemFont, Inter, sans-serif;
+}
+
+/* animation trigger */
+#intro-loader.active .top {
+  transform: translateY(-100%);
+}
+
+#intro-loader.active .bottom {
+  transform: translateY(100%);
+}
+
