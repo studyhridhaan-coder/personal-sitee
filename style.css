@@ -3429,3 +3429,25 @@ body.dark::before {
   content: none !important;
   animation: none !important;
 }
+
+/* We remove the fixed black background so it uses yours */
+#yellow-highlight, #red-underline {
+  display: inline-block;
+  position: relative;
+  font-weight: 600; /* Makes the highlight pop more */
+  color: inherit;   /* Keeps your existing text color */
+}
+
+/* Subtle fade-in for the text itself so the "writing" stands out */
+.about p {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeInText 0.8s ease forwards;
+}
+
+@keyframes fadeInText {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
