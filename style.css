@@ -3424,8 +3424,7 @@ body.dark::before {
 }/* ===============================
    NETFLIX INTRO — DESIGN PASS
    (Cinematic, restrained, premium)
-================================ */
-#netflix-intro {
+================================ */#netflix-intro {
   position: fixed;
   inset: 0;
   z-index: 999999;
@@ -3436,56 +3435,45 @@ body.dark::before {
 }
 
 .nf-panel {
+  flex: 1; /* Each takes exactly 50% */
   position: relative;
-  width: 100%;
-  height: 50vh;
   overflow: hidden;
   background: #000;
-  /* Add a subtle star-like glow */
-  background-image: radial-gradient(circle at center, #111 0%, #000 80%);
-  transition: transform 1.2s cubic-bezier(0.8, 0, 0.2, 1);
+  display: flex;
+  justify-content: center;
+  transition: transform 1.1s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
-/* The Glowing Slicing Line */
+/* Perfect alignment logic */
+.nf-top { align-items: flex-end; }
+.nf-bottom { align-items: flex-start; }
+
+/* The Minimal "Slice" Line */
 .nf-top::after {
   content: "";
   position: absolute;
   bottom: 0;
-  left: 0;
-  width: 100%;
+  width: 60%; /* Not full width = more minimal */
   height: 1px;
-  background: #fff;
-  box-shadow: 0 0 10px #fff, 0 0 20px #fff;
-  z-index: 10;
-  transition: opacity 0.5s ease;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.8), transparent);
+  filter: blur(0.5px);
 }
 
 .nf-word {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
   margin: 0;
-  /* Use a modern, wide font for space vibes */
-  font-family: 'Inter', 'Segoe UI', sans-serif;
-  font-weight: 900;
-  font-size: clamp(40px, 8vw, 100px);
+  /* Use a clean, modern Sans Serif */
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 800;
+  font-size: clamp(2rem, 8vw, 5rem); /* Responsive size */
   color: #fff;
   text-transform: uppercase;
-  letter-spacing: 0.3em; /* Wider spacing looks more "premium" */
+  letter-spacing: 0.15em;
+  line-height: 0.7; /* This is the secret to the perfect join */
   white-space: nowrap;
-  transition: letter-spacing 1s ease, opacity 0.5s ease;
+  transition: letter-spacing 1s ease, opacity 0.4s ease;
 }
 
-/* The "Slice" Math - Adjust these until the text joins perfectly */
-.nf-top .nf-word {
-  bottom: -0.62em; 
-}
-
-.nf-bottom .nf-word {
-  top: -0.62em;
-}
-
-/* --- THE EXIT ANIMATION --- */
+/* --- THE EXIT --- */
 
 #netflix-intro.active .nf-top {
   transform: translateY(-100%);
@@ -3495,12 +3483,7 @@ body.dark::before {
   transform: translateY(100%);
 }
 
-/* Fade the line and expand text during exit */
-#netflix-intro.active .nf-top::after {
-  opacity: 0;
-}
-
 #netflix-intro.active .nf-word {
-  letter-spacing: 1.5em;
+  letter-spacing: 0.4em; /* Subtle expansion, not "exploding" */
   opacity: 0;
 }
