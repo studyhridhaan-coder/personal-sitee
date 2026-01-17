@@ -147,15 +147,14 @@ function typeLoop() {
 
 typeLoop();
 window.addEventListener("load", () => {
-  const loader = document.getElementById("loader");
+  const loader = document.getElementById("intro-loader");
   if (!loader) return;
 
   setTimeout(() => {
     loader.classList.add("active");
 
     setTimeout(() => {
-      loader.remove(); // SAFE NOW
+      loader.remove(); // hard remove — safe
     }, 1100);
-
-  }, 1000);
+  }, 900);
 });
