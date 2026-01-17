@@ -3568,3 +3568,29 @@ body.dark::before {
     transform: translateY(0);
   }
 }
+
+/* Ensure text stays on top of the animation */
+#draw-space, #draw-connect, #draw-bitbuzz, #draw-youtube {
+  position: relative;
+  z-index: 2;
+  font-weight: 600;
+  color: #1a1a1a; /* Dark text for contrast */
+}
+
+/* Force the drawing canvas to sit behind */
+.rough-annotation {
+  z-index: -1 !important;
+}
+
+/* General styling to match the "Leo" vibe */
+.about {
+  max-width: 750px;
+  margin: 60px auto;
+  font-family: 'Inter', sans-serif;
+  line-height: 1.8;
+}
+
+.premium-link {
+  text-decoration: none;
+  color: inherit;
+}
