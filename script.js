@@ -154,18 +154,26 @@ function typeLoop() {
 }
 
 // Start the loop
-typeLoop();
-
-window.addEventListener("load", () => {
+typeLoop();window.addEventListener("load", () => {
   const intro = document.getElementById("netflix-intro");
   if (!intro) return;
 
-  // ensure font paint before animation
+  document.body.style.overflow = "hidden";
+
+  // Pause for impact
   setTimeout(() => {
     intro.classList.add("active");
 
+    // Start typing logic precisely as panels move
+    setTimeout(() => {
+       // Start your typing function here
+       if (typeof typeLoop === "function") typeLoop();
+    }, 400); 
+
+    // Remove from DOM once fully gone
     setTimeout(() => {
       intro.remove();
-    }, 1300);
-  }, 700);
+      document.body.style.overflow = "";
+    }, 1200);
+  }, 800);
 });
