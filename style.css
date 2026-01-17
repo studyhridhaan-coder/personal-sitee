@@ -3504,3 +3504,45 @@ body.dark::before {
 #netflix-intro.active .nf-bottom {
   transform: translateY(100%);
 }
+
+/* Container styling */
+.about {
+  max-width: 800px;
+  margin: 80px auto;
+  padding: 0 40px;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  color: #a0a0a0; /* Dimmer text for a premium feel */
+  background-color: #000; /* Pure black background */
+}
+
+/* Lowercase heading style like the example */
+.section-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 2.5rem;
+  letter-spacing: -0.02em;
+}
+
+.content-wrapper p {
+  font-size: 1.15rem;
+  line-height: 1.8;
+  margin-bottom: 1.8rem;
+}
+
+/* Link styling */
+.premium-link {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+/* Target spans */
+#yellow-highlight {
+  color: #ffffff;
+  font-weight: 500;
+}
+
+#red-underline {
+  color: #ffffff;
+}
