@@ -3421,19 +3421,25 @@ body.dark::before {
 .hero-name::before {
   content: none !important;
   animation: none !important;
-}
-/* ===============================
-   NETFLIX-STYLE INTRO (ISOLATED)
+}/* ===============================
+   NETFLIX INTRO — DESIGN PASS
+   (Cinematic, restrained, premium)
 ================================ */
 
 #netflix-intro {
   position: fixed;
   inset: 0;
   z-index: 999999;
-  background: #141414; /* Netflix black */
   pointer-events: none;
   display: flex;
   flex-direction: column;
+
+  /* Netflix-style near-black */
+  background: radial-gradient(
+    circle at center,
+    #181818 0%,
+    #0b0b0b 70%
+  );
 }
 
 /* Panels */
@@ -3442,8 +3448,9 @@ body.dark::before {
   width: 100%;
   height: 50vh;
   overflow: hidden;
-  background: #141414;
-  transition: transform 1.2s cubic-bezier(0.77, 0, 0.175, 1);
+
+  background: transparent;
+  transition: transform 1.25s cubic-bezier(0.77, 0, 0.175, 1);
 }
 
 /* Masks */
@@ -3454,29 +3461,49 @@ body.dark::before {
   justify-content: center;
 }
 
-/* Top half shows top of text */
+/* Alignment */
 #netflix-intro .nf-mask-top {
   align-items: flex-end;
 }
 
-/* Bottom half shows bottom of text */
 #netflix-intro .nf-mask-bottom {
   align-items: flex-start;
 }
 
-/* Text */
+/* Text — THIS IS THE BIG FIX */
 #netflix-intro span {
-  font-family: "Arial Black", Impact, "Helvetica Neue Condensed", sans-serif;
-  font-size: clamp(64px, 10vw, 120px);
-  font-weight: 900;
-  letter-spacing: 0.22em;
-  color: #e50914; /* Netflix red */
+  font-family: 'Bebas Neue', 'Helvetica Neue', Impact, sans-serif;
+  font-size: clamp(72px, 11vw, 140px);
+  font-weight: 400; /* Bebas is naturally bold */
+  letter-spacing: 0.12em; /* tight, intentional */
   line-height: 1;
-  transform: translateY(50%);
+
+  /* Netflix DOES NOT use pure red for UI */
+  color: #f5f5f1; /* Netflix off-white */
+
+  text-transform: uppercase;
   white-space: nowrap;
+
+  /* Optical depth instead of glow */
+  text-shadow:
+    0 1px 0 rgba(0,0,0,0.6),
+    0 12px 40px rgba(0,0,0,0.45);
+
+  /* Required for split illusion */
+  display: block;
+  height: 100%;
 }
 
-/* Animation trigger */
+/* Perfect center cut */
+.nf-mask-top span {
+  transform: translateY(52%);
+}
+
+.nf-mask-bottom span {
+  transform: translateY(-48%);
+}
+
+/* Motion trigger */
 #netflix-intro.active .nf-top {
   transform: translateY(-100%);
 }
@@ -3484,20 +3511,3 @@ body.dark::before {
 #netflix-intro.active .nf-bottom {
   transform: translateY(100%);
 }
-#netflix-intro span {
-  font-family: 'Gotham', 'Arial Black', sans-serif;
-  font-weight: 900;
-  color: #e50914;
-  letter-spacing: 0.5em; /* Netflix loves wide tracking */
-  text-transform: uppercase;
-  /* Add a slight glow for that CRT/TV feel */
-  text-shadow: 0 0 10px rgba(229, 9, 20, 0.3);
-  
-  /* Critical for the split effect */
-  display: block;
-  height: 100%;
-}
-
-/* Adjust the masks so the text meets perfectly in the center */
-.nf-mask-top span { transform: translateY(50%); }
-.nf-mask-bottom span { transform: translateY(-50%); }
