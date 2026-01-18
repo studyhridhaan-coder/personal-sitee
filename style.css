@@ -131,9 +131,10 @@ body::before {
 /* ===============================
    HERO LAYOUT FIX (DESKTOP + MOBILE)
 ================================ */
-.hero {
-  padding-top: 5rem;
-  padding-bottom: 2.5rem;
+.hero {  
+  display: flex;
+  align-items: center;
+  gap: 64px;
 }
 
 
@@ -3031,8 +3032,10 @@ body.dark::before {
 /* Stop hero from hogging full screen */
 
 .hero {
-  padding-top: 5rem;
-  padding-bottom: 2.5rem;
+  
+  min-height: auto;
+  padding-top: 120px;
+  padding-bottom: 50px;
 }
 
 /* Tighten Find Me section */
