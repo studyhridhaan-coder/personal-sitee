@@ -3034,8 +3034,8 @@ body.dark::before {
 .hero {
   
   min-height: auto;
-  padding-top: 120px;
-  padding-bottom: 50px;
+  padding-top: 40px;
+  padding-bottom: 30px;
 }
 
 /* Tighten Find Me section */
