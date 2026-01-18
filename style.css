@@ -3595,3 +3595,10 @@ body.dark::before {
   backdrop-filter: none !important;
   filter: none !important;
 }
+.hero-image img {
+  display: block;
+  background: transparent;
+
+  /* correct sticker shadow */
+  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.25));
+}
