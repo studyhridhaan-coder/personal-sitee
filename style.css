@@ -3578,3 +3578,17 @@ body.dark::before {
   background: rgba(255,255,255,0.08);
   color: currentColor;
 }
+.hero-image {
+  background: none;
+  box-shadow: none;
+  border-radius: 0;
+}
+
+.hero-image img {
+  display: block;
+  background: transparent;
+  border-radius: 0;
+
+  /* STICKER DEPTH (not a card) */
+  filter: drop-shadow(0 12px 30px rgba(0, 0, 0, 0.25));
+}
