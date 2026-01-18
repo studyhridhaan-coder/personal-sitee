@@ -3568,3 +3568,13 @@ body.dark::before {
   cursor: pointer;
   color: inherit;
 }
+
+.astro-icon-apple {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  background: rgba(255,255,255,0.08);
+  color: currentColor;
+}
