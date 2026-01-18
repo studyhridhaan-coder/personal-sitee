@@ -3601,3 +3601,8 @@ body.dark::before {
   /* correct sticker shadow */
   filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.25));
 }
+  filter: drop-shadow(0 12px 30px rgba(0, 0, 0, 0.2));
+filter:
+  drop-shadow(0 0 6px rgba(255,255,255,0.15))
+  drop-shadow(0 20px 40px rgba(0,0,0,0.25));
+
