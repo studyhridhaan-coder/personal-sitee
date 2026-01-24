@@ -3608,3 +3608,18 @@ filter:
   drop-shadow(0 0 6px rgba(255,255,255,0.15))
   drop-shadow(0 20px 40px rgba(0,0,0,0.25));
 
+.guestbook-entries {
+  max-width: 600px;
+  margin: 60px auto;
+}
+
+.guestbook-entries h3 {
+  margin-bottom: 12px;
+}
+
+.guestbook-entries li {
+  list-style: none;
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+  font-size: 14px;
+}
