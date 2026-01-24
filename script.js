@@ -277,7 +277,6 @@ document.addEventListener("DOMContentLoaded", () => {
   observer.observe(yellowEl);
 });
 
-<script>
 async function loadGuestbook() {
   const list = document.getElementById("entries");
 
@@ -323,5 +322,4 @@ async function loadGuestbook() {
 }
 
 loadGuestbook();
-</script>
-
+});
