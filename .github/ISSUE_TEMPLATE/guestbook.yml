@@ -1,0 +1,11 @@
+name: Guestbook
+description: Leave short feedback or a note
+title: "[Guestbook] "
+labels: ["guestbook"]
+body:
+  - type: textarea
+    attributes:
+      label: Message
+      placeholder: "Clean site. Maybe add X."
+    validations:
+      required: true
