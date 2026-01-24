@@ -6,6 +6,6 @@ body:
   - type: textarea
     attributes:
       label: Message
-      placeholder: "Clean site. Maybe add X."
+      placeholder: "Your Message and name aswell"
     validations:
       required: true
