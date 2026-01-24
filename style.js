@@ -271,3 +271,38 @@ closeOverlay.addEventListener("click", () => {
 
 })();
 </script
+-32
+Lines changed: 0 additions & 32 deletions
+Original file line number	Diff line number	Diff line change
+@@ -271,35 +271,3 @@ closeOverlay.addEventListener("click", () => {
+
+})();
+</script
+hridhaan-sAdd a comment on line L274
+Add diff comment
+Markdown input: edit mode selected.
+Write
+Preview
+Leave a comment
+/*guestbook*/
+<script>
+async function loadGuestbook() {
+  const res = await fetch(
+    "https://api.github.com/repos/hridhaan-s/personal-sitee/issues?labels=approved&state=open"
+  );
+  const issues = await res.json();
+  const list = document.getElementById("entries");
+  list.innerHTML = ""; // clear old content
+  issues.forEach(issue => {
+    const li = document.createElement("li");
+    const author = document.createElement("strong");
+    author.textContent = "@" + issue.user.login;
+    const message = document.createElement("p");
+    message.textContent = issue.body.trim();
+    li.appendChild(author);
+    li.appendChild(message);
+    list.appendChild(li);
+  });
+}
+loadGuestbook();
+</script>
