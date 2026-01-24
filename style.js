@@ -271,35 +271,3 @@ closeOverlay.addEventListener("click", () => {
 
 })();
 </script
-
-/*guestbook*/
-<script>
-async function loadGuestbook() {
-  const res = await fetch(
-    "https://api.github.com/repos/hridhaan-s/personal-sitee/issues?labels=approved&state=open"
-  );
-
-  const issues = await res.json();
-  const list = document.getElementById("entries");
-
-  list.innerHTML = ""; // clear old content
-
-  issues.forEach(issue => {
-    const li = document.createElement("li");
-
-    const author = document.createElement("strong");
-    author.textContent = "@" + issue.user.login;
-
-    const message = document.createElement("p");
-    message.textContent = issue.body.trim();
-
-    li.appendChild(author);
-    li.appendChild(message);
-
-    list.appendChild(li);
-  });
-}
-
-loadGuestbook();
-</script>
-
