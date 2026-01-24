@@ -270,4 +270,25 @@ closeOverlay.addEventListener("click", () => {
 });
 
 })();
+</script
+
+/*guestbook*/
+<script>
+async function loadGuestbook() {
+  const res = await fetch(
+    "https://api.github.com/repos/YOUR_USERNAME/YOUR_REPO/issues?labels=approved&state=open"
+  );
+  const issues = await res.json();
+
+  const list = document.getElementById("entries");
+
+  issues.forEach(issue => {
+    const li = document.createElement("li");
+    li.textContent = issue.body.slice(0, 200);
+    list.appendChild(li);
+  });
+}
+
+loadGuestbook();
 </script>
+
