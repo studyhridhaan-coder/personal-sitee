@@ -112,3 +112,13 @@ section.guestbook {
   }
 }
 
+section.guestbook {
+  margin: 48px 0 !important;
+  padding: 0 !important;
+}
+
+section.guestbook + footer,
+section.guestbook + .footer {
+  margin-top: 32px !important;
+}
+
