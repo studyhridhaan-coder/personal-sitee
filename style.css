@@ -3756,92 +3756,46 @@ filter:
 
   /* ===============================
    GUESTBOOK (THEME MATCH)
-================================ */
-1
-/* FORCE GUESTBOOK VISIBILITY + ANIMATION */
+================================ *//* FORCE GUESTBOOK STYLES INSIDE SPA */
 
-.guestbook {
-  margin: 140px auto !important;
-  display: flex !important;
-  justify-content: center !important;
+#page-home .guestbook {
+  display: flex;
+  justify-content: center;
+  margin: 120px 0;
 }
 
-.guestbook-card {
-  max-width: 520px !important;
-  width: 100% !important;
-  background: #ffffff !important;
-  border-radius: 18px !important;
-  padding: 28px !important;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.08) !important;
-
-  /* animation */
-  animation: gbFadeIn 0.6s ease-out forwards !important;
+#page-home .guestbook-card {
+  max-width: 520px;
+  width: 100%;
+  background: #fff;
+  border-radius: 18px;
+  padding: 28px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.08);
 }
 
-@keyframes gbFadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(24px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+#page-home .guestbook-entries {
+  max-height: 260px;
+  overflow-y: auto;
 }
 
-/* SCROLLABLE ENTRIES */
-.guestbook-entries {
-  max-height: 260px !important;
-  overflow-y: auto !important;
-  margin-top: 14px !important;
-  padding-right: 6px !important;
+#page-home .guestbook-entries li {
+  list-style: none;
+  padding: 14px;
+  border-radius: 12px;
+  background: #fafafa;
+  margin-bottom: 8px;
 }
 
-/* ENTRY STYLE + ANIMATION */
-.guestbook-entries li {
-  list-style: none !important;
-  padding: 14px 12px !important;
-  margin-bottom: 8px !important;
-  border-radius: 12px !important;
-  background: #fafafa !important;
-
-  animation: entryFade 0.35s ease-out forwards !important;
+#page-home .guestbook-entries strong {
+  display: block;
+  font-size: 13px;
+  color: #666;
 }
 
-@keyframes entryFade {
-  from {
-    opacity: 0;
-    transform: translateY(8px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+#page-home .guestbook-entries p {
+  margin: 0;
+  font-size: 14px;
+  color: #111;
 }
 
-/* AUTHOR */
-.guestbook-entries strong {
-  font-size: 13px !important;
-  color: #666 !important;
-  display: block !important;
-  margin-bottom: 4px !important;
-}
-
-/* MESSAGE */
-.guestbook-entries p {
-  margin: 0 !important;
-  font-size: 14px !important;
-  line-height: 1.45 !important;
-  color: #111 !important;
-}
-
-/* HOVER FEEDBACK */
-.guestbook-entries li:hover {
-  background: rgba(240, 196, 108, 0.18) !important;
-  transform: translateX(2px) !important;
-}
-
-  body {
-  background: red !important;
-}
-
+  
