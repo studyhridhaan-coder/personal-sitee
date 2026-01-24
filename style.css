@@ -3697,3 +3697,59 @@ filter:
   font-size: 14px;
 }
 
+.guestbook {
+  max-width: 640px;
+  margin: 90px auto;
+  padding: 0 16px;
+}
+
+.guestbook-link {
+  display: inline-block;
+  margin-bottom: 24px;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  color: #111;
+  border-bottom: 1px solid #ccc;
+}
+
+.guestbook-link:hover {
+  border-color: #111;
+}
+
+.guestbook h3 {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 14px;
+  color: #111;
+}
+
+.guestbook-entries {
+  padding: 0;
+  margin: 0;
+}
+
+.guestbook-entries li {
+  list-style: none;
+  padding: 14px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.guestbook-entries strong {
+  display: block;
+  font-size: 13px;
+  color: #555;
+  margin-bottom: 4px;
+}
+
+.guestbook-entries p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.4;
+  color: #111;
+}
+
+.placeholder {
+  color: #999;
+  font-size: 14px;
+}
