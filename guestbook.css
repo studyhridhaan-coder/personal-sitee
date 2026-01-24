@@ -1,0 +1,71 @@
+/* ===============================
+   GUESTBOOK – CLEAN & ISOLATED
+================================ */
+
+.guestbook {
+  display: flex;
+  justify-content: center;
+  margin: 100px 0;
+  padding: 0 16px;
+}
+
+.guestbook-card {
+  width: 100%;
+  max-width: 520px;
+  background: var(--card);
+  border-radius: 20px;
+  padding: 28px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+}
+
+.guestbook-link {
+  display: inline-block;
+  margin-bottom: 18px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(0,0,0,0.2);
+}
+
+.guestbook-link:hover {
+  border-color: var(--text);
+}
+
+.guestbook h3 {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 14px;
+}
+
+.guestbook-entries {
+  max-height: 260px;
+  overflow-y: auto;
+  padding: 0;
+  margin: 0;
+}
+
+.guestbook-entries li {
+  list-style: none;
+  padding: 14px;
+  border-radius: 12px;
+  background: rgba(0,0,0,0.04);
+  margin-bottom: 8px;
+}
+
+.dark .guestbook-entries li {
+  background: rgba(255,255,255,0.06);
+}
+
+.guestbook-entries strong {
+  display: block;
+  font-size: 13px;
+  color: #666;
+  margin-bottom: 4px;
+}
+
+.guestbook-entries p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.45;
+}
