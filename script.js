@@ -276,3 +276,48 @@ document.addEventListener("DOMContentLoaded", () => {
 
   observer.observe(yellowEl);
 });
+async function loadGuestbook() {
+  const list = document.getElementById("entries");
+  if (!list) return; // IMPORTANT GUARD
+
+  try {
+    const res = await fetch(
+      "https://api.github.com/repos/hridhaan-s/personal-sitee/issues?labels=approved&state=open"
+    );
+    const issues = await res.json();
+
+    list.innerHTML = "";
+
+    if (!issues.length) {
+      const li = document.createElement("li");
+      li.className = "placeholder";
+      li.textContent = "No approved notes yet.";
+      list.appendChild(li);
+      return;
+    }
+
+    issues.forEach(issue => {
+      const li = document.createElement("li");
+
+      const author = document.createElement("strong");
+      author.textContent = "@" + issue.user.login;
+
+      const cleanBody = issue.body
+        .replace(/###.*\n/g, "")
+        .trim();
+
+      const message = document.createElement("p");
+      message.textContent = cleanBody;
+
+      li.appendChild(author);
+      li.appendChild(message);
+      list.appendChild(li);
+    });
+
+  } catch (err) {
+    console.error("Guestbook error:", err);
+  }
+}
+
+loadGuestbook();
+
